@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Психологическая поликлиника - Для психологов</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Психологическая поликлиника</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="client.html">Для клиентов</a></li>
+                    <li><a href="staff.html" class="active">Для психологов</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="page-header">
+            <div class="container">
+                <h2>Панель для психологов</h2>
+                <p>Управление расписанием, клиентами и записями</p>
+            </div>
+        </section>
+
+        <section class="staff-login">
+            <div class="container">
+                <div class="login-form">
+                    <h3>Вход в систему</h3>
+                    <form id="staffLoginForm" class="form">
+                        <div class="form-group">
+                            <label for="staffLogin">Логин:</label>
+                            <input type="text" id="staffLogin" name="login" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="staffPassword">Пароль:</label>
+                            <input type="password" id="staffPassword" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Войти</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="staff-dashboard" id="staffDashboard" style="display: none;">
+            <div class="container">
+                <div class="dashboard-tabs">
+                    <button class="tab-btn active" data-tab="schedule">Расписание</button>
+                    <button class="tab-btn" data-tab="clients">Клиенты</button>
+                    <button class="tab-btn" data-tab="records">Записи</button>
+                </div>
+
+                <div class="tab-content">
+                    <div id="schedule" class="tab-panel active">
+                        <h3>Мое расписание</h3>
+                        <div class="schedule-grid">
+                            <div class="time-slot">
+                                <span class="time">09:00 - 10:00</span>
+                                <span class="client">Анна Петрова</span>
+                                <span class="service">Индивидуальная терапия</span>
+                            </div>
+                            <div class="time-slot">
+                                <span class="time">10:00 - 11:00</span>
+                                <span class="client">Свободно</span>
+                                <span class="service">-</span>
+                            </div>
+                            <div class="time-slot">
+                                <span class="time">11:00 - 12:00</span>
+                                <span class="client">Михаил Иванов</span>
+                                <span class="service">Семейная терапия</span>
+                            </div>
+                            <div class="time-slot">
+                                <span class="time">14:00 - 15:00</span>
+                                <span class="client">Елена Сидорова</span>
+                                <span class="service">Консультация</span>
+                            </div>
+                            <div class="time-slot">
+                                <span class="time">15:00 - 16:00</span>
+                                <span class="client">Свободно</span>
+                                <span class="service">-</span>
+                            </div>
+                            <div class="time-slot">
+                                <span class="time">16:00 - 17:00</span>
+                                <span class="client">Алексей Козлов</span>
+                                <span class="service">Индивидуальная терапия</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="clients" class="tab-panel">
+                        <h3>Список клиентов</h3>
+                        <div class="clients-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Имя</th>
+                                        <th>Телефон</th>
+                                        <th>Email</th>
+                                        <th>Последний визит</th>
+                                        <th>Статус</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Анна Петрова</td>
+                                        <td>+7 (999) 123-45-67</td>
+                                        <td>anna.petrova@email.com</td>
+                                        <td>15.01.2024</td>
+                                        <td class="status active">Активный</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Михаил Иванов</td>
+                                        <td>+7 (999) 234-56-78</td>
+                                        <td>mikhail.ivanov@email.com</td>
+                                        <td>12.01.2024</td>
+                                        <td class="status active">Активный</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Елена Сидорова</td>
+                                        <td>+7 (999) 345-67-89</td>
+                                        <td>elena.sidorova@email.com</td>
+                                        <td>10.01.2024</td>
+                                        <td class="status completed">Завершен</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="records" class="tab-panel">
+                        <h3>Записи сессий</h3>
+                        <div class="records-list">
+                            <div class="record-item">
+                                <h4>Анна Петрова - 15.01.2024</h4>
+                                <p class="session-type">Индивидуальная терапия</p>
+                                <p class="record-text">Обсуждали проблемы в отношениях. Клиентка проявляет готовность к изменениям...</p>
+                                <button class="btn btn-small">Редактировать</button>
+                            </div>
+                            <div class="record-item">
+                                <h4>Михаил Иванов - 12.01.2024</h4>
+                                <p class="session-type">Семейная терапия</p>
+                                <p class="record-text">Работа с семейными конфликтами. Намечены шаги для улучшения коммуникации...</p>
+                                <button class="btn btn-small">Редактировать</button>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary">Добавить новую запись</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="staff-info">
+            <div class="container">
+                <h3>Информация для сотрудников</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Рабочие часы</h4>
+                        <p>Понедельник - Пятница: 9:00 - 18:00</p>
+                        <p>Суббота: 9:00 - 15:00</p>
+                        <p>Воскресенье: Выходной</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Контакты</h4>
+                        <p>Администратор: +7 (999) 000-11-22</p>
+                        <p>Email: admin@psychology-clinic.ru</p>
+                        <p>Адрес: г. Москва, ул. Психологов, д. 1</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Документы</h4>
+                        <p>Договоры с клиентами</p>
+                        <p>Протоколы сессий</p>
+                        <p>Отчеты о работе</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Психологическая поликлиника. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
