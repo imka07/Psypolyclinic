@@ -18,7 +18,7 @@
                 <div class="header-center">
                     <div class="logo">
                         <a href="index.html" class="logo-link" aria-label="Главная">
-                            <img src="http://www.w3.org/2000/svg" alt="Психологическая поликлиника" style="height:48px;">
+                            <img src="http://www.w3.org/2000/svg" alt="Лого" style="height:48px;">
                         </a>
                     </div>
                 </div>
@@ -71,23 +71,32 @@
                             <br />
                             <span class="hero-title-secondary">обрести счастье</span>
                         </h1>
-
-                        <div class="hero-tabs" role="tablist" aria-label="Кому подходит">
-                            <div class="tabs-header">
-                                <button class="tab-btn active" data-tab="tab-client" role="tab" aria-selected="true" aria-controls="tab-client" id="tab-client-btn">Для клиента</button>
-                                <button class="tab-btn" data-tab="tab-psych" role="tab" aria-selected="false" aria-controls="tab-psych" id="tab-psych-btn">Для психолога</button>
+                        <div class="tabs-header">
+                            <button class="tab-btn active" data-tab="client">Для клиента</button>
+                            <button class="tab-btn" data-tab="psychologist">Для психолога</button>
+                        </div>
+                        <div class="hero-tabs">
+                            <div class="tabs-panel active" id="client">
+                                <div class="tabs-feature">
+                                    <h3 class="tabs-title">Проверенные специалисты</h3>
+                                    <p class="tabs-sub">120+ психологов</p>
+                                </div>
+                                <div class="tabs-feature">
+                                    <h3 class="tabs-title">Удобный график сессий</h3>
+                                    <p class="tabs-sub">Сами выбираете удобное для вас время</p>
+                                </div>
+                                <button class="tabs-cta btn">Подобрать психолога</button>
                             </div>
-                            <div class="tab-panel active" id="tab-client" role="tabpanel" aria-labelledby="tab-client-btn">
-                                <p class="tabs-title">Проверенные специалисты</p>
-                                <p class="tabs-sub">120+ психологов</p>
-                                <p class="tabs-title">Удобный график сессий</p>
-                                <p class="tabs-sub">Сами выбираете удобное для вас время</p>
-                                <a href="client.html" class="btn btn-primary tabs-cta">Подобрать психолога</a>
-                            </div>
-                            <div class="tab-panel" id="tab-psych" role="tabpanel" aria-labelledby="tab-psych-btn">
-                                <p class="tabs-title">Прозрачные условия и поток клиентов</p>
-                                <p class="tabs-sub">Гибкий график и поддержка команды</p>
-                                <a href="staff.html" class="btn btn-primary tabs-cta">Присоединиться как психолог</a>
+                            <div class="tabs-panel" id="psychologist" hidden>
+                                <div class="tabs-feature">
+                                    <h3 class="tabs-title">Присоединяйтесь к нашей команде</h3>
+                                    <p class="tabs-sub">Работайте с клиентами онлайн</p>
+                                </div>
+                                <div class="tabs-feature">
+                                    <h3 class="tabs-title">Гибкий график работы</h3>
+                                    <p class="tabs-sub">Выбирайте удобное время для сессий</p>
+                                </div>
+                                <button class="tabs-cta btn">Стать психологом</button>
                             </div>
                         </div>
                     </div>
@@ -101,7 +110,70 @@
             </div>
         </section>
 
-        
+
+        <section class="why-choose-us" style="margin-top: 40px;">
+            <div class="container">
+                <h2 class="why-choose-us-title">Почему стоит выбрать нас?</h2>
+                <div class="container why-choose-us-features">
+                    <div class="why-choose-us-feature">
+                        <p class="why-choose-us-text">
+                            Psypolyclinic — открытая <br> онлайн‑платформа для доступа <br> к психологической поддержке
+                        </p>
+                    </div>
+                    <div class="why-choose-us-feature">
+                        <p class="why-choose-us-text">
+                            Мы объединяем тех, кому важно <br> быть услышанным, с теми, <br> кто умеет слушать
+                        </p>
+                    </div>
+                    <div class="why-choose-us-feature">
+                        <p class="why-choose-us-text">
+                            Без барьеров и посредников
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    
+     <section class="services">
+        <div class="container services-container">
+            <div class="services-header">
+                <h2 class="services-title">Выберите услугу</h2>
+                <span class="services-desc">Мы предлагаем вам выбрать услугу, исходя <br> из вашего запроса</span>
+            </div>
+            <div class="services-row services-row--clients">
+                <img class="services-image" src="" alt="Картинка для клиентов">
+                <div class="services-card">
+                    <h3 class="services-card-title">Для клиентов</h3>
+                    <span class="services-subtitle">Наши психологи помогут вам:</span>
+                    <ul class="services-list">
+                        <li class="services-list-item">Преодолеть тревогу и выгорание</li>
+                        <li class="services-list-item">Преодолеть тревогу и выгорание</li>
+                        <li class="services-list-item">Преодолеть тревогу и выгорание</li>
+                        <li class="services-list-item">Преодолеть тревогу и выгорание</li>
+                    </ul>
+                    <span class="services-footnote">Более 1000 людей нашли психолога на нашем <br> сайте</span>
+                    <button class="services-btn">Подробнее</button>
+                </div>
+            </div>
+            <div class="services-row services-row--psychologists">
+                <div class="services-card">
+                    <h3 class="services-card-title">Для психологов</h3>
+                    <span class="services-subtitle">На нашей платформе вы:</span>
+                    <ul class="services-list">
+                        <li class="services-list-item">Сами строите свой график</li>
+                        <li class="services-list-item">Сами строите свой график</li>
+                        <li class="services-list-item">Сами строите свой график</li>
+                        <li class="services-list-item">Сами строите свой график</li>
+                    </ul>
+                    <span class="services-footnote">С нами сотрудничает уже более 130 психологов</span>
+                    <button class="services-btn">Подробнее</button>
+                </div>
+                <img class="services-image" src="" alt="Картинка для клиентов">
+            </div>
+        </div>
+     </section>
        
     </main>
 
