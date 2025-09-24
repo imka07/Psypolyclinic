@@ -8,10 +8,10 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f8f9fa;
+    background-color: #ffffff;
     letter-spacing: 0.5px;
 }
 
@@ -187,7 +187,7 @@ h2 {
 
 .eyebrow {
     color: #7b8694;
-    font-size: 24px;
+    font-size: 22px;
     font-family: 'Inter', 'Arial', sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -195,7 +195,7 @@ h2 {
 }
 
 .hero-title {
-    font-size: 54px;
+    font-size: 50px;
     line-height: 1.15;
     font-weight: 400;
     margin-bottom: 1.5rem;
@@ -334,6 +334,11 @@ h2 {
     margin-top: 3rem;
 }
 
+.why-choose-us{
+    background-color: #D9D9D9;
+    padding-top: 40px;
+}
+
 .why-choose-us-title{
   font-weight: 500;
   font-size: 40px;
@@ -368,6 +373,252 @@ h2 {
 .why-choose-us-feature:nth-child(3) {
     grid-column: 1;
     grid-row: 3;
+}
+
+
+.promo {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.promo-container {
+    background-color: #D9D9D9;
+    border-radius: 20px;
+    margin: 50px 120px;
+    padding: 50px 40px;
+    gap: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 600px;
+    max-width: 1200px;
+    width: auto;
+    box-sizing: border-box;
+}
+
+.promo-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 54px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.promo-title.discount {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    /* font-style: Semi Bold;  Semi Bold is not a valid value, so omit or use normal */
+    font-size: 54px;
+    /* leading-trim: NONE;  Not a standard CSS property, so omit */
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+    color: #525252;
+}
+
+.promo-desc {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 32px;
+    /* leading-trim: NONE;  Not a standard CSS property, so omitted */
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+
+.promo-deadline-btn {
+    width: 449px;
+    height: 154px;
+    opacity: 1;
+    border-radius: 20px;
+    border: none;
+    background-color: #909090;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+    font-weight: 100;
+}
+
+.promo-select-btn {
+    width: 340px;
+    height: 64px;
+    max-width: 340px;
+    max-height: 64px;
+    border-radius: 10px;
+    border: none;
+    padding-top: 8px;
+    background-color: #A6A6A6;
+    padding-right: 16px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 100;
+}
+
+.promo-select-btn:hover{
+    background-color: #9f9f9f;
+}
+
+.benefits-section {
+    background-color: #D9D9D9;
+    padding: 50px 120px;
+}
+
+.benefits-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 1.1;
+    letter-spacing: 0;
+    margin-bottom: 50px;
+}
+
+
+
+.benefit-item {
+    display: flex;
+    background-color: white;
+    width: 391px;
+    height: auto;
+    border-radius: 20px;
+    padding: 32px;
+    gap: 28px;
+}
+
+
+.benefit-img {
+    width: 60px;
+    height: 60px;
+}
+
+
+.benefit-text {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0;
+}
+
+/* Benefits staggered layout */
+/*
+  .benefits-list — это контейнер для карточек преимуществ (benefit-item).
+  Здесь используется CSS Grid для размещения карточек в 3 колонки с отступами между ними.
+  align-items: start — выравнивает карточки по верхнему краю.
+*/
+.benefits-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 0px;
+    align-items: start;
+}
+
+/* 
+    Схема ступеньки:
+    1 (col 1, row 1)
+        2 (col 2, row 2)
+            3 (col 3, row 3)
+        4 (col 2, row 4)
+    5 (col 1, row 5)
+        6 (col 2, row 6)
+*/
+
+.benefits-list .benefit-item {
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    grid-column: auto;
+    grid-row: auto;
+}
+
+/* 1 */
+.benefits-list .benefit-item:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+/* 2 */
+.benefits-list .benefit-item:nth-child(2) {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+/* 3 */
+.benefits-list .benefit-item:nth-child(3) {
+    grid-column: 3;
+    grid-row: 3;
+}
+
+/* 4 */
+.benefits-list .benefit-item:nth-child(4) {
+    grid-column: 2;
+    grid-row: 4;
+}
+
+/* 5 */
+.benefits-list .benefit-item:nth-child(5) {
+    grid-column: 1;
+    grid-row: 5;
+}
+
+/* 6 */
+.benefits-list .benefit-item:nth-child(6) {
+    grid-column: 2;
+    grid-row: 6;
+}
+
+/* Tablet: 2 columns, keep staggered feel */
+@media (max-width: 992px) {
+    .benefits-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    /* На планшете делаем ступеньку только для 2-го элемента */
+    .benefits-list .benefit-item { margin-top: 0; }
+    .benefits-list .benefit-item:nth-child(2) { margin-top: 20px; }
+}
+
+/* Mobile: single column, remove offsets */
+@media (max-width: 600px) {
+    .benefits-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .benefits-list .benefit-item {
+        margin-top: 0 !important;
+    }
+}
+
+
+/* Адаптивность для promo-container */
+@media (max-width: 1024px) {
+    .promo-container {
+        margin: 40px 40px;
+        padding: 40px 20px;
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 600px) {
+    .promo-container {
+        margin: 20px 5px;
+        padding: 20px 5px;
+        min-height: 200px;
+        border-radius: 12px;
+    }
 }
 
 /* Responsive */
@@ -518,8 +769,9 @@ h2 {
 /* Services section */
 .services {
     margin-top: 0;
-    padding-top: 80px;
+    padding-top: 40px;
     background: #ffffff;
+    padding-bottom: 40px;
 }
 
 .services-title {
@@ -528,15 +780,12 @@ h2 {
     margin-bottom: 8px;
 }
 
-.services-container {
-    /* keep container styles */
-}
+
 
 .services-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px 40px;
-    align-items: start;
+    align-items: center;
     margin-bottom: 40px;
 }
 
@@ -548,6 +797,12 @@ h2 {
     order: 2;
 }
 
+/* Reduce horizontal space between image and text for clients row */
+.services-row--clients {
+    column-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+}
+
 .services-row--psychologists .services-card {
     order: 1;
 }
@@ -556,17 +811,26 @@ h2 {
     order: 2;
 }
 
+/* Reduce horizontal space between text and image for psychologists row */
+.services-row--psychologists {
+    column-gap: 20px;
+}
+
 .services-image {
     width: 100%;
-    max-width: 480px;
+    max-width: 600px;
     height: 300px;
     background: #e6e6e6;
     border-radius: 4px;
     border: 1px solid #d0d0d0;
 }
 
-.services-card {
-    padding: 10px 8px 0 8px;
+/* removed empty .services-card ruleset */
+
+.services-card.extra-class{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
 }
 
 .services-card-title {
