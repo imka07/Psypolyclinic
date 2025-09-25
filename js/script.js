@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initTabSwitching();
+    initChooseStepButtons();
+    initChooseToggle();
 });
 
 // Функция для мобильного меню
@@ -46,6 +48,62 @@ function initMobileMenu() {
     }
 }
 
+// Логика для кнопок выбора шага
+function initChooseStepButtons() {
+    const buttons = document.querySelectorAll('.choose-step-btn');
+
+    if (!buttons.length) return;
+
+    function getGroupContainer(button) {
+        // Пытаемся найти общий контейнер группы кнопок
+        return (
+            button.closest('[data-choose-steps]') ||
+            button.closest('.choose-steps') ||
+            button.closest('.choose-step-buttons') ||
+            document
+        );
+    }
+
+    function deactivateGroup(container) {
+        const groupButtons = container.querySelectorAll('.choose-step-btn');
+        groupButtons.forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-current', 'false');
+        });
+    }
+
+    function activateButton(button) {
+        const container = getGroupContainer(button);
+        deactivateGroup(container);
+        button.classList.add('active');
+        button.setAttribute('aria-current', 'true');
+    }
+
+    // Устанавливаем обработчики событий
+    buttons.forEach(button => {
+        // Инициализация aria-current, если задан класс active в разметке
+        if (button.classList.contains('active')) {
+            button.setAttribute('aria-current', 'true');
+        } else if (!button.hasAttribute('aria-current')) {
+            button.setAttribute('aria-current', 'false');
+        }
+
+        button.addEventListener('click', function() {
+            activateButton(this);
+        });
+
+        // Доступность с клавиатуры (Enter/Space)
+        button.addEventListener('keydown', function(e) {
+            const isEnter = e.key === 'Enter' || e.keyCode === 13;
+            const isSpace = e.key === ' ' || e.key === 'Spacebar' || e.keyCode === 32;
+            if (isEnter || isSpace) {
+                e.preventDefault();
+                activateButton(this);
+            }
+        });
+    });
+}
+
 // Функция для переключения вкладок в hero
 function initTabSwitching() {
     const tabButtons = document.querySelectorAll('.tab-btn');
@@ -73,6 +131,26 @@ function initTabSwitching() {
                 targetPanel.classList.add('active');
                 targetPanel.removeAttribute('hidden');
             }
+        });
+    });
+}
+
+// Переключатель «Я определился / Помощь менеджера»
+function initChooseToggle() {
+    const group = document.querySelector('[data-toggle-group]');
+    if (!group) return;
+
+    const buttons = group.querySelectorAll('.choose-toggle-btn');
+    if (!buttons.length) return;
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            buttons.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-pressed', 'false');
+            });
+            this.classList.add('active');
+            this.setAttribute('aria-pressed', 'true');
         });
     });
 }

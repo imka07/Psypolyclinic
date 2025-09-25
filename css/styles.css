@@ -578,6 +578,276 @@ h2 {
     grid-row: 6;
 }
 
+
+
+.how-to-choose-section {
+    background-color: #EEEEEE;
+    padding: 50px 120px;
+}
+
+.how-to-choose-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 48px;
+    line-height: 100%;
+    letter-spacing: 0;
+}
+
+.how-to-choose-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.choose-psychologist-block{
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Toggle buttons (Я определился / Помощь менеджера) */
+.choose-toggle{
+    display: flex;
+    background: #D9D9D9;
+    border-radius: 10px;
+    padding: 6px;
+    gap: 6px;
+}
+
+.choose-toggle-btn{
+    appearance: none;
+    border: 0;
+    background: #D9D9D9;
+    color: rgba(0,0,0,0.55);
+    font-weight: 600;
+    font-size: 22px;
+    padding: 14px 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: color .2s ease, background .2s ease, opacity .2s ease;
+    white-space: nowrap;
+}
+
+.choose-toggle-btn.active{
+    background: #A6A6A6;
+    color: #3a3a3a;
+}
+
+.choose-toggle-btn:focus-visible{
+    outline: 3px solid rgba(0,0,0,.15);
+    outline-offset: 2px;
+}
+
+
+.choose-psychologist-card {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: center;
+    gap: 40px;
+    width: 80%;
+    height: 400px;
+    border-radius: 20px;
+    background-color: #696969;
+    /* angle: 0deg; -- not a valid CSS property, so omitted */
+}
+
+.choose-psychologist-card-title {
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-style: bold;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: 0;
+}
+
+.choose-psychologist-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.choose-psychologist-icon {
+    display: flex;
+    gap: 20px;
+}
+
+.choose-step-btn {
+    width: 78px;
+    height: 98px;
+    opacity: 1;
+    border-radius: 30px;
+    border: none;
+    font-weight: 700;
+    font-style: bold;
+    font-size: 48px;
+    line-height: 100%;
+    letter-spacing: 0;
+    background-color: #D9D9D9;
+    color: #F8F9FC;
+    transition: background 0.2s, color 0.2s;
+}
+
+.choose-step-btn.active,
+.choose-step-btn[aria-current="true"] {
+    background-color: #fff;
+    color: #000;
+}
+
+.choose-select-btn {
+    width: auto;
+    height: 64px;
+    border-radius: 10px;
+    border: none;
+    background-color: #A6A6A6;
+    padding-top: 8px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+
+    /* Возможность двигать кнопку направо */
+    margin-left: 100px;
+    display: block;
+    /* Если нужно, чтобы кнопка была справа внутри flex-контейнера: */
+    /* align-self: flex-end; */
+}
+
+
+.reviews-section{
+    background-color: #EEEEEE;
+    padding: 50px 120px;
+}
+
+.reviews-header-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.reviews-title {
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 100%;
+    letter-spacing: 0%;
+}
+
+.reviews-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.reviews-choose-psychologist-btn {
+    width: 340px;
+    height: 64px;
+    border-radius: 10px;
+    padding-top: 8px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    border: none;
+    background-color: #A6A6A6;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+
+.reviews-list {
+    display: flex;
+    flex-direction: row;
+    gap: 30px
+}
+
+.review-card-header {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.review-author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.review-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 380px;
+    height: 440px;
+    border-radius: 20px;
+    background-color: #D9D9D9;
+    padding: 32px;
+}
+
+.review-author-name {
+    font-weight: 500;
+    font-style: normal; /* 'Medium' is not a valid value; use 'normal' or 'italic' */
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: 0%;
+}
+
+
+.review-author-position {
+    font-family: Inter;
+    font-weight: 400;
+    font-style: normal; /* 'Regular' is not a valid value; use 'normal' */
+    font-size: 14px;
+    /* leading-trim: NONE; */ /* 'leading-trim' is not standard CSS, omitted */
+    line-height: 100%;
+    letter-spacing: 0%;
+}
+
+
+.review-read-more-btn {
+    font-weight: 600;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #848484;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-top: 40px; /* Добавлено для смещения кнопки вниз */
+}
+
+.reviews-nav-btn.reviews-nav-btn-prev {
+    background: none;
+    border: none;
+}
+
+.reviews-nav-btn.reviews-nav-btn-next {
+    background: none;
+    border: none;
+}
+
 /* Tablet: 2 columns, keep staggered feel */
 @media (max-width: 992px) {
     .benefits-list {
