@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initTabSwitching();
     initChooseStepButtons();
     initChooseToggle();
+    initFaq();
 });
 
 // Функция для мобильного меню
@@ -151,6 +152,59 @@ function initChooseToggle() {
             });
             this.classList.add('active');
             this.setAttribute('aria-pressed', 'true');
+        });
+    });
+}
+
+// FAQ: topics highlight and accordion behavior with smooth height animation
+function initFaq() {
+    const topics = document.querySelectorAll('.faq-topic');
+    topics.forEach(topic => {
+        topic.addEventListener('click', () => {
+            topics.forEach(t => t.classList.remove('active'));
+            topic.classList.add('active');
+        });
+    });
+
+    const items = document.querySelectorAll('.faq-item');
+    items.forEach(item => {
+        const btn = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        if (!btn || !answer) return;
+
+        // Set initial height for open item
+        if (item.classList.contains('open')) {
+            answer.style.height = answer.scrollHeight + 'px';
+            btn.setAttribute('aria-expanded', 'true');
+        } else {
+            btn.setAttribute('aria-expanded', 'false');
+            answer.setAttribute('hidden', '');
+            answer.style.height = '0px';
+        }
+
+        btn.addEventListener('click', () => {
+            const isOpen = item.classList.contains('open');
+            if (isOpen) {
+                // close
+                item.classList.remove('open');
+                btn.setAttribute('aria-expanded', 'false');
+                answer.style.height = answer.scrollHeight + 'px';
+                requestAnimationFrame(() => {
+                    answer.style.height = '0px';
+                });
+                setTimeout(() => answer.setAttribute('hidden', ''), 300);
+            } else {
+                // open
+                answer.removeAttribute('hidden');
+                item.classList.add('open');
+                btn.setAttribute('aria-expanded', 'true');
+                answer.style.height = 'auto';
+                const h = answer.scrollHeight;
+                answer.style.height = '0px';
+                requestAnimationFrame(() => {
+                    answer.style.height = h + 'px';
+                });
+            }
         });
     });
 }
