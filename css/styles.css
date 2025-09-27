@@ -1,5 +1,5 @@
 /* Base */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 * {
     margin: 0;
@@ -8,7 +8,7 @@
 }
 
 body {
-    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #ffffff;
@@ -26,17 +26,16 @@ h2 {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin:  auto;
     padding: 0 20px;
 }
 
 /* Header */
 .header {
-    background-color: #f8f9fa;
+    background-color: white;
     color: #333;
     padding: 1rem 0;
-    border-bottom: 1px solid #e9ecef;
     position: relative;
     z-index: 1000;
 }
@@ -51,26 +50,40 @@ h2 {
 .header-left {
     display: flex;
     align-items: center;
-    gap: 2rem;
-    flex: 1;
+    gap: 40px;
 }
 
 .header-left .nav-link {
     color: #333;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 400;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.header-center .nav-link {
+    color: #333;
+    text-decoration: none;
+    font-weight: 400;
     font-size: 1rem;
     transition: color 0.3s ease;
 }
 
 .header-left .nav-link:hover {
-    color: #007bff;
+    color: #9AC355;
 }
+
+.header-center .nav-link:hover {
+    color: #9AC355;
+}
+
 
 .header-center {
     flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 30px;
 }
 
 .logo h1 {
@@ -118,7 +131,7 @@ h2 {
 }
 
 .login-btn {
-    background-color: #6c757d;
+    background-color: #9AC355;
     color: #fff;
     border: none;
     padding: 0.5rem 1.5rem;
@@ -130,7 +143,7 @@ h2 {
 }
 
 .login-btn:hover {
-    background-color: #5a6268;
+    background-color: #BEF574;
     transform: translateY(-1px);
 }
 
@@ -184,32 +197,48 @@ h2 {
 }
 
 .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    display: flex;
     align-items: center;
+    
+}
+
+.hero-left {
+    max-width: 600px;
 }
 
 .eyebrow {
     color: #7b8694;
-    font-size: 22px;
-    font-family: 'Inter', 'Arial', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-style: normal;
+    font-size: 26px;
+    line-height: 100%;
+    letter-spacing: 0;
     margin-bottom: -5px;
+    padding-bottom: 10px;
 }
 
 .hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-style: normal;
     font-size: 50px;
-    line-height: 1.15;
-    font-weight: 400;
-    margin-bottom: 1.5rem;
+    line-height: 130%;
+    letter-spacing: 0;
+    margin-bottom: 3rem; /* увеличено пространство снизу */
+    width: 1000px;
 }
 
 .hero-title-secondary {
-    color: #7b8694;
-    font-weight: 500;
-    font-size: 54px;
+    color: #9AC355;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 50px;
+    line-height: 100%;
+    letter-spacing: 0;
+    margin-top: 1.5rem; /* добавлено пространство сверху */
+    padding-top: 10px;
 }
 
 
@@ -218,7 +247,7 @@ h2 {
 .hero-tabs {
     display: flex;
     flex-direction: row;
-    background: #C7C6C6;
+    background: #9AC355;
     border-radius: 0 20px 20px 20px;
     padding: 0.5rem 0.5rem 0.75rem;
     max-width: 480px;
@@ -231,25 +260,30 @@ h2 {
 }
 
 .tab-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0;
     padding: 0.85rem 1.25rem;
     border: 0;
     border-radius: 16px 16px 0 0;
-    background: #C7C6C6;
-    color: rgba(255, 255, 255, 0.5);
-    font-weight: 700;
-    font-size: 18px;
+    background: #F1F2F5;
+    color: black;
     cursor: pointer;
 }
 
 .tab-btn.active {
-    background: #C7C6C6;
+    background: #9AC355;
+    font-weight: 300;
     color: #ffffff;
     position: relative;
     z-index: 2;
 }
 
 .tabs-panel {
-    background: #C7C6C6;
+    background: #9AC355;
     border-radius: 16px;
     padding: 1.25rem 1rem 1.25rem;
     margin-top: 0;
@@ -267,17 +301,17 @@ h2 {
 .tabs-title {
     font-weight: 500;
     margin-bottom: 0.25rem;
-    color: #222;
+    color: #ffffff;
     letter-spacing: 0.5px;
 }
 
 .tabs-sub {
-    color: #5e6773;
+    color: #000000;
     margin-bottom: 0.9rem;
 }
 
 .hero-tabs .tabs-cta.btn {
-    background: #A6A6A6;
+    background: #ffffff;
     color: #1f1f1f;
     border-radius: 12px;
     font-size: 20px;
@@ -299,16 +333,11 @@ h2 {
     outline: 3px solid rgba(0, 0, 0, 0.25);
 }
 
-/* Hero right image */
-.hero-right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 
 .hero-img-frame {
     width: 100%;
-    max-width: 520px;
+    max-width: 590px;
 }
 
 .hero-img-placeholder {
@@ -343,8 +372,7 @@ h2 {
 }
 
 .why-choose-us{
-    background-color: #D9D9D9;
-    padding-top: 40px;
+    padding: 40px 120px;
 }
 
 .why-choose-us-title{
@@ -353,8 +381,45 @@ h2 {
 }
 
 .why-choose-us-text {
-  font-size: 24px;
-  text-align: center;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-style: normal; /* Regular в CSS это font-style: normal */
+    font-size: 28px;
+    line-height: 150%; /* или 1 */
+    letter-spacing: 0%;
+    text-align: center;
+}
+
+.why-choose-us-text-strong {
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    font-style: normal; /* SemiBold в CSS обычно задаётся через font-weight: 600 */
+    font-size: 28px;
+    line-height: 100%; /* или 1 */
+    letter-spacing: 0%;
+    text-align: center;
+}
+
+/* Pencil oval wrapper places SVG behind text */
+.pencil-outline-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+.pencil-oval-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.pencil-oval-path {
+    fill: none;
+    stroke: #000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 /* Why-choose-us layout: 1; then 2 shifted right on next row; then 3 left */
@@ -366,6 +431,15 @@ h2 {
     align-items: center;
     justify-items: center;
     padding-bottom: 60px;
+}
+
+.container.why-choose-us-container {
+    background-image: url('../images/chooseBackground.svg');
+    background-size: cover; /* Опционально: масштабирует изображение, чтобы покрыть весь блок */
+    background-position: center; /* Опционально: центрирует изображение */
+    background-repeat: no-repeat; /* Опционально: предотвращает повторение изображения */
+    padding: 40px;
+    border-radius: 20px;
 }
 
 .why-choose-us-feature:nth-child(1) {
@@ -384,14 +458,19 @@ h2 {
 }
 
 
+
+
 .promo {
     background-color: #fff;
     display: flex;
     justify-content: center;
 }
 
-.promo-container {
-    background-color: #D9D9D9;
+.container.promo-container {
+    background-image: url('../images/discountBack.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border-radius: 20px;
     margin: 50px 120px;
     padding: 50px 40px;
@@ -401,58 +480,61 @@ h2 {
     align-items: center;
     justify-content: center;
     min-height: 600px;
-    max-width: 1200px;
-    width: auto;
-    box-sizing: border-box;
+    width: 100%;
+    position: relative;
 }
 
+
+
 .promo-title {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
     font-style: normal;
-    font-size: 54px;
+    font-size: 48px;
+    text-align: center;
+    font-family: Montserrat;
+    font-weight: 400;
     line-height: 100%;
-    letter-spacing: 0;
+    letter-spacing: 0%;
     text-align: center;
 }
 
+
 .promo-title.discount {
-    font-family: 'Inter', sans-serif;
     font-weight: 600;
     /* font-style: Semi Bold;  Semi Bold is not a valid value, so omit or use normal */
-    font-size: 54px;
+    font-size: 48px;
     /* leading-trim: NONE;  Not a standard CSS property, so omit */
     line-height: 100%;
     letter-spacing: 0;
     text-align: center;
-    color: #525252;
+    color: #9AC355;
 }
 
 .promo-desc {
-    font-family: 'Inter', sans-serif;
+    font-family: Montserrat;
     font-weight: 400;
-    font-style: normal;
+    font-style: Regular;
     font-size: 32px;
-    /* leading-trim: NONE;  Not a standard CSS property, so omitted */
     line-height: 100%;
-    letter-spacing: 0;
+    letter-spacing: 0%;
     text-align: center;
+    margin-bottom: 130px;
 }
 
 
-.promo-deadline-btn {
-    width: 449px;
-    height: 154px;
-    opacity: 1;
-    border-radius: 20px;
-    border: none;
-    background-color: #909090;
-    font-size: 32px;
+.promo-deadline-text {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 20px;
     line-height: 100%;
-    letter-spacing: 0;
-    text-align: center;
-    font-weight: 100;
+    letter-spacing: 0%;
+    text-align: center; 
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    transform: rotate(15deg);
 }
+
 
 .promo-select-btn {
     width: 340px;
@@ -461,35 +543,55 @@ h2 {
     max-height: 64px;
     border-radius: 10px;
     border: none;
-    padding-top: 8px;
-    background-color: #A6A6A6;
-    padding-right: 16px;
-    padding-bottom: 8px;
-    padding-left: 16px;
+    background-color: #9AC355;
+    color: white;
     font-size: 24px;
     line-height: 100%;
     letter-spacing: 0;
     text-align: center;
-    cursor: pointer;
     font-weight: 100;
+    margin-top: 100px;
 }
 
 .promo-select-btn:hover{
-    background-color: #9f9f9f;
+    background-color: #BEF574;
 }
 
 .benefits-section {
-    background-color: #D9D9D9;
-    padding: 50px 120px;
+    background-color: #F1F2F5;
+    padding: 120px 120px;
+}
+
+.container.benefits-container {
+    position: relative;
 }
 
 .benefits-title {
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-style: SemiBold;
     font-size: 48px;
-    line-height: 1.1;
-    letter-spacing: 0;
-    margin-bottom: 50px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    
+    margin-bottom: 100px;
+}
+
+.benefits-hints-image1 {
+    position: absolute;
+    right: 170px;
+}
+
+.benefits-hints-image2 {
+    position: absolute;
+    bottom: 300px;
+    left: 70px;
+}
+
+.benefits-hints-image3 {
+    position: absolute;
+    bottom: 50px;
+    right: 100px;
 }
 
 
@@ -497,6 +599,7 @@ h2 {
 .benefit-item {
     display: flex;
     background-color: white;
+    align-items: center;
     width: 391px;
     height: auto;
     border-radius: 20px;
@@ -512,11 +615,15 @@ h2 {
 
 
 .benefit-text {
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-size: 20px;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 22px;
     line-height: 100%;
-    letter-spacing: 0;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    
 }
 
 /* Benefits staggered layout */
@@ -594,12 +701,12 @@ h2 {
 }
 
 .how-to-choose-title {
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-style: normal;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-style: SemiBold;
     font-size: 48px;
     line-height: 100%;
-    letter-spacing: 0;
+    letter-spacing: 0%;
 }
 
 .how-to-choose-content{
@@ -610,14 +717,6 @@ h2 {
     gap: 20px;
 }
 
-.choose-psychologist-block{
-    display: flex;
-    width: 100%;
-    flex-direction: row-reverse;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
 
 /* Toggle buttons (Я определился / Помощь менеджера) */
 .choose-toggle{
@@ -629,22 +728,23 @@ h2 {
 }
 
 .choose-toggle-btn{
-    appearance: none;
     border: 0;
+    border-radius: 10px;
     background: #D9D9D9;
     color: rgba(0,0,0,0.55);
-    font-weight: 600;
-    font-size: 22px;
-    padding: 14px 22px;
-    border-radius: 10px;
+
+
+    font-weight: 400;
+    font-size: 32px;
+    padding: 24px 128px;
     cursor: pointer;
     transition: color .2s ease, background .2s ease, opacity .2s ease;
     white-space: nowrap;
 }
 
 .choose-toggle-btn.active{
-    background: #A6A6A6;
-    color: #3a3a3a;
+    background: #9AC355;
+    color: white;
 }
 
 .choose-toggle-btn:focus-visible{
@@ -659,78 +759,28 @@ h2 {
     justify-content:space-around;
     align-items: center;
     gap: 40px;
-    width: 80%;
-    height: 400px;
+    width: 100%;
+    height: 511px;
     border-radius: 20px;
-    background-color: #696969;
-    /* angle: 0deg; -- not a valid CSS property, so omitted */
+    background-color: #9AC355;
 }
 
-.choose-psychologist-card-title {
-    color: white;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-style: bold;
-    font-size: 40px;
-    line-height: 100%;
-    letter-spacing: 0;
-}
 
-.choose-psychologist-steps {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.choose-psychologist-icon {
-    display: flex;
-    gap: 20px;
-}
-
-.choose-step-btn {
-    width: 78px;
-    height: 98px;
-    opacity: 1;
-    border-radius: 30px;
-    border: none;
-    font-weight: 700;
-    font-style: bold;
-    font-size: 48px;
-    line-height: 100%;
-    letter-spacing: 0;
-    background-color: #D9D9D9;
-    color: #F8F9FC;
-    transition: background 0.2s, color 0.2s;
-}
-
-.choose-step-btn.active,
-.choose-step-btn[aria-current="true"] {
-    background-color: #fff;
-    color: #000;
-}
 
 .choose-select-btn {
     width: auto;
     height: 64px;
     border-radius: 10px;
     border: none;
-    background-color: #A6A6A6;
-    padding-top: 8px;
-    padding-right: 16px;
-    padding-bottom: 8px;
-    padding-left: 16px;
+    background-color: #9AC355;
+    color: white;
+    padding: 16px 20px;
 
-    font-weight: 400;
+    font-weight: 500;
     font-size: 20px;
     line-height: 100%;
     letter-spacing: 0;
     text-align: center;
-
-    /* Возможность двигать кнопку направо */
-    margin-left: 100px;
-    display: block;
-    /* Если нужно, чтобы кнопка была справа внутри flex-контейнера: */
-    /* align-self: flex-end; */
 
     cursor: pointer;
     transition: background 0.2s, color 0.2s, box-shadow 0.2s;
@@ -738,9 +788,31 @@ h2 {
 
 .choose-select-btn:hover,
 .choose-select-btn:focus {
-    background-color: #8a8a8a;
+    background-color: #BEF574;
     box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     outline: none;
+}
+
+/* Reveal on scroll utility */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity .6s ease, transform .6s ease;
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll {
+        transition: none;
+        transform: none;
+        opacity: 1;
+    }
 }
 
 
@@ -756,8 +828,9 @@ h2 {
 }
 
 .reviews-title {
-    font-family: Inter;
-    font-weight: 500;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-style: SemiBold;
     font-size: 48px;
     line-height: 100%;
     letter-spacing: 0%;
@@ -776,7 +849,8 @@ h2 {
     border-radius: 10px;
     padding: 8px 16px;
     border: none;
-    background-color: #A6A6A6;
+    background-color: #9AC355;
+    color: white;
     font-weight: 400;
     font-size: 20px;
     line-height: 100%;
@@ -788,7 +862,7 @@ h2 {
 
 .reviews-choose-psychologist-btn:hover,
 .reviews-choose-psychologist-btn:focus {
-    background-color: #8a8a8a;
+    background-color: #BEF574;
     box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     outline: none;
 }
@@ -823,26 +897,27 @@ h2 {
     width: 380px;
     height: 440px;
     border-radius: 20px;
-    background-color: #D9D9D9;
+    background-color: #F1F2F5;
     padding: 32px;
 }
 
 .review-author-name {
+    font-family: Montserrat;
     font-weight: 500;
-    font-style: normal; /* 'Medium' is not a valid value; use 'normal' or 'italic' */
+    font-style: Medium;
     font-size: 32px;
     line-height: 100%;
     letter-spacing: 0%;
+    
 }
 
 
 .review-author-position {
-    font-family: Inter;
+    font-family: Montserrat;
     font-weight: 400;
-    font-style: normal; /* 'Regular' is not a valid value; use 'normal' */
+    font-style: Regular;
     font-size: 14px;
-    /* leading-trim: NONE; */ /* 'leading-trim' is not standard CSS, omitted */
-    line-height: 100%;
+    line-height: 140%;
     letter-spacing: 0%;
 }
 
@@ -854,7 +929,7 @@ h2 {
     line-height: 100%;
     letter-spacing: 0%;
     text-align: center;
-    color: #848484;
+    color: #9AC355;
     background: none;
     border: none;
     padding: 0;
@@ -1219,7 +1294,6 @@ h2 {
 
     .hero-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 2rem;
     }
 }
 
@@ -1397,9 +1471,13 @@ h2 {
 }
 
 .services-title {
-    font-weight: 300;
-    font-size: 40px;
-    margin-bottom: 8px;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 48px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    margin-bottom: 15px;
 }
 
 
@@ -1442,9 +1520,6 @@ h2 {
     width: 100%;
     max-width: 600px;
     height: 300px;
-    background: #e6e6e6;
-    border-radius: 4px;
-    border: 1px solid #d0d0d0;
 }
 
 /* removed empty .services-card ruleset */
@@ -1452,13 +1527,17 @@ h2 {
 .services-card.extra-class{
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: start;
 }
 
 .services-card-title {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-style: Medium;
     font-size: 28px;
-    font-weight: 400;
-    margin-bottom: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    margin-bottom: 20px;
 }
 
 .services-header {
@@ -1468,6 +1547,12 @@ h2 {
 }
 
 .services-desc{
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
   color: rgba(51, 51, 51, 0.5);
   letter-spacing: 2px;
 }
@@ -1492,12 +1577,13 @@ h2 {
 
 .services-btn {
     display: inline-block;
-    width: 180px;
+    width: 240px;
+    height: 50px;
     margin-top: 18px;
-    background: #A6A6A6;
-    color: #1f1f1f;
+    background: #9AC355;
+    color: #fffdfd;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 10px 16px;
     font-size: 16px;
     cursor: pointer;
