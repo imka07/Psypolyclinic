@@ -696,7 +696,7 @@ h2 {
 
 
 .how-to-choose-section {
-    background-color: #EEEEEE;
+    background-color: #FFFFFF;
     padding: 50px 120px;
 }
 
@@ -722,9 +722,12 @@ h2 {
 .choose-toggle{
     display: flex;
     background: #D9D9D9;
+    display: flex;
+    justify-content: center;
     border-radius: 10px;
     padding: 6px;
     gap: 6px;
+    width: 100%;
 }
 
 .choose-toggle-btn{
@@ -733,10 +736,10 @@ h2 {
     background: #D9D9D9;
     color: rgba(0,0,0,0.55);
 
-
+    width: 100%;
     font-weight: 400;
     font-size: 32px;
-    padding: 24px 128px;
+    padding: 20px 24px;
     cursor: pointer;
     transition: color .2s ease, background .2s ease, opacity .2s ease;
     white-space: nowrap;
@@ -755,12 +758,11 @@ h2 {
 
 .choose-psychologist-card {
     display: flex;
-    flex-direction: column;
-    justify-content:space-around;
-    align-items: center;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
     gap: 40px;
     width: 100%;
-    height: 511px;
+    height: 512px;
     border-radius: 20px;
     background-color: #9AC355;
 }
@@ -817,7 +819,7 @@ h2 {
 
 
 .reviews-section{
-    background-color: #EEEEEE;
+    background-color: #FFFFFF;
     padding: 50px 120px;
 }
 
@@ -947,8 +949,208 @@ h2 {
     border: none;
 }
 
+
+.specialists-section {
+    background-color: #f8f9fa;
+    padding: 40px 0;
+}
+
+
+.specialist-title {
+    font-family: Montserrat;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 48px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    
+    margin-bottom: 10px;
+}
+
+.specialist-subtitle {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;    
+    margin-bottom: 30px;
+    color: rgb(0, 0, 0, 0.5);
+}
+
+.specialist-tabs {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: start;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+  
+  /* bottom-row занимает всю ширину grid и центрирует свои дети */
+  .tabs-bottom-row {
+    grid-column: 1 / -1;        /* занимает все 3 колонки */
+    display: flex;
+    justify-content: center;   /* выравниваем d и e по центру */
+    gap: 24px;                 /* расстояние между D и E */
+    padding-top: 6px;
+  }
+
+.specialist-tab {
+    background-color: #9AC355;
+    border: none;
+    border-radius: 10px;
+    padding: 16px 16px;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+}
+
+.specialist-tab:hover{
+    background-color: white;
+    border: 2px solid;
+    border-color: #9AC355;
+    color: #9AC355;
+}
+
+
+.specialist-nav-btn.specialist-nav-btn-prev {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+.specialist-nav-btn.specialist-nav-btn-next {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+.specialist-slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+
+
+
+.specialist-cards {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+}
+
+.card {
+    background-color:transparent;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 32%;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.card-image {
+    position: relative;
+}
+
+.card-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0px;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    width: 25px;
+    height: 25px;
+}
+
+.card-name {
+    background-color: #9AC355;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    border-radius: 20px;
+}
+
+.card-description {
+    padding: 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+.card-description p {
+    margin: 5px 0;
+}
+
+.card-description ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.card-description li {
+    position: relative;
+    padding-left: 15px;
+    font-size: 14px;
+}
+
+.card-description li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.adult::before {
+    background-color: #BEF574; /* green */
+}
+
+.teen::before {
+    background-color: #8E74F5; /* purple */
+}
+
+.family::before {
+    background-color: #F58E74; /* red */
+}
+
+.specialist-select-button {
+    display: block;
+    margin: 0 auto;
+    background-color: #9AC355;
+    border: none;
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+}
+
 .blog-section {
-    background-color: #D9D9D9;
+    background-color: white;
     padding: 50px 120px;
 }
 
@@ -960,21 +1162,21 @@ h2 {
 }
 
 .blog-title {
-    font-weight: 500;
+    font-weight: 600;
+    font-style: SemiBold;
     font-size: 48px;
     line-height: 100%;
     letter-spacing: 0%;
+    
     margin: 0;
 }
 
 .blog-subtitle {
-    font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-style: normal;
+    font-style: Regular;
     font-size: 24px;
     line-height: 100%;
     letter-spacing: 0%;
-    opacity: 0.5;
 }
 
 .blog-content {
@@ -999,7 +1201,7 @@ h2 {
 .blog-card {
     display: grid;
     grid-template-columns: 1fr 180px;
-    background: #ffffff;
+    background: #F1F2F5;
     border-radius: 20px;
     overflow: hidden;
     width: 360px;
@@ -1015,17 +1217,24 @@ h2 {
 }
 
 .blog-card-title {
+    font-family: Montserrat;
     font-weight: 600;
+    font-style: SemiBold;
     font-size: 20px;
-    color: #1a1a1a;
+    line-height: 100%;
+    letter-spacing: 0%;
+    
 }
 
 .blog-card-excerpt {
+    font-family: Montserrat;
     font-weight: 400;
-    color: #8c8c8c;
-    font-size: 16px;
-    align-self: start;
-    margin-top: 0;
+    font-style: Regular;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    
+    margin-top: 20px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -1035,9 +1244,10 @@ h2 {
     justify-self: center;
     background: none;
     border: none;
-    color: #9b9b9b;
+    color: #9AC355;
     font-weight: 600;
     font-size: 18px;
+    
     cursor: pointer;
 }
 
@@ -1060,7 +1270,8 @@ h2 {
     border-radius: 10px;
     padding: 8px 16px;
     border: none;
-    background-color: #A6A6A6;
+    background-color: #9AC355;
+    color: white;
     font-weight: 400;
     font-size: 20px;
     line-height: 100%;
@@ -1072,38 +1283,37 @@ h2 {
 
 .blog-more-btn:hover,
 .blog-more-btn:focus {
-    background-color: #8a8a8a;
+    background-color: #BEF574;
     box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     outline: none;
 }
 
 /* FAQ */
 .faq-section {
-    background-color: #EEEEEE;
-    padding: 50px 120px;
+    background-color: #F1F2F5;
+    padding: 0px 120px;
 }
 
 
 .faq-title {
-    font-family: Inter;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 50px;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 48px;
     line-height: 100%;
-    letter-spacing: 0;
-    text-align: center;
+    letter-spacing: 0%;
+    color: white;
     margin: 0;
 }
 
 .faq-top {
-    background: #D9D9D9;
-    height: 306px;
+    background: #9AC355;
+    height: 326px;
     width: 100vw;
     position: relative;
     left: 50%;
     right: 50%;
-    padding-top: 100px;
-    gap: 40px;
+    padding-top: 150px;
+    gap: 60px;
     margin-left: -50vw;
     margin-right: -50vw;
     border-radius: 0;
@@ -1115,13 +1325,14 @@ h2 {
 
 .faq-topics {
     display: flex;
-    gap: 20px;
     justify-content: center;
+    width: 100%;
+    gap: 20px;
 }
 .container.faq-container {
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 100px;
 }
 
 .faq-top-background {
@@ -1142,26 +1353,36 @@ h2 {
 }
 
 .faq-topic {
-    background: #FFFFFF;
     border: none;
-    width: 320px;
-    height: 250px;
+    width: 500px;
+    height: 250px; /* Увеличена высота, чтобы текст и иконка лучше помещались */
     border-radius: 16px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    place-items: center;
-    box-shadow: 0 0 0 1px rgba(0,0,0,0.06) inset;
+    justify-content: start;
+    gap: 60px;
+    align-items: center; /* Заменено place-items на align-items для лучшего центрирования */
     cursor: pointer;
     transition: transform .2s ease, box-shadow .2s ease;
+    background-color: #ffffff; /* Белый фон для неактивного состояния */
+    padding: 20px; /* Добавлен отступ, чтобы содержимое не прижималось к краям */
+    box-sizing: border-box; /* Учёт отступов в размерах */
 }
 
-.faq-topic:hover { transform: translateY(-2px); }
-.faq-topic.active { box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
+.faq-topic:hover {
+    transform: translateY(-2px);
+}
+
+.faq-topic.active { 
+    background-image: url('../images/reviewButton.png'); /* Путь к изображению обводки */
+    background-size: 100% 100%; /* Растягивает изображение на всю кнопку, чтобы адаптировать под размеры */
+    background-repeat: no-repeat; /* Предотвращает повторение */
+    background-position: center; /* Центрирует обводку */
+    background-color: transparent; /* Убираем белый фон для активного состояния */
+}
 
 .faq-topic-icon {
     margin-top: 14px;
-    background: #D9D9D9;
     width: 96px;
     height: 72px;
     border-radius: 12px;
@@ -1170,22 +1391,22 @@ h2 {
 }
 
 .faq-topic-label {
-    font-family: Inter;
+    
     font-weight: 500;
-    font-style: normal;
+    font-style: Medium;
     font-size: 24px;
     line-height: 100%;
-    letter-spacing: 0;
-    color: #2c2c2c;
+    letter-spacing: 0%;
 }
 
 .faq-accordion {
     margin-top: 40px;
+    margin-bottom: 40px;
     display: grid;
     gap: 16px;
 }
 
-.faq-item { background: #fff; border-radius: 14px; box-shadow: 0 0 0 1px rgba(0,0,0,.06) inset; }
+.faq-item { background: #fff; border-radius: 14px; box-shadow: 0 0 0 1px rgba(0,0,0,.06) inset;}
 
 .faq-question {
     width: 100%;
@@ -1193,8 +1414,8 @@ h2 {
     background: none;
     border: none;
     padding: 18px 56px 18px 24px;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 500;
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
@@ -1203,15 +1424,127 @@ h2 {
 }
 
 .faq-chevron {
-    width: 36px; height: 36px; border-radius: 50%; background: #D9D9D9; position: relative; transition: transform .25s ease;
+    width: 36px; height: 36px; border-radius: 50%; background: #9AC355; position: relative; transition: transform .25s ease;
 }
-.faq-chevron::before { content: ''; position: absolute; inset: 0; margin: auto; width: 10px; height: 10px; border: 2px solid #555; border-top: 0; border-left: 0; transform: rotate(45deg); }
+.faq-chevron::before { content: ''; position: absolute; inset: 0; margin: auto; width: 10px; height: 10px; border: 2px solid #ffffff; border-top: 0; border-left: 0; transform: rotate(45deg); }
 
 .faq-item.open .faq-chevron { transform: rotate(180deg); }
 
 .faq-answer { overflow: hidden; transition: grid-template-rows .3s ease, height .3s ease; }
 .faq-answer[hidden] { display: block; height: 0; }
-.faq-answer .faq-answer-inner { padding: 0 24px 18px; color: #7a7a7a; }
+.faq-answer .faq-answer-inner { 
+    padding: 0 24px 18px; 
+    color: #7a7a7a; 
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+}
+
+
+.help-section {
+    padding: 40px 120px;
+}
+
+.container.help-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.help-top-head {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.help-title {
+    font-family: Montserrat;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 48px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    margin: 0;
+
+}
+
+.help-text {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+}
+
+.help-numbers-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 0 auto;
+    align-items: start;
+    padding: 40px 20px;
+  }
+  
+  
+  /* bottom-row занимает всю ширину grid и центрирует свои дети */
+  .bottom-row {
+    grid-column: 1 / -1;        /* занимает все 3 колонки */
+    display: flex;
+    justify-content: center;   /* выравниваем d и e по центру */
+    gap: 24px;                 /* расстояние между D и E */
+    padding-top: 6px;
+  }
+  
+  /* при желании можно задать фиксенную ширину карточек, чтобы они не растягивались */
+  .help-number-card {
+    min-width: 260px;
+    max-width: 320px;
+  }
+
+.help-number-card {
+    min-height: 156px;
+    max-width: 400px;
+    gap: 8px;
+    border-radius: 20px;
+    padding: 16px;
+    background-color: #9AC355;
+}
+
+.help-number-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.help-number {
+    font-family: Montserrat;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 28px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: white;
+}
+
+.help-number-discription {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: white;
+}
+
 
 @media (max-width: 992px) {
     .faq-section { padding: 50px 40px; }
