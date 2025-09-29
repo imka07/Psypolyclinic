@@ -10,7 +10,7 @@
 body {
     font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: #000000;
     background-color: #ffffff;
     letter-spacing: 0.5px;
 }
@@ -20,7 +20,7 @@ html, body { overflow-x: hidden; }
 img, svg, video, canvas { max-width: 100%; height: auto; }
 .container, section, header, footer { min-width: 0; }
 
-/* Global heading spacing */
+
 h2 {
     margin-bottom: 100px;
 }
@@ -54,7 +54,7 @@ h2 {
 }
 
 .header-left .nav-link {
-    color: #333;
+    color: #000000;
     text-decoration: none;
     font-weight: 400;
     font-size: 1rem;
@@ -147,42 +147,144 @@ h2 {
     transform: translateY(-1px);
 }
 
-/* Mobile menu button */
-.mobile-menu-toggle {
+
+
+.login-modal {
     display: none;
-    flex-direction: column;
-    gap: 4px;
-    background: none;
-    border: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.registration-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.login-modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 32px;
+    border-radius: 20px;
+    height: auto;
+    width: 600px;
+    text-align: center;
+}
+
+.login-top-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.login-close {
+    position: absolute;
+    font-size: 50px;
+    right: 10px;
     cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
 }
 
-.mobile-menu-toggle:hover {
-    background: rgba(0, 0, 0, 0.1);
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
 }
 
-.mobile-menu-toggle span {
-    width: 24px;
-    height: 3px;
-    background: #333;
-    border-radius: 2px;
-    transition: all 0.3s ease;
+.login-form-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
 }
 
-.mobile-menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
+
+
+.login-form input {
+    width: 100%;
+    height: 70px;
+    border: 2px solid #F1F2F5;
+    padding: 32px;
+    border-radius: 20px;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
 }
 
-.mobile-menu-toggle.active span:nth-child(2) {
-    opacity: 0;
+.login-form input::placeholder {
+    color: rgb(0, 0, 0, 0.5);
 }
 
-.mobile-menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
+.login-form-buttons button {
+    color: white;
+    width: 300px;
+    height: 50px; 
+    border: none;
+    background-color: #9AC355;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    cursor: pointer;
 }
+
+.login-form-buttons button:hover {
+    background-color: #BEF574;
+    transition: 0.3s ease-out;
+}
+
+.registration-button {
+    color: #9AC355;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.forget-email-text {
+    font-weight: 500;
+    font-style: SemiBold;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: rgb(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+
+.login-title {
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0;
+}
+
+
 
 /* Main */
 .main {
@@ -372,12 +474,16 @@ h2 {
 }
 
 .why-choose-us{
-    padding: 40px 120px;
+    padding: 50px 100px;
 }
 
 .why-choose-us-title{
-  font-weight: 500;
-  font-size: 40px;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-style: SemiBold;
+    font-size: 42px;
+    line-height: 100%;
+    letter-spacing: 0%;    
 }
 
 .why-choose-us-text {
@@ -400,27 +506,7 @@ h2 {
     text-align: center;
 }
 
-/* Pencil oval wrapper places SVG behind text */
-.pencil-outline-wrap {
-    position: relative;
-    display: inline-block;
-}
 
-.pencil-oval-svg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 0;
-}
-
-.pencil-oval-path {
-    fill: none;
-    stroke: #000;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
 
 /* Why-choose-us layout: 1; then 2 shifted right on next row; then 3 left */
 .why-choose-us-features {
@@ -707,6 +793,7 @@ h2 {
     font-size: 48px;
     line-height: 100%;
     letter-spacing: 0%;
+    margin-bottom: 50px;
 }
 
 .how-to-choose-content{
@@ -721,7 +808,7 @@ h2 {
 /* Toggle buttons (Я определился / Помощь менеджера) */
 .choose-toggle{
     display: flex;
-    background: #D9D9D9;
+    background: #F1F2F5;
     display: flex;
     justify-content: center;
     border-radius: 10px;
@@ -733,13 +820,14 @@ h2 {
 .choose-toggle-btn{
     border: 0;
     border-radius: 10px;
-    background: #D9D9D9;
+    background: #F1F2F5;
     color: rgba(0,0,0,0.55);
 
     width: 100%;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 32px;
     padding: 20px 24px;
+    line-height: 100%;
     cursor: pointer;
     transition: color .2s ease, background .2s ease, opacity .2s ease;
     white-space: nowrap;
@@ -809,13 +897,6 @@ h2 {
     transform: none;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .reveal-on-scroll {
-        transition: none;
-        transform: none;
-        opacity: 1;
-    }
-}
 
 
 .reviews-section{
@@ -942,11 +1023,13 @@ h2 {
 .reviews-nav-btn.reviews-nav-btn-prev {
     background: none;
     border: none;
+    cursor: pointer;
 }
 
 .reviews-nav-btn.reviews-nav-btn-next {
     background: none;
     border: none;
+    cursor: pointer;
 }
 
 
@@ -1045,61 +1128,79 @@ h2 {
 
 .specialist-cards {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     width: 100%;
     gap: 20px;
 }
 
-.card {
-    background-color:transparent;
-    border-radius: 10px;
+.specialist-card {
+    border-radius: 20px;
     overflow: hidden;
     width: 32%;
     position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
-.card-image {
+.specialist-card-image {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.card-image img {
-    width: 100%;
+.specialist-card-image img {
+    width: 80%;
     height: auto;
     display: block;
-    border-radius: 0px;
-    z-index: 1;
+    border-radius: 0;
 }
 
 .heart {
     position: absolute;
     top: 10px;
-    right: 20px;
+    right: 50px;
     width: 25px;
     height: 25px;
+    cursor: pointer;
 }
 
-.card-name {
+.specialist-card-name {
     background-color: #9AC355;
-    padding: 10px;
+    padding: 20px 15px;
     text-align: center;
     font-size: 18px;
     font-weight: bold;
     color: #ffffff;
     border-radius: 20px;
+    width: 100%;
+    margin-top: -80px;
+    position: relative;
+    z-index: 1;
 }
 
-.card-description {
+.specialist-card-description {
+    background-color: white;
+    border-radius: 10px 10px 0 0px;
     padding: 15px;
     font-size: 14px;
     color: #333;
 }
 
-.card-description p {
+.specialist-discription {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.specialist-card-description p {
     margin: 5px 0;
 }
 
-.card-description ul {
+.specialist-card-description ul {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -1108,13 +1209,13 @@ h2 {
     gap: 10px;
 }
 
-.card-description li {
+.specialist-card-description li {
     position: relative;
     padding-left: 15px;
     font-size: 14px;
 }
 
-.card-description li::before {
+.specialist-card-description li::before {
     content: '';
     position: absolute;
     left: 0;
@@ -1546,260 +1647,11 @@ h2 {
 }
 
 
-@media (max-width: 992px) {
-    .faq-section { padding: 50px 40px; }
-    .faq-topics { grid-template-columns: 1fr; justify-items: center; transform: translateY(20px); }
-    .faq-topic { width: 100%; max-width: 520px; }
-}
-
-/* Tablet: 2 columns, keep staggered feel */
-@media (max-width: 992px) {
-    .benefits-list {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-
-    /* На планшете делаем ступеньку только для 2-го элемента */
-    .benefits-list .benefit-item { margin-top: 0; }
-    .benefits-list .benefit-item:nth-child(2) { margin-top: 20px; }
-}
-
-/* Mobile: single column, remove offsets */
-@media (max-width: 600px) {
-    .benefits-list {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .benefits-list .benefit-item {
-        margin-top: 0 !important;
-    }
-
-    /* Reduce padding for tighter mobile layout */
-    .reviews-section, .blog-section, .benefits-section, .how-to-choose-section, .faq-section { padding: 32px 16px; }
-    .tabs-header { padding: 20px 0 0 0; gap: 10px; }
-    .tab-btn { font-size: 16px; padding: 10px 14px; }
-    .faq-top { height: auto; padding: 40px 16px; }
-}
-
-
-/* Адаптивность для promo-container */
-@media (max-width: 1024px) {
-    .promo-container {
-        margin: 40px 40px;
-        padding: 40px 20px;
-        min-height: 400px;
-    }
-}
-
-@media (max-width: 600px) {
-    .promo-container {
-        margin: 20px 5px;
-        padding: 20px 5px;
-        min-height: 200px;
-        border-radius: 12px;
-    }
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-    .header-left {
-        gap: 1.5rem;
-    }
-
-    .header-left .nav-link {
-        font-size: 0.9rem;
-    }
-
-    .social-icons {
-        gap: 0.75rem;
-    }
-
-    .icon-link {
-        width: 28px;
-        height: 28px;
-    }
-
-    .icon-link svg {
-        width: 18px;
-        height: 18px;
-    }
-
-    .hero-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .header-content {
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-
-    .header-left {
-        order: 1;
-        flex: none;
-        gap: 1rem;
-    }
-
-    .header-center {
-        order: 2;
-        flex: 1;
-    }
-
-    .header-right {
-        order: 3;
-        flex: none;
-    }
-
-    .mobile-menu-toggle {
-        display: flex;
-    }
-
-    .social-icons {
-        display: none;
-    }
-
-    .login-btn {
-        padding: 0.4rem 1rem;
-        font-size: 0.8rem;
-    }
-
-    .logo h1 {
-        font-size: 1.3rem;
-    }
-
-    .header-left .nav-link {
-        font-size: 0.85rem;
-    }
-
-    .header-left.mobile-menu-open {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #fff;
-        border: 1px solid #e9ecef;
-        border-radius: 8px;
-        padding: 1rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .header-left.mobile-menu-open .nav-link {
-        padding: 0.75rem 1rem;
-        border-radius: 8px;
-        background: #f8f9fa;
-        text-align: center;
-        transition: background-color 0.3s ease;
-    }
-
-    .header-left.mobile-menu-open .nav-link:hover {
-        background: #e9ecef;
-    }
-
-    .hero-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-right {
-        order: -1;
-    }
-
-    .hero-title {
-        font-size: 2.2rem;
-    }
-
-    /* Tighten header spacing and make CTAs fluid */
-    .header-right { gap: 1rem; }
-    .login-btn { border-radius: 8px; }
-    .hero-tabs .tabs-cta.btn,
-    .services-btn,
-    .promo-select-btn,
-    .reviews-choose-psychologist-btn,
-    .blog-more-btn {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    /* Stack services */
-    .services-row { grid-template-columns: 1fr; }
-    .services-card.extra-class { align-items: stretch; }
-
-    /* Promo controls fluid */
-    .promo-deadline-btn { width: 100%; max-width: 100%; height: auto; padding: 20px; }
-    .promo-select-btn { width: 100%; max-width: 100%; }
-
-    /* Benefits cards fluid */
-    .benefit-item { width: 100%; max-width: 100%; }
-
-    /* Reviews wrap */
-    .reviews-list { flex-wrap: wrap; justify-content: center; }
-    .review-card { width: 100%; max-width: 520px; height: auto; }
-
-    /* Blog wrap */
-    .blog-list { flex-wrap: wrap; justify-content: center; }
-    .blog-card { width: 100%; max-width: 520px; height: auto; grid-template-columns: 1fr; }
-    .blog-card-media { border-radius: 0 0 20px 20px; height: 180px; }
-
-    /* Choose-psychologist block */
-    .choose-psychologist-block { flex-direction: column; }
-    .choose-psychologist-card { width: 100%; height: auto; padding: 24px; }
-    .choose-select-btn { margin-left: 0; width: 100%; }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
-    }
-
-    .header-content {
-        padding: 0.75rem 0;
-    }
-
-    .header-left {
-        gap: 0.75rem;
-    }
-
-    .header-left .nav-link {
-        font-size: 0.8rem;
-    }
-
-    .login-btn {
-        padding: 0.35rem 0.8rem;
-        font-size: 0.75rem;
-    }
-
-    .eyebrow {
-        font-size: 0.78rem;
-    }
-
-    .hero-title {
-        font-size: 1.8rem;
-    }
-
-    /* Extra small adjustments */
-    .promo-deadline-btn { font-size: 20px; padding: 16px; }
-    .promo-title { font-size: 36px; }
-    .promo-title.discount { font-size: 36px; }
-    .promo-desc { font-size: 18px; }
-    .benefit-text { font-size: 18px; }
-    .review-author-name { font-size: 24px; }
-}
-
-@media (max-width: 360px) {
-    .tab-btn { font-size: 14px; padding: 8px 10px; }
-    .login-btn { padding: 0.3rem 0.7rem; font-size: 0.7rem; }
-}
-
 
 /* Services section */
 .services {
-    margin-top: 0;
     padding-top: 40px;
-    background: #ffffff;
+    background: #F1F2F5;
     padding-bottom: 40px;
 }
 
@@ -1926,49 +1778,3 @@ h2 {
 .services-btn:hover {
     background: #b3b3b3;
 }
-
-@media (max-width: 992px) {
-    .services-row {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    .services-image {
-        max-width: 100%;
-        height: 220px;
-    }
-}
-
-/* Additional mobile refinements */
-@media (max-width: 768px) {
-    /* Hero tabs become evenly distributed and full width */
-    .tabs-header { gap: 8px; justify-content: space-between; }
-    .tab-btn { flex: 1; text-align: center; }
-    .hero-tabs { max-width: 100%; width: 100%; }
-    .hero-tabs .tabs-cta.btn { margin: 0.5rem 0 0; width: 100%; }
-
-    /* Why choose us: stack items */
-    .why-choose-us-features { grid-template-columns: 1fr; gap: 24px; }
-    .why-choose-us-feature { grid-column: auto !important; grid-row: auto !important; }
-}
-
-@media (max-width: 600px) {
-    /* Shrink large visuals */
-    .services-image { height: 180px; }
-    .reviews-nav-btn svg { width: 44px; height: 44px; }
-
-    /* Step buttons and headings */
-    .choose-step-btn { width: 64px; height: 80px; font-size: 36px; border-radius: 24px; }
-    .choose-psychologist-card-title { font-size: 32px; }
-    .why-choose-us-title { font-size: 32px; margin-bottom: 32px; }
-}
-
-@media (max-width: 480px) {
-    .tabs-sub { font-size: 14px; }
-    .services-card-title { font-size: 22px; }
-    .services-list { gap: 6px; }
-}
-
-@media (max-width: 360px) {
-    .choose-step-btn { width: 56px; height: 72px; font-size: 32px; }
-}
-

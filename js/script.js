@@ -1,64 +1,54 @@
 document.addEventListener('DOMContentLoaded', function() {
-    initMobileMenu();
     initTabSwitching();
     initChooseStepButtons();
     initChooseToggle();
     initFaq();
     initScrollReveal();
-    initPencilOutline();
 });
 
-// Функция для мобильного меню
-function initMobileMenu() {
-    const mobileToggle = document.querySelector('.mobile-menu-toggle');
-    const headerLeft = document.querySelector('.header-left');
-    
-    if (mobileToggle && headerLeft) {
-        mobileToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
-            headerLeft.classList.toggle('mobile-menu-open');
-            if (headerLeft.classList.contains('mobile-menu-open')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
-        });
-        
-        const navLinks = document.querySelectorAll('.header-left .nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileToggle.classList.remove('active');
-                headerLeft.classList.remove('mobile-menu-open');
-                document.body.style.overflow = '';
-            });
-        });
-        
-        document.addEventListener('click', function(e) {
-            if (!headerLeft.contains(e.target) && !mobileToggle.contains(e.target)) {
-                mobileToggle.classList.remove('active');
-                headerLeft.classList.remove('mobile-menu-open');
-                document.body.style.overflow = '';
-            }
-        });
-        
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                mobileToggle.classList.remove('active');
-                headerLeft.classList.remove('mobile-menu-open');
-                document.body.style.overflow = '';
-            }
-        });
+
+// Логин форма
+function showModal() {
+    document.getElementById('loginModal').style.display = 'block';
+}
+
+
+function hideModal() {
+    document.getElementById('loginModal').style.display = 'none';
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('loginModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
     }
 }
 
-// Логика для кнопок выбора шага
+
+// Форма Регистрации
+
+function showRegistrationModal() {
+    document.getElementById('registrationModal').style.display = 'block';
+}
+
+function hideRegistrationModal() {
+    document.getElementById('registrationModal').style.display = 'none';
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById('registrationModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+
 function initChooseStepButtons() {
     const buttons = document.querySelectorAll('.choose-step-btn');
 
     if (!buttons.length) return;
 
     function getGroupContainer(button) {
-        // Пытаемся найти общий контейнер группы кнопок
         return (
             button.closest('[data-choose-steps]') ||
             button.closest('.choose-steps') ||
@@ -82,9 +72,7 @@ function initChooseStepButtons() {
         button.setAttribute('aria-current', 'true');
     }
 
-    // Устанавливаем обработчики событий
     buttons.forEach(button => {
-        // Инициализация aria-current, если задан класс active в разметке
         if (button.classList.contains('active')) {
             button.setAttribute('aria-current', 'true');
         } else if (!button.hasAttribute('aria-current')) {
@@ -95,7 +83,6 @@ function initChooseStepButtons() {
             activateButton(this);
         });
 
-        // Доступность с клавиатуры (Enter/Space)
         button.addEventListener('keydown', function(e) {
             const isEnter = e.key === 'Enter' || e.keyCode === 13;
             const isSpace = e.key === ' ' || e.key === 'Spacebar' || e.keyCode === 32;
@@ -107,44 +94,14 @@ function initChooseStepButtons() {
     });
 }
 
-// Функция для переключения вкладок в hero
-function initTabSwitching() {
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const tabPanels = document.querySelectorAll('.tabs-panel');
-
-    if (!tabButtons.length || !tabPanels.length) return;
-
-    tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const targetTab = this.getAttribute('data-tab');
-
-            tabButtons.forEach(btn => {
-                btn.classList.remove('active');
-                btn.setAttribute('aria-selected', 'false');
-            });
-            tabPanels.forEach(panel => {
-                panel.classList.remove('active');
-                panel.setAttribute('hidden', 'true');
-            });
-
-            this.classList.add('active');
-            this.setAttribute('aria-selected', 'true');
-            const targetPanel = document.getElementById(targetTab);
-            if (targetPanel) {
-                targetPanel.classList.add('active');
-                targetPanel.removeAttribute('hidden');
-            }
-        });
-    });
-}
-
-// Переключатель «Я определился / Помощь менеджера»
 function initChooseToggle() {
     const group = document.querySelector('[data-toggle-group]');
     if (!group) return;
 
     const buttons = group.querySelectorAll('.choose-toggle-btn');
-    if (!buttons.length) return;
+    const image = document.querySelector('.choose-card-img');
+    const selectBtn = document.querySelector('.choose-select-btn');
+    if (!buttons.length || !image || !selectBtn) return;
 
     buttons.forEach(btn => {
         btn.addEventListener('click', function() {
@@ -154,6 +111,16 @@ function initChooseToggle() {
             });
             this.classList.add('active');
             this.setAttribute('aria-pressed', 'true');
+
+            // Change image based on active button
+            if (this.textContent.trim() === 'Самостоятельный подбор') {
+                image.src = '/images/choosePsycoImg.png';
+                selectBtn.textContent = 'Подобрать психолога';
+            } else if (this.textContent.trim() === 'Помощь менеджера') {
+                image.src = '/images/chooseManager.png'; // Replace with the actual path to the manager help image
+                selectBtn.textContent = 'Перейти в Telegram-бот';
+            }
+            
         });
     });
 }
@@ -206,6 +173,37 @@ function initFaq() {
                 requestAnimationFrame(() => {
                     answer.style.height = h + 'px';
                 });
+            }
+        });
+    });
+}
+
+
+function initTabSwitching() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tabs-panel');
+
+    if (!tabButtons.length || !tabPanels.length) return;
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetTab = this.getAttribute('data-tab');
+
+            tabButtons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
+            tabPanels.forEach(panel => {
+                panel.classList.remove('active');
+                panel.setAttribute('hidden', 'true');
+            });
+
+            this.classList.add('active');
+            this.setAttribute('aria-selected', 'true');
+            const targetPanel = document.getElementById(targetTab);
+            if (targetPanel) {
+                targetPanel.classList.add('active');
+                targetPanel.removeAttribute('hidden');
             }
         });
     });

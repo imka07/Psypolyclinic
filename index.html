@@ -15,18 +15,17 @@
                     <a href="client.html" class="nav-link">Выбор психолога</a>
                     <a href="staff.html" class="nav-link">Психологам</a>
                     <a href="" class="nav-link">Блог</a>
-                    <a href="" class="nav-link">Группы</a>
-
-                </div>
-                
-                <div class="header-center">
-                    <div class="logo">
-                        <a href="index.html" class="logo-link" aria-label="Главная">
-                            <img src="/images/logo.svg" alt="Лого" style="height:48px;">
-                        </a>
+                    <a href="" class="nav-link">Группы</a>       
+                    <div class="header-center">
+                        <div class="logo">
+                            <a href="index.html" class="logo-link" aria-label="Главная">
+                                <img src="/images/logo.svg" alt="Лого" style="height:48px;">
+                            </a>
+                        </div>
                     </div>
                     <a href="" class="nav-link">Организации</a>
                 </div>
+              
                 
                 <div class="header-right">
                     <div class="social-icons">
@@ -58,8 +57,9 @@
                             </svg>
                         </a>
                     </div>
-                    <button class="login-btn">Войти</button>
+                    <button class="login-btn" onclick="showModal()">Войти</button>
                     <button class="mobile-menu-toggle" aria-label="Открыть меню">
+                        <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
@@ -72,6 +72,56 @@
     <main class="main">
         <section class="hero">
             <div class="container">
+
+
+
+                <div id="loginModal" class="login-modal">
+                    <div class="login-modal-content">
+                        <div class="login-top-header">
+                            <h2 class="login-title">Войти как клиент</h2>
+                            <a class="login-close" onclick="hideModal()">
+                                <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M32 2L2 32M2 2L32 32" stroke="#9AC355" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <form class="login-form">
+                            <input type="email" placeholder="Эл.почта"><br>
+                            <input type="password" placeholder="Пароль"><br>
+                        </form>
+                        <div class="login-form-buttons">
+                            <button type="submit">Войти</button>
+                            <a class="forget-email-text">Не помню почту</a>
+                            <a class="registration-button" onclick="showRegistrationModal()">Зарегистрироваться</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="registrationModal" class="registration-modal">
+                    <div class="login-modal-content">
+                        <div class="login-top-header">
+                            <h2 class="login-title">Регистрация</h2>
+                            <a class="login-close" onclick="hideRegistrationModal()">
+                                <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M32 2L2 32M2 2L32 32" stroke="#9AC355" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <form class="login-form">
+                            <input type="text" placeholder="Логин"><br>
+                            <input type="email" placeholder="Эл.почта"><br>
+                            <input type="password" placeholder="Пароль"><br>
+                            <input type="password" placeholder="Повторите пароль"><br>
+                        </form>
+                        <div class="login-form-buttons">
+                            <button type="submit">Зарегистрироваться</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
                 <div class="hero-grid">
                     <div class="hero-left">
                         <div class="eyebrow">Сервис психотерапии</div>
@@ -297,7 +347,7 @@
             <h2 class="how-to-choose-title">Как подобрать психолога?</h2>
             <div class="how-to-choose-content">
                 <div class="choose-toggle" data-toggle-group>
-                    <button class="choose-toggle-btn active" type="button" aria-pressed="true">Я определился с психологом</button>
+                    <button class="choose-toggle-btn active" type="button" aria-pressed="true">Самостоятельный подбор</button>
                     <button class="choose-toggle-btn" type="button" aria-pressed="false">Помощь менеджера</button>
                 </div>
                 <div class="choose-psychologist-card">
@@ -449,23 +499,22 @@
                     </svg>
                 </button>
                 <div class="specialist-cards">
-                    <div class="card">
-                        <div class="card-image">
+                    <div class="specialist-card">
+                        <div class="specialist-card-image">
                             <img src="/images/Specialist.png" alt="Специалист психолог">
                             <div class="heart">
                                 <svg width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M24.0723 2.94496C23.4614 2.32835 22.7361 1.83921 21.9378 1.50549C21.1396 1.17177 20.2839 1 19.4199 1C18.5558 1 17.7001 1.17177 16.9019 1.50549C16.1036 1.83921 15.3783 2.32835 14.7674 2.94496L13.4997 4.22404L12.2319 2.94496C10.998 1.70004 9.3245 1.00065 7.57951 1.00065C5.83452 1.00065 4.16099 1.70004 2.92709 2.94496C1.6932 4.18988 1 5.87836 1 7.63895C1 9.39954 1.6932 11.088 2.92709 12.3329L13.4997 23L24.0723 12.3329C24.6834 11.7166 25.1682 10.9849 25.499 10.1794C25.8298 9.37403 26 8.51076 26 7.63895C26 6.76714 25.8298 5.90387 25.499 5.09846C25.1682 4.29305 24.6834 3.56128 24.0723 2.94496Z" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>    
                             </div>
-                            <!-- <img class="heart" src="/images/heart.svg" alt="Кнока избранное"> -->
                         </div>
-                        <div class="card-name">
+                        <div class="specialist-card-name">
                             <span>Анастасия Иванова</span>
                             <br>
-                            <span class="">Семейный психолог</span>
+                            <span class="specialist-discription">Семейный психолог</span>
                         </div>
                         
-                        <div class="card-description">
+                        <div class="specialist-card-description">
                             <p>Молодой специалист от 2 000 Р</p>
                             <strong>С кем работает:</strong>
                             <ul>
@@ -473,10 +522,58 @@
                                 <li class="teen">Подросток</li>
                                 <li class="family">Семья/пара</li>
                             </ul>
-                        </div>
+                        </div> 
                     </div>
-                    
-                   
+                    <div class="specialist-card">
+                        <div class="specialist-card-image">
+                            <img src="/images/Specialist.png" alt="Специалист психолог">
+                            <div class="heart">
+                                <svg width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M24.0723 2.94496C23.4614 2.32835 22.7361 1.83921 21.9378 1.50549C21.1396 1.17177 20.2839 1 19.4199 1C18.5558 1 17.7001 1.17177 16.9019 1.50549C16.1036 1.83921 15.3783 2.32835 14.7674 2.94496L13.4997 4.22404L12.2319 2.94496C10.998 1.70004 9.3245 1.00065 7.57951 1.00065C5.83452 1.00065 4.16099 1.70004 2.92709 2.94496C1.6932 4.18988 1 5.87836 1 7.63895C1 9.39954 1.6932 11.088 2.92709 12.3329L13.4997 23L24.0723 12.3329C24.6834 11.7166 25.1682 10.9849 25.499 10.1794C25.8298 9.37403 26 8.51076 26 7.63895C26 6.76714 25.8298 5.90387 25.499 5.09846C25.1682 4.29305 24.6834 3.56128 24.0723 2.94496Z" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>    
+                            </div>
+                        </div>
+                        <div class="specialist-card-name">
+                            <span>Анастасия Иванова</span>
+                            <br>
+                            <span class="specialist-discription">Семейный психолог</span>
+                        </div>
+                        
+                        <div class="specialist-card-description">
+                            <p>Молодой специалист от 2 000 Р</p>
+                            <strong>С кем работает:</strong>
+                            <ul>
+                                <li class="adult">Взрослый</li>
+                                <li class="teen">Подросток</li>
+                                <li class="family">Семья/пара</li>
+                            </ul>
+                        </div> 
+                    </div>
+                    <div class="specialist-card">
+                        <div class="specialist-card-image">
+                            <img src="/images/Specialist.png" alt="Специалист психолог">
+                            <div class="heart">
+                                <svg width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M24.0723 2.94496C23.4614 2.32835 22.7361 1.83921 21.9378 1.50549C21.1396 1.17177 20.2839 1 19.4199 1C18.5558 1 17.7001 1.17177 16.9019 1.50549C16.1036 1.83921 15.3783 2.32835 14.7674 2.94496L13.4997 4.22404L12.2319 2.94496C10.998 1.70004 9.3245 1.00065 7.57951 1.00065C5.83452 1.00065 4.16099 1.70004 2.92709 2.94496C1.6932 4.18988 1 5.87836 1 7.63895C1 9.39954 1.6932 11.088 2.92709 12.3329L13.4997 23L24.0723 12.3329C24.6834 11.7166 25.1682 10.9849 25.499 10.1794C25.8298 9.37403 26 8.51076 26 7.63895C26 6.76714 25.8298 5.90387 25.499 5.09846C25.1682 4.29305 24.6834 3.56128 24.0723 2.94496Z" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>    
+                            </div>
+                        </div>
+                        <div class="specialist-card-name">
+                            <span>Анастасия Иванова</span>
+                            <br>
+                            <span class="specialist-discription">Семейный психолог</span>
+                        </div>
+                        
+                        <div class="specialist-card-description">
+                            <p>Молодой специалист от 2 000 Р</p>
+                            <strong>С кем работает:</strong>
+                            <ul>
+                                <li class="adult">Взрослый</li>
+                                <li class="teen">Подросток</li>
+                                <li class="family">Семья/пара</li>
+                            </ul>
+                        </div> 
+                    </div>
                 </div> 
                 <button class="specialist-nav-btn specialist-nav-btn-next" aria-label="Следующий отзыв">
                     <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
