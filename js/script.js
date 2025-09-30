@@ -26,6 +26,22 @@ window.onclick = function(event) {
 }
 
 
+// бургер
+document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    const nav = document.getElementById('mobileNav');
+    const closeBtn = document.getElementById('mobileClose');
+    const backdrop = document.getElementById('mobileBackdrop');
+  
+    const openNav = () => nav.classList.add('open');
+    const closeNav = () => nav.classList.remove('open');
+  
+    toggle.addEventListener('click', openNav);
+    closeBtn.addEventListener('click', closeNav);
+    backdrop.addEventListener('click', closeNav);
+  });
+
+
 // Форма Регистрации
 
 function showRegistrationModal() {

@@ -31,6 +31,7 @@ h2 {
     padding: 0 20px;
 }
 
+
 /* Header */
 .header {
     background-color: white;
@@ -301,19 +302,23 @@ h2 {
 .hero-grid {
     display: flex;
     align-items: center;
-    
+    gap: 40px;
+    flex-wrap: wrap; 
+    padding-top: 30px;
 }
 
 .hero-left {
-    max-width: 600px;
+    flex: 1 1 520px;  
+    min-width: 280px;
+    max-width: 720px;
+    
 }
 
 .eyebrow {
     color: #7b8694;
-    font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 26px;
+    font-size: clamp(16px, 2.2vw, 26px);
     line-height: 100%;
     letter-spacing: 0;
     margin-bottom: -5px;
@@ -321,25 +326,23 @@ h2 {
 }
 
 .hero-title {
-    font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    font-style: normal;
-    font-size: 50px;
-    line-height: 130%;
+    font-size: clamp(28px, 4.6vw, 50px);
     letter-spacing: 0;
-    margin-bottom: 3rem; /* увеличено пространство снизу */
-    width: 1000px;
+    line-height: 1.15;
+    margin-bottom: 2.25rem;  
+    width: auto;
+    max-width: 100%;
 }
 
 .hero-title-secondary {
     color: #9AC355;
-    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-style: normal;
-    font-size: 50px;
+    font-size: clamp(26px, 4.2vw, 50px);
     line-height: 100%;
     letter-spacing: 0;
-    margin-top: 1.5rem; /* добавлено пространство сверху */
+    margin-top: .75rem;
     padding-top: 10px;
 }
 
@@ -353,12 +356,15 @@ h2 {
     border-radius: 0 20px 20px 20px;
     padding: 0.5rem 0.5rem 0.75rem;
     max-width: 480px;
+    width: min(480px, 95%);
 }
 
 .tabs-header {
     display: flex;
-    gap: 20px;
-    padding: 40px 0 0 0;
+    gap: 12px;
+    padding: 20px 0 0;
+    justify-content: start;
+    
 }
 
 .tab-btn {
@@ -427,7 +433,8 @@ h2 {
 }
 
 .hero-tabs .tabs-cta.btn:hover {
-    background: #b3b3b3;
+    background: #BEF574;
+    color: white;
     transform: none;
 }
 
@@ -438,8 +445,10 @@ h2 {
 
 
 .hero-img-frame {
-    width: 100%;
+    flex: 0 1 590px; 
+    min-width: 240px;
     max-width: 590px;
+    align-self: center;
 }
 
 .hero-img-placeholder {
@@ -451,34 +460,240 @@ h2 {
 /* Ensure hero image is fluid */
 .hero-img-frame img { width: 100%; height: auto; display: block; }
 
-/* Generic buttons used */
-.btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    text-align: center;
-}
+.hero-title--tablet { display: none; }
 
-/* Footer */
-.footer {
-    background-color: #2c3e50;
+
+/* ===================== */
+/* БАЗА offcanvas меню   */
+/* ===================== */
+.mobile-nav {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2000;
+  }
+  .mobile-nav__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .mobile-nav__panel {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: min(380px, 82vw);
+    background: #fff;
+    border-radius: 0 24px 24px 0;
+    padding: 24px 20px;
+    transform: translateX(-110%);
+    transition: transform .3s;
+  }
+  .mobile-nav.open { pointer-events: auto; }
+  .mobile-nav.open .mobile-nav__backdrop { opacity: 1; }
+  .mobile-nav.open .mobile-nav__panel { transform: translateX(0); }
+  
+  .mobile-nav__close {
+    background: #9AC355;
     color: #fff;
-    text-align: center;
-    padding: 2rem 0;
-    margin-top: 3rem;
-}
+    border: 0;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    margin-left: auto;
+    cursor: pointer;
+  }
+  .mobile-nav__list { list-style: none; margin: 32px 0; padding: 0; }
+  .mobile-nav__list li { margin: 18px 0; }
+  .mobile-nav__list a { font-size: 20px; color: #111; text-decoration: none; }
+  .mobile-nav__socials { display: flex; gap: 14px; margin-top: auto; }
+  
+
+/* === Tablet-only patch: 768px — 1024px === */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+
+
+    .header-left,
+    .header-right .social-icons { display: none; }
+  
+    .header-content {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    /* ЛОГО по центру */
+    .header-center {
+      position: absolute;
+    }
+  
+    /* бургер слева */
+    .mobile-menu-toggle {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .mobile-nav__panel {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile-menu-toggle span {
+      display: block;
+      height: 2px;
+      background: #9AC355;
+      border-radius: 2px;
+    }
+
+    .mobile-panel-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mobile-nav__socials {
+        gap: 5px;
+    }
+  
+    /* справа только «Войти» */
+    .header-right {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .login-btn {
+      background: #9AC355;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 10px;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+    }
+
+    .hero-title--desktop { display: none; }
+    .hero-title--tablet  { display: inline-block; /* или block — в зависимости от места */ }
+  
+    /* при необходимости подправь отступы/выравнивание */
+    .hero-title-placeholder { text-align: center; margin-top: 15px;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 40px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+    }
+
+    .hero-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1 1 520px;  
+        min-width: 280px;
+        max-width: 720px;
+        gap: 200px;
+    }
+
+    .hero-left-text {
+        display: flex;
+        flex-direction: column;
+    }
+    /* Скрываем картинку на планшетах (по id и по обёртке) */
+    #heroImage,
+    .hero-img-frame {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      overflow: hidden !important;
+    }
+
+    .main-tabs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        width: 450px;
+    }
+  
+    /* Центрируем табы по центру экрана */
+    .hero-tabs {
+        display: flex;
+        flex-direction: row;
+        background: #9AC355;
+        border-radius: 0 10px 10px 10px;
+        padding: 0.5rem 0.5rem 0.75rem;
+        max-width: 480px;
+        width: min(480px, 95%);
+    }
+
+    .hero-title {
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 40px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+    }
+
+    .eyebrow {
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+    }
+  
+    /* Заголовок табов/строка кнопок — центрируем их содержимое */
+    .tabs-header {
+        display: flex;
+        gap: 12px;
+        padding: 20px 0 0;
+    }
+  
+    /* немного уменьшить размер и паддинги кнопок на планшете */
+    .tab-btn {
+      padding: 0.6rem 0.9rem;
+      font-size: 17px;
+    }
+  
+    /* CTA внутри табов — центрируем и уменьшаем отступ */
+    .hero-tabs .tabs-cta.btn {
+      margin: 0.7rem auto 0;
+    }
+  
+    /* Убедимся, что заголовок геро и eyebrow выровнены по центру */
+    .hero-left,
+    .hero-title,
+    .eyebrow,
+    .hero-title-secondary {
+      text-align: center;
+    }
+   
+  }
+  
+
+
 
 .why-choose-us{
     padding: 50px 100px;
 }
 
 .why-choose-us-title{
-    font-family: Montserrat;
     font-weight: 500;
     font-style: SemiBold;
     font-size: 42px;
@@ -542,6 +757,59 @@ h2 {
     grid-column: 1;
     grid-row: 3;
 }
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .why-choose-us {
+        margin-top: 40px;
+        padding: 60px 30px;
+      }
+      
+      .container.why-choose-us-container {         /* паддинги со всех сторон */
+        border-radius: 20px;
+        overflow: hidden;            /* обрежет всё, что выходит за радиус */
+      }
+      
+      
+    .why-choose-us-title {
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 34px;
+        line-height: 100%;
+        letter-spacing: 0%;        
+        margin-bottom: 40px;
+        padding-top: 40px;
+    }
+  
+    .why-choose-us-features {
+      display: grid;
+      grid-template-columns: 1fr; /* только 1 колонка */
+      gap: 80px;
+      justify-items: center;
+    }
+  
+    .why-choose-us-feature {
+      max-width: 500px;
+    }
+  
+    .why-choose-us-text {
+      font-size: 22px;
+      line-height: 140%;
+    }
+  
+    .why-choose-us-text-strong {
+      font-size: 22px;
+      line-height: 120%;
+    }
+  
+    /* сбрасываем твои индивидуальные nth-child, чтобы все шли подряд */
+    .why-choose-us-feature:nth-child(1),
+    .why-choose-us-feature:nth-child(2),
+    .why-choose-us-feature:nth-child(3) {
+      grid-column: auto;
+      grid-row: auto;
+    }
+  }
 
 
 
