@@ -119,6 +119,8 @@ function initChooseToggle() {
     const selectBtn = document.querySelector('.choose-select-btn');
     if (!buttons.length || !image || !selectBtn) return;
 
+    const isTablet = () => window.innerWidth <= 1024;
+
     buttons.forEach(btn => {
         btn.addEventListener('click', function() {
             buttons.forEach(b => {
@@ -128,17 +130,31 @@ function initChooseToggle() {
             this.classList.add('active');
             this.setAttribute('aria-pressed', 'true');
 
-            // Change image based on active button
+            const imageSrc = isTablet() 
+                ? this.getAttribute('data-image-tablet') 
+                : this.getAttribute('data-image-desktop');
+
+            if (imageSrc) {
+                image.src = imageSrc;
+            }
+
             if (this.textContent.trim() === 'Самостоятельный подбор') {
-                image.src = '/images/choosePsycoImg.png';
                 selectBtn.textContent = 'Подобрать психолога';
             } else if (this.textContent.trim() === 'Помощь менеджера') {
-                image.src = '/images/chooseManager.png'; // Replace with the actual path to the manager help image
                 selectBtn.textContent = 'Перейти в Telegram-бот';
             }
-            
         });
     });
+
+    const activeBtn = group.querySelector('.active');
+    if (activeBtn) {
+        const initialImageSrc = isTablet() 
+            ? activeBtn.getAttribute('data-image-tablet') 
+            : activeBtn.getAttribute('data-image-desktop');
+        if (initialImageSrc) {
+            image.src = initialImageSrc;
+        }
+    }
 }
 
 // FAQ: topics highlight and accordion behavior with smooth height animation
@@ -271,4 +287,92 @@ function initScrollReveal() {
     });
 }
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.querySelector('.specialist-slider');
+    if (!slider) return;
+  
+    const container = slider.querySelector('.specialist-cards');
+    const prevBtn = slider.querySelector('.specialist-nav-btn-prev');
+    const nextBtn = slider.querySelector('.specialist-nav-btn-next');
+    const cards = Array.from(container.querySelectorAll('.specialist-card'));
+    if (!container || !prevBtn || !nextBtn || cards.length === 0) return;
+  
+    let index = 0;
+    const clamp = (v) => Math.max(0, Math.min(v, cards.length - 1));
+  
+    function updateButtons() {
+      prevBtn.disabled = index <= 0;
+      nextBtn.disabled = index >= cards.length - 1;
+      // aria для доступности
+      cards.forEach((c, i) => c.setAttribute('aria-hidden', i === index ? 'false' : 'true'));
+    }
+  
+    function goTo(i, smooth = true) {
+      index = clamp(i);
+      const left = index * container.clientWidth;
+      container.scrollTo({ left, behavior: smooth ? 'smooth' : 'auto' });
+      updateButtons();
+    }
+  
+    prevBtn.addEventListener('click', () => goTo(index - 1));
+    nextBtn.addEventListener('click', () => goTo(index + 1));
+  
+    // Обновляем индекс при ручном скролле (если пользователь тащит)
+    let isScrolling;
+    container.addEventListener('scroll', () => {
+      window.clearTimeout(isScrolling);
+      // после окончания скролла вычислим ближайший индекс
+      isScrolling = setTimeout(() => {
+        const newIndex = Math.round(container.scrollLeft / container.clientWidth);
+        index = clamp(newIndex);
+        updateButtons();
+      }, 80);
+    });
+  
+    // При ресайзе фиксируем видимую карточку (и пересчитываем позиции)
+    window.addEventListener('resize', () => {
+      // после ресайза прокачиваем контейнер в позицию index
+      setTimeout(() => goTo(index, false), 50);
+    });
+  
+    // --- поддержка свайпа (touch) ---
+    let startX = 0;
+    let deltaX = 0;
+    const threshold = 40; // px для триггера перелистывания
+  
+    container.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches.length === 1) {
+        startX = e.touches[0].clientX;
+        deltaX = 0;
+      }
+    }, {passive: true});
+  
+    container.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches.length === 1) {
+        deltaX = e.touches[0].clientX - startX;
+      }
+    }, {passive: true});
+  
+    container.addEventListener('touchend', () => {
+      if (Math.abs(deltaX) > threshold) {
+        if (deltaX < 0) goTo(index + 1); // свайп влево — вперёд
+        else goTo(index - 1);            // свайп вправо — назад
+      } else {
+        // короткий свайп — вернуть на своё место
+        goTo(index);
+      }
+      startX = 0; deltaX = 0;
+    });
+  
+    // Инициализация: показать первую карточку
+    goTo(0, false);
+  
+    // Доступность: стрелки при фокусе на контейнере
+    container.setAttribute('tabindex', '0');
+    container.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index + 1); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(index - 1); }
+    });
+  });
 

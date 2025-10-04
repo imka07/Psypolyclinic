@@ -16,7 +16,7 @@
                     <a href="staff.html" class="nav-link">Психологам</a>
                     <a href="" class="nav-link">Блог</a>
                     <a href="" class="nav-link">Группы</a>       
-                    <div class="header-center">
+                    <div class="header-center logo-desktop">
                         <div class="logo">
                             <a href="index.html" class="logo-link" aria-label="Главная">
                                 <img src="/images/logo.svg" alt="Лого" style="height:48px;">
@@ -24,6 +24,14 @@
                         </div>
                     </div>
                     <a href="" class="nav-link">Организации</a>
+                </div>
+
+                <div class="header-center logo-tablet-mobile">
+                    <div class="logo">
+                        <a href="index.html" class="logo-link" aria-label="Главная">
+                            <img src="/images/logo.svg" alt="Лого" style="height:48px;">
+                        </a>
+                    </div>
                 </div>
               
                 
@@ -125,6 +133,8 @@
     <main class="main">
         <section class="hero">
             <div class="container">
+
+                
                 <div id="loginModal" class="login-modal">
                     <div class="login-modal-content">
                         <div class="login-top-header">
@@ -203,7 +213,9 @@
                                         <h3 class="tabs-title">Удобный график сессий</h3>
                                         <p class="tabs-sub">Сами выбираете удобное для вас время</p>
                                     </div>
-                                    <button class="tabs-cta btn">Подобрать психолога</button>
+                                    <div class="tabs-btn-block">
+                                        <button class="tabs-cta btn">Подобрать психолога</button>
+                                    </div>
                                 </div>
                                 <div class="tabs-panel" id="psychologist" hidden>
                                     <div class="tabs-feature">
@@ -214,7 +226,9 @@
                                         <h3 class="tabs-title">Гибкий график работы</h3>
                                         <p class="tabs-sub">Выбирайте удобное время для сессий</p>
                                     </div>
-                                    <button class="tabs-cta btn">Стать психологом</button>
+                                    <div class="tabs-btn-block">
+                                        <button class="tabs-cta btn">Стать психологом</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -258,7 +272,7 @@
         <div class="container services-container">
             <div class="services-header">
                 <h2 class="services-title">Для клиентов и психологов</h2>
-                <span class="services-desc">Мы предлагаем вам выбрать услугу, исходя <br> из вашего запроса</span>
+                <span class="services-desc">Мы предлагаем вам выбрать направление, исходя <br> из вашего запроса</span>
             </div>
             <div class="services-row services-row--clients">
                 <img class="services-image" src="/images/forPsyco.svg" alt="Картинка для клиентов">
@@ -406,8 +420,12 @@
             <h2 class="how-to-choose-title">Как подобрать психолога?</h2>
             <div class="how-to-choose-content">
                 <div class="choose-toggle" data-toggle-group>
-                    <button class="choose-toggle-btn active" type="button" aria-pressed="true">Самостоятельный подбор</button>
-                    <button class="choose-toggle-btn" type="button" aria-pressed="false">Помощь менеджера</button>
+                    <button class="choose-toggle-btn active" type="button" aria-pressed="true" 
+                            data-image-desktop="/images/choosePsycoImg.png" 
+                            data-image-tablet="/images/choosePsycoTablet.png">Самостоятельный подбор</button>
+                    <button class="choose-toggle-btn" type="button" aria-pressed="false" 
+                            data-image-desktop="/images/chooseManager.png" 
+                            data-image-tablet="/images/chooseManagerTablet.png">Помощь менеджера</button>
                 </div>
                 <div class="choose-psychologist-card">
                     <img class="choose-card-img" src="/images/choosePsycoImg.png" alt="Варианты выбора психолога">
@@ -415,7 +433,7 @@
                 <button class="choose-select-btn">Подобрать психолога</button>
             </div>
         </div>
-     </section>
+    </section>
 
 
 
@@ -440,94 +458,100 @@
                     </div>
                 </div>
                 <div class="reviews-content">
-                    <div class="reviews-list">
-                        <!-- // плашки с отзывами -->
-                        <div class="review-card">
-                            <div class="review-card-header">
-                                <div class="review-avatar">
-                                    <img class="review-avatar-img" src="/images/avatarImg.png" alt="Аватар клиента">
-                                    <div>
-                                        <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
-                                        <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
-                                        <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
-                                        <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
-                                        <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                    <div class="reviews-slider">
+                        <div class="reviews-list">
+                            <!-- // плашки с отзывами -->
+                            <div class="review-card">
+                                <div class="review-card-header">
+                                    <div class="review-avatar">
+                                        <img class="review-avatar-img" src="/images/avatarImg.png" alt="Аватар клиента">
+                                        <div>
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                        </div>
+                                    </div>
+                                    <div class="review-author-info">
+                                        <span class="review-author-name">Елена</span>
+                                        <span class="review-author-position">Специалист по связям <br>
+                                            с общественностью</span>
                                     </div>
                                 </div>
-                                <div class="review-author-info">
-                                    <span class="review-author-name">Елена</span>
-                                    <span class="review-author-position">Специалист по связям <br>
-                                        с общественностью</span>
-                                </div>
+                                <!-- Описание -->
+                                <p class="review-text">
+                                    Я хочу поделиться своим опытом прохождения
+                                    психологической терапии, который стал для меня
+                                    настоящим открытием. Мой терапевт создал очень 
+                                    комфортную и безопасную атмо
+                                </p>
+                                <button class="review-read-more-btn">Читать полностью</button>
                             </div>
-                            <!-- Описание -->
-                            <p class="review-text">
-                                Я хочу поделиться своим опытом прохождения
-                                психологической терапии, который стал для меня
-                                настоящим открытием. Мой терапевт создал очень 
-                                комфортную и безопасную атмо
-                            </p>
-                            <button class="review-read-more-btn">Читать полностью</button>
-                        </div>
-
-                        <div class="review-card">
-                            <div class="review-card-header">
-                                <div class="review-avatar">
-                                    <img class="review-avatar-img" src="/images/avatarImg.png" alt="Аватар клиента">
-                                    <div>
-                                        <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
-                                        <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
-                                        <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
-                                        <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
-                                        <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+    
+                            <div class="review-card">
+                                <div class="review-card-header">
+                                    <div class="review-avatar">
+                                        <img class="review-avatar-img" src="/images/avatarImg.png" alt="Аватар клиента">
+                                        <div>
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                        </div>
+                                    </div>
+                                    <div class="review-author-info">
+                                        <span class="review-author-name">Елена</span>
+                                        <span class="review-author-position">Специалист по связям <br>
+                                            с общественностью</span>
                                     </div>
                                 </div>
-                                <div class="review-author-info">
-                                    <span class="review-author-name">Елена</span>
-                                    <span class="review-author-position">Специалист по связям <br>
-                                        с общественностью</span>
-                                </div>
+                                <!-- Описание -->
+                                <p class="review-text">
+                                    Я хочу поделиться своим опытом прохождения
+                                    психологической терапии, который стал для меня
+                                    настоящим открытием. Мой терапевт создал очень 
+                                    комфортную и безопасную атмо
+                                </p>
+                                <button class="review-read-more-btn">Читать полностью</button>
                             </div>
-                            <!-- Описание -->
-                            <p class="review-text">
-                                Я хочу поделиться своим опытом прохождения
-                                психологической терапии, который стал для меня
-                                настоящим открытием. Мой терапевт создал очень 
-                                комфортную и безопасную атмо
-                            </p>
-                            <button class="review-read-more-btn">Читать полностью</button>
-                        </div>
-
-                        <div class="review-card">
-                            <div class="review-card-header">
-                                <div class="review-avatar">
-                                    <img class="review-avatar-img" src="/images/avatarImg.png" alt="Аватар клиента">
-                                    <div>
-                                        <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
-                                        <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
-                                        <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
-                                        <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
-                                        <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+    
+                            <div class="review-card">
+                                <div class="review-card-header">
+                                    <div class="review-avatar">
+                                        <img class="review-avatar-img" src="/images/avatarImg.png" alt="Аватар клиента">
+                                        <div>
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                        </div>
+                                    </div>
+                                    <div class="review-author-info">
+                                        <span class="review-author-name">Елена</span>
+                                        <span class="review-author-position">Специалист по связям <br>
+                                            с общественностью</span>
                                     </div>
                                 </div>
-                                <div class="review-author-info">
-                                    <span class="review-author-name">Елена</span>
-                                    <span class="review-author-position">Специалист по связям <br>
-                                        с общественностью</span>
-                                </div>
+                                <!-- Описание -->
+                                <p class="review-text">
+                                    Я хочу поделиться своим опытом прохождения
+                                    психологической терапии, который стал для меня
+                                    настоящим открытием. Мой терапевт создал очень 
+                                    комфортную и безопасную атмо
+                                </p>
+                                <button class="review-read-more-btn">Читать полностью</button>
                             </div>
-                            <!-- Описание -->
-                            <p class="review-text">
-                                Я хочу поделиться своим опытом прохождения
-                                психологической терапии, который стал для меня
-                                настоящим открытием. Мой терапевт создал очень 
-                                комфортную и безопасную атмо
-                            </p>
-                            <button class="review-read-more-btn">Читать полностью</button>
+                            
                         </div>
-                        
                     </div>
-                    <button class="reviews-choose-psychologist-btn">Подобрать психолога</button>
+                    
+
+                    <div class="review-button-block">
+                        <button class="reviews-choose-psychologist-btn">Подобрать психолога</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -545,6 +569,7 @@
                 <button class="specialist-tab">Отношения</button>
                 <button class="specialist-tab">Курение</button>
                 <button class="specialist-tab">Панические атаки</button>
+                
                 <div class="tabs-bottom-row">
                     <button class="specialist-tab">Беременность, роды</button>
                     <button class="specialist-tab">Потеря, горе</button>
@@ -657,45 +682,50 @@
             </div>
 
             <div class="blog-content">
-                <ul class="blog-list">
-                    <li class="blog-list-item">
-                        <article class="blog-card">
-                            <div class="blog-card-left">
-                                <h3 class="blog-card-title">Название статьи</h3>
-                                <p class="blog-card-excerpt">Краткая информация о статье</p>
-                                <button class="blog-card-button" type="button">Читать статью</button>
-                            </div>
-                            <div class="blog-card-media" aria-hidden="true">
-                                <img class="" src="/images/blogImg.png" alt="Обложка блога">
-                            </div>
-                        </article>
-                    </li>
-                    <li class="blog-list-item">
-                        <article class="blog-card">
-                            <div class="blog-card-left">
-                                <h3 class="blog-card-title">Название статьи</h3>
-                                <p class="blog-card-excerpt">Краткая информация о статье</p>
-                                <button class="blog-card-button" type="button">Читать статью</button>
-                            </div>
-                            <div class="blog-card-media" aria-hidden="true">
-                                <img class="" src="/images/blogImg.png" alt="Обложка блога">
-                            </div>
-                        </article>
-                    </li>
-                    <li class="blog-list-item">
-                        <article class="blog-card">
-                            <div class="blog-card-left">
-                                <h3 class="blog-card-title">Название статьи</h3>
-                                <p class="blog-card-excerpt">Краткая информация о статье</p>
-                                <button class="blog-card-button" type="button">Читать статью</button>
-                            </div>
-                            <div class="blog-card-media" aria-hidden="true">
-                                <img class="" src="/images/blogImg.png" alt="Обложка блога">
-                            </div>
-                        </article>
-                    </li>
-                </ul>
-                <button class="blog-more-btn">Перейти в блог</button>
+                <div class="blog-slider">
+                    <ul class="blog-list">
+                        <li class="blog-list-item">
+                            <article class="blog-card">
+                                <div class="blog-card-left">
+                                    <h3 class="blog-card-title">Название статьи</h3>
+                                    <p class="blog-card-excerpt">Краткая информация о статье</p>
+                                    <button class="blog-card-button" type="button">Читать статью</button>
+                                </div>
+                                <div class="blog-card-media" aria-hidden="true">
+                                    <img class="" src="/images/blogImg.png" alt="Обложка блога">
+                                </div>
+                            </article>
+                        </li>
+                        <li class="blog-list-item">
+                            <article class="blog-card">
+                                <div class="blog-card-left">
+                                    <h3 class="blog-card-title">Название статьи</h3>
+                                    <p class="blog-card-excerpt">Краткая информация о статье</p>
+                                    <button class="blog-card-button" type="button">Читать статью</button>
+                                </div>
+                                <div class="blog-card-media" aria-hidden="true">
+                                    <img class="" src="/images/blogImg.png" alt="Обложка блога">
+                                </div>
+                            </article>
+                        </li>
+                        <li class="blog-list-item">
+                            <article class="blog-card">
+                                <div class="blog-card-left">
+                                    <h3 class="blog-card-title">Название статьи</h3>
+                                    <p class="blog-card-excerpt">Краткая информация о статье</p>
+                                    <button class="blog-card-button" type="button">Читать статью</button>
+                                </div>
+                                <div class="blog-card-media" aria-hidden="true">
+                                    <img class="" src="/images/blogImg.png" alt="Обложка блога">
+                                </div>
+                            </article>
+                        </li>
+                    </ul>
+                </div>
+               
+                <div class="blog-btn-block">
+                    <button class="blog-more-btn">Перейти в блог</button>
+                </div>
             </div>
         </div>
      </section>

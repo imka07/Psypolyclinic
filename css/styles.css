@@ -508,24 +508,36 @@ h2 {
   .mobile-nav__socials { display: flex; gap: 14px; margin-top: auto; }
   
 
+  .logo-tablet-mobile {
+    display: none;
+}
+
+.logo-desktop {
+    display: block;
+}
+
 /* === Tablet-only patch: 768px — 1024px === */
 @media (min-width: 768px) and (max-width: 1024px) {
 
 
 
-    .header-left,
-    .header-right .social-icons { display: none; }
+    .header-left {
+        display: none;
+    }
   
     .header-content {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
   
     /* ЛОГО по центру */
     .header-center {
-      position: absolute;
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
     }
   
     /* бургер слева */
@@ -561,6 +573,7 @@ h2 {
     }
 
     .mobile-nav__socials {
+        margin-bottom: 30px;
         gap: 5px;
     }
   
@@ -583,7 +596,9 @@ h2 {
         letter-spacing: 0%;
         text-align: center;
     }
-
+    .header-right .social-icons {
+        display: none;
+    }
     .hero-title--desktop { display: none; }
     .hero-title--tablet  { display: inline-block; /* или block — в зависимости от места */ }
   
@@ -595,6 +610,10 @@ h2 {
         line-height: 100%;
         letter-spacing: 0%;
         text-align: center;
+    }
+
+    .hero-grid {
+        justify-content: center;
     }
 
     .hero-left {
@@ -876,12 +895,9 @@ h2 {
 
 
 .promo-deadline-text {
-    font-family: Montserrat;
     font-weight: 400;
-    font-style: Regular;
     font-size: 20px;
     line-height: 100%;
-    letter-spacing: 0%;
     text-align: center; 
     position: absolute;
     right: 50px;
@@ -910,6 +926,36 @@ h2 {
 .promo-select-btn:hover{
     background-color: #BEF574;
 }
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container.promo-container {
+        margin: 40px 30px;
+        padding: 50px 130px;
+        background-position: center center;
+    }
+
+    .promo-title {
+        font-size: 34px;
+    }
+
+    .promo-desc {
+        font-size: 24px;
+    }
+
+    .promo-select-btn {
+        margin-top: 200px;
+    }
+
+    .promo-deadline-text {
+        font-size: 16px;
+        right: 20px;
+        bottom: 100px;
+    }
+
+
+}
+
 
 .benefits-section {
     background-color: #F1F2F5;
@@ -1048,6 +1094,80 @@ h2 {
 }
 
 
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .benefits-section {
+        margin: 0;
+        padding: 30px 0;
+    }
+
+    .benefits-title{
+        font-size: 34px;
+        margin-bottom: 50px;
+    }
+    
+
+
+    .benefits-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 колонки равной ширины */
+        grid-template-rows: repeat(3, auto); /* 3 строки с автоматической высотой */
+        gap: 20px; /* Отступ между элементами, настройте по необходимости */
+    }
+    
+    /* Элемент 1: 1-й столбец, 1-я строка */
+    .benefits-list .benefit-item:nth-child(1) {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    
+    /* Элемент 2: 2-й столбец, 1-я строка */
+    .benefits-list .benefit-item:nth-child(2) {
+        grid-column: 2;
+        grid-row: 1;
+    }
+    
+    /* Элемент 3: 1-й столбец, 2-я строка */
+    .benefits-list .benefit-item:nth-child(3) {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    
+    /* Элемент 4: 2-й столбец, 2-я строка */
+    .benefits-list .benefit-item:nth-child(4) {
+        grid-column: 2;
+        grid-row: 2;
+    }
+    
+    /* Элемент 5: 1-й столбец, 3-я строка */
+    .benefits-list .benefit-item:nth-child(5) {
+        grid-column: 1;
+        grid-row: 3;
+    }
+    
+    /* Элемент 6: 2-й столбец, 3-я строка */
+    .benefits-list .benefit-item:nth-child(6) {
+        grid-column: 2;
+        grid-row: 3;
+    }
+
+    .benefit-item {
+        width: 380px;
+        height: 100px;
+    }
+
+    .benefits-hints-image1 {
+        display: none;
+    }
+    .benefits-hints-image2 {
+        display: none;
+    }
+    .benefits-hints-image3 {
+        display: none;
+    }
+}
+
+
 
 .how-to-choose-section {
     background-color: #FFFFFF;
@@ -1090,7 +1210,6 @@ h2 {
     border-radius: 10px;
     background: #F1F2F5;
     color: rgba(0,0,0,0.55);
-
     width: 100%;
     font-weight: 500;
     font-size: 32px;
@@ -1123,6 +1242,11 @@ h2 {
     background-color: #9AC355;
 }
 
+.choose-toggle {
+    padding: 0px;
+    width: auto;
+}
+
 
 
 .choose-select-btn {
@@ -1150,6 +1274,35 @@ h2 {
     box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     outline: none;
 }
+
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+    .how-to-choose-section {
+        padding: 60px 20px;
+    }
+
+
+    .how-to-choose-title {
+        font-size: 34px;
+    }
+
+
+    .choose-toggle {
+        padding: 0px;
+        width: auto;
+    }
+
+    .choose-toggle-btn {
+        font-weight: 400;
+    }
+
+    .choose-psychologist-card {
+        height: 700px;
+    }
+
+}
+
+
 
 /* Reveal on scroll utility */
 .reveal-on-scroll {
@@ -1179,9 +1332,7 @@ h2 {
 }
 
 .reviews-title {
-    font-family: Montserrat;
     font-weight: 600;
-    font-style: SemiBold;
     font-size: 48px;
     line-height: 100%;
     letter-spacing: 0%;
@@ -1195,7 +1346,7 @@ h2 {
 }
 
 .reviews-choose-psychologist-btn {
-    width: 340px;
+    width: auto;
     height: 64px;
     border-radius: 10px;
     padding: 8px 16px;
@@ -1300,6 +1451,70 @@ h2 {
     cursor: pointer;
 }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+    .reviews-section {
+        padding: 60px 20px;
+    }
+
+    .container.reviews-container {
+        padding: 0px;
+    }
+
+    .reviews-content {
+        overflow: hidden;
+        align-items: flex-start;
+    }
+
+    .reviews-list {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+      }
+
+      
+
+
+    .reviews-list::-webkit-scrollbar {
+        height: 8px;
+    }
+    .reviews-list::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .reviews-list::-webkit-scrollbar-thumb {
+        background: rgba(0,0,0,0.15);
+        border-radius: 10px;
+    }
+    @supports (-moz-appearance: none) {
+        .reviews-list { scrollbar-width: thin; scrollbar-color: rgba(0,0,0,0.15) transparent; }
+      }
+
+
+    .reviews-title {
+        font-size: 34px;
+    }
+
+    .reviews-navigation {
+        display: flex;
+        gap: 30px;
+    }
+
+
+    .reviews-nav-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+
+
+    .review-button-block {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    
+}
+
+
 
 .specialists-section {
     background-color: #f8f9fa;
@@ -1308,23 +1523,15 @@ h2 {
 
 
 .specialist-title {
-    font-family: Montserrat;
-    font-weight: 600;
-    font-style: SemiBold;
     font-size: 48px;
     line-height: 100%;
-    letter-spacing: 0%;
-    
     margin-bottom: 10px;
 }
 
 .specialist-subtitle {
-    font-family: Montserrat;
     font-weight: 400;
-    font-style: Regular;
     font-size: 24px;
     line-height: 100%;
-    letter-spacing: 0%;    
     margin-bottom: 30px;
     color: rgb(0, 0, 0, 0.5);
 }
@@ -1513,10 +1720,120 @@ h2 {
     border: none;
     border-radius: 10px;
     padding: 16px 20px;
-    font-size: 16px;
+    font-size: 20px;
     color: white;
     cursor: pointer;
+
+    width: auto;
+    height: 64px;
+
 }
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+    .specialist-title {
+        font-size: 34px;
+    }
+
+    .specialist-subtitle {
+        margin-top: 25px;
+        font-size:  18px;
+    }
+
+    .specialist-subtitle br {
+        display: none;
+    }
+
+    .specialist-tabs {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+        grid-auto-rows: auto;
+        width: 100%;
+        max-width: 980px; /* по желанию центрировать и ограничить ширину */
+        margin: 0 auto 40px;
+        
+      }
+
+      .specialist-tabs .tabs-bottom-row {
+        display: contents; /* preferred — делает вложенные кнопки прямыми детьми сетки */
+      }
+
+
+      .specialist-tab {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+
+      .specialist-slider {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* кнопки по краям */
+        gap: 16px;
+      }
+
+      .specialist-cards {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        max-width: 420px; /* подгони под дизайн; можно 680/720 */
+        margin: 0 12px; /* отступы между кнопками и картинками */
+        overflow: hidden;                /* критично: скрываем лишние карточки */
+        scroll-snap-type: x mandatory;   /* снэп по карточкам */
+        -webkit-overflow-scrolling: touch;
+        position: relative;
+      }
+
+
+      .specialist-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 18px; /* подгони под дизайн */
+        scroll-snap-align: start;
+        transition: transform .28s ease; /* небольшая анимация при hover/active если нужно */
+      }
+
+      .specialist-card-name {
+        font-size: 24px;
+      }
+
+      .specialist-card-description {
+        font-size: 18px;
+      }
+
+      .specialist-card-description strong {
+        font-size: 20px;
+      }
+
+      .specialist-card-description li {
+        font-size: 18px;
+      }
+
+
+
+      .specialist-nav-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        padding: 0;
+      }
+
+
+      .specialist-nav-btn:disabled { opacity: 0.35; cursor: default; }
+
+}   
+
+
 
 .blog-section {
     background-color: white;
@@ -1655,6 +1972,55 @@ h2 {
     background-color: #BEF574;
     box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     outline: none;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .blog-section {
+        padding: 60px 30px;
+    }
+
+    .blog-slider {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .blog-list {
+        display: flex;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+        /* Добавьте это: */
+        scroll-snap-type: x mandatory;
+    }
+
+
+    .container.blog-container {
+        padding: 0;
+    }
+
+    .blog-title {
+        font-size: 34px;
+    }
+
+    .blog-subtitle {
+        font-size: 18px;
+    }
+
+    .blog-content {
+        justify-content: start;
+        align-items: start;
+    }
+
+    .blog-btn-block {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
 }
 
 /* FAQ */
@@ -1812,6 +2178,18 @@ h2 {
 
 }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+    .faq-section {
+        padding: 60px 30px;
+    }
+
+    .faq-top {
+       padding-left: 30px;
+       padding-right: 30px;
+    }
+
+}
+
 
 .help-section {
     padding: 40px 120px;
@@ -1912,6 +2290,52 @@ h2 {
     letter-spacing: 0%;
     text-align: center;
     color: white;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .help-section {
+        padding: 60px 20px;
+    }
+
+    .help-title {
+        font-size: 34px;
+    }
+
+    .help-text {
+        font-size: 24px;
+    }
+
+    .help-numbers-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto auto;
+        gap: 20px;
+      }
+    
+      .bottom-row {
+        display: contents;
+      }
+    
+      /* 3 и 4 должны сидеть рядом */
+      .help-numbers-list > .help-number-card:nth-child(3) {
+        grid-column: 1; /* левая колонка */
+        grid-row: 2;
+      }
+    
+      .bottom-row .help-number-card:nth-child(1) {
+        grid-column: 2; /* правая колонка */
+        grid-row: 2;
+      }
+    
+      /* 5-й блок по центру ниже */
+      .bottom-row .help-number-card:nth-child(2) {
+        grid-column: 1 / 3; /* на всю ширину */
+        grid-row: 3;
+        justify-self: center;
+        width: 80%;
+      }
+
+
 }
 
 
@@ -2044,5 +2468,874 @@ h2 {
 }
 
 .services-btn:hover {
-    background: #b3b3b3;
+    background: #BEF574;
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px){
+
+    .services{
+        padding: 40px 30px;
+    }
+
+    .services-desc br {
+        display: none;
+    }
+
+    .services-title {
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 34px;
+        line-height: 100%;
+        letter-spacing: 0%;
+    }
+
+    .services-desc {
+        font-weight: 400;
+        font-size: 18px;
+    }
+
+    .services-row--clients {
+        grid-template-columns: 1fr;
+        justify-items: start;
+        gap: 20px;
+    }
+    
+
+    .services-image {
+        width: 100%;
+        height: auto;
+        margin-left: 60px;
+    }
+
+    .services-row{
+        grid-template-columns: 1fr;
+        justify-items: start;
+        gap: 20px;
+    }
+
+
+    .services-row--psychologists .services-image {
+        order: -1;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+
+    /* Header and Hero компоненты */
+    .header-left {
+        display: none;
+    }
+  
+    .header-content {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+  
+    /* ЛОГО по центру */
+    .header-center {
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+  
+    /* бургер слева */
+    .mobile-menu-toggle {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .mobile-nav__panel {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile-menu-toggle span {
+      display: block;
+      height: 2px;
+      background: #9AC355;
+      border-radius: 2px;
+    }
+
+    .mobile-panel-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mobile-nav__socials {
+        margin-bottom: 30px;
+        gap: 5px;
+    }
+  
+    /* справа только «Войти» */
+    .header-right {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .login-btn {
+      background: #9AC355;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 100%;
+        text-align: center;
+    }
+    .header-right .social-icons {
+        display: none;
+    }
+    .hero-title--desktop { display: none; }
+    .hero-title--tablet  { display: inline-block; /* или block — в зависимости от места */ }
+  
+    /* при необходимости подправь отступы/выравнивание */
+    .hero-title-placeholder { text-align: center; margin-top: 15px;
+        font-weight: 600;
+        font-size: 40px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+    }
+
+    .hero-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1 1 520px;  
+        min-width: 280px;
+        max-width: 720px;
+        gap: 200px;
+    }
+
+    .hero-left-text {
+        display: flex;
+        flex-direction: column;
+    }
+    /* Скрываем картинку на планшетах (по id и по обёртке) */
+    #heroImage,
+    .hero-img-frame {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      overflow: hidden !important;
+    }
+
+    .main-tabs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        width: auto;
+    }
+  
+    /* Центрируем табы по центру экрана */
+    .hero-tabs {
+        display: flex;
+        flex-direction: row;
+        background: #9AC355;
+        border-radius: 0 10px 10px 10px;
+        max-width: 580px;
+    }
+
+    .hero-title {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 100%;
+        text-align: center;
+    }
+
+    .hero-title-secondary.hero-title--tablet {
+        font-size: 24px;
+    }
+
+    .tabs-title {
+        font-size: 16px;
+    }
+
+    .tabs-sub {
+        font-size: 14px;
+    }
+
+    .eyebrow {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 100%;
+        text-align: center;
+    }
+  
+    /* Заголовок табов/строка кнопок — центрируем их содержимое */
+    .tabs-header {
+        display: flex;
+        gap: 010px;
+        padding: 0;
+    }
+  
+    /* немного уменьшить размер и паддинги кнопок на планшете */
+    .tab-btn {
+      padding: 0.6rem 0.9rem;
+      font-size: 17px;
+    }
+
+    .tabs-btn-block {
+        display: flex;
+    }
+  
+    /* CTA внутри табов — центрируем и уменьшаем отступ */
+    .hero-tabs .tabs-cta.btn {
+      margin: 1rem auto 0;
+      font-size: 16px;
+    }
+  
+    /* Убедимся, что заголовок геро и eyebrow выровнены по центру */
+    .hero-left,
+    .hero-title,
+    .eyebrow,
+    .hero-title-secondary {
+      text-align: center;
+    }
+
+
+
+
+    /* Модалки регистрации и входа */
+
+    .login-modal,
+    .registration-modal {
+        display: none; /* скрываем по умолчанию */
+        position: fixed; /* поверх всего */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        justify-content: center; /* центрируем содержимое по горизонтали */
+        align-items: center;     /* центрируем по вертикали */
+        z-index: 1000;           /* чтобы были поверх всего остального */
+    }
+
+    .login-modal-content,
+    .registration-modal .login-modal-content {
+        width: 100%;
+        max-width: 340px; /* максимальная ширина окна */
+        background: #fff;
+        border-radius: 16px;
+        padding: 20px;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    /* Заголовок */
+    .login-top-header {
+        display: flex;
+        justify-content: center; /* центрируем содержимое */
+        align-items: center;
+    }
+
+    .login-title {
+        font-size: 18px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .login-close {
+        display: flex;
+    }
+
+    .login-close svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Поля формы */
+    .login-form input {
+        width: 100%;
+        height: 60px;
+        padding: 5px 12px;
+        margin-bottom: 12px;
+        font-size: 16px;
+        border: 1px solid #F1F2F5;
+        border-radius: 20px;
+        box-sizing: border-box;
+    }
+
+    /* Кнопки */
+    .login-form-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .login-form-buttons button {
+        width: 100%;
+        padding: 12px;
+        background: #7cc202;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+
+    }
+
+    .login-form-buttons{
+        font-size: 16px;
+        color: #7cc400;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .registration-button {
+        display: block;
+        margin-top: 8px;
+        font-size: 16px;
+    }
+
+    .forget-email-text {
+        display: block;
+        font-size: 14px;
+        margin-top: 8px;
+        color: rgb(0, 0, 0, 0.5);
+    }
+
+
+
+
+
+
+    /* Почему стоит выбрать нас блок */
+    .why-choose-us {
+        padding: 30px 16px;
+    }
+
+
+    .why-choose-us-title {
+        font-weight: 600;
+        font-size: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .why-choose-us-text-strong {
+        font-size: 14px;
+    }
+
+
+    .why-choose-us-text {
+        font-size: 14px;
+    }
+
+    .why-choose-us-features {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+
+    /* БЛОК для клиентов и психологов */
+    
+    .services {
+        padding: 30px 16px;
+    }
+
+    .services-title {
+        font-weight: 600;
+        font-size: 20px;
+    }
+    .services-desc {
+        font-weight: 400;
+        font-size: 12px;
+    }
+
+    .services-desc br {
+        display: none;
+    }
+
+    .services-row--clients {
+        grid-template-columns: 1fr;
+        justify-items: start;
+        gap: 20px;
+    }
+    
+
+    .services-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .services-row{
+        grid-template-columns: 1fr;
+        justify-items: start;
+        gap: 20px;
+    }
+
+
+    .services-row--psychologists .services-image {
+        order: -1;
+    }
+
+    .services-card-title {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 100%;
+    }
+
+    .services-subtitle {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 100%;
+    }
+
+    .services-list  {
+        gap: 10px;
+    }
+
+    .services-list li {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 100%;
+    }
+
+    .services-btn {
+        font-weight: 500;
+    }
+
+
+    
+
+    /* БЛОК ПРОМО */
+
+        .container.promo-container {
+            margin: 20px 15px;
+            padding: 30px 20px;
+            min-height: 500px;
+            border-radius: 16px;
+        }
+    
+        .promo-title,
+        .promo-title.discount {
+            font-size: 24px;
+        }
+    
+        .promo-desc {
+            font-size: 16px;
+            margin-bottom: 160px;
+            /* Убираем <br> на мобильных для естественного переноса */
+        }
+    
+        .promo-desc br {
+            display: none;
+        }
+    
+        .promo-deadline-wrapper {
+            right: 10px;
+            bottom: 10px;
+            transform: rotate(10deg); /* Меньший угол для лучшей читаемости на маленьком экране */
+        }
+    
+        .promo-deadline-text {
+            font-size: 14px;
+            padding: 6px 12px;
+            white-space: normal; /* Разрешаем перенос для мобильных */
+            line-height: 120%;
+            position: absolute;
+            top: 100px;
+            right: 10px;
+        }
+    
+        .promo-deadline-text br {
+            display: inline; /* Восстанавливаем <br> для даты */
+        }
+    
+        .promo-select-btn {
+            width: 100%;
+            max-width: 280px;
+            height: 56px;
+            font-size: 20px;
+            margin-top: 120px; /* Добавляем margin-top для отделения от описания */
+        }
+
+
+
+        /* БЛОК Benefites */ 
+
+        .benefits-section {
+            display: none;
+        }
+
+
+        /* БЛОК Как подобрать психолога  */
+
+        .how-to-choose-section {
+            padding: 30px 20px;
+        }
+
+        .how-to-choose-title {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 100%;
+        }
+
+        .how-to-choose-content {
+            display: flex;
+            width: 100%;;
+        }
+
+        .choose-toggle {
+            padding: 0px;
+            width: 60%;
+        }
+
+        .choose-toggle-btn {
+            width: 100%;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: color .2s ease, background .2s ease, opacity .2s ease;
+            /* Убираем nowrap и добавляем свойства для переноса */
+            white-space: normal; /* Разрешаем перенос */
+            word-wrap: break-word; /* Перенос длинных слов */
+            overflow-wrap: break-word; /* Современная альтернатива word-wrap */
+            text-align: center; /* Выравнивание по центру (или left/right по вашему выбору) */
+            padding: 12px 10px; /* Добавляем отступы для лучшего внешнего вида */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px; /* Минимальная высота для удобства касания */
+        }
+
+        .choose-card-img {
+            width: 90%;
+        }
+
+
+        /* БЛОК С ОТЗЫВАМИ */
+
+        .reviews-section {
+            padding: 30px 20px;
+        }
+
+        .reviews-title {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 100%;
+            margin: 0;
+            margin-bottom: 50px;
+        }
+
+        .reviews-navigation {
+            display: none;
+        }
+
+        .reviews-content {
+            overflow: hidden;
+            align-items: flex-start;
+        }    
+
+        .review-button-block {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        
+        .reviews-slider {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .reviews-list {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+            -webkit-overflow-scrolling: touch; /* iOS smooth scroll */
+            gap: 20px; /* Расстояние между карточками */
+            padding: 10px 0; /* Небольшие отступы сверху и снизу */
+
+
+            mask: linear-gradient(
+                90deg,
+                transparent 0%,
+                white 20px,
+                white calc(100% - 40px),
+                transparent 100%
+            );
+            -webkit-mask: linear-gradient(
+                90deg,
+                transparent 0%,
+                white 0px,
+                white calc(100% - 30px),
+                transparent 100%
+            );
+        }
+        
+        .reviews-list::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        
+        .review-card {
+            flex: 0 0 auto;
+            width: 100%;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            box-sizing: border-box;
+        }
+
+        .review-author-name {
+            font-size: 16px;
+        }
+
+        .review-author-position {
+            font-size: 12px;
+        }
+
+        .review-text {
+            font-size: 14px;
+        }
+
+        .review-read-more-btn {
+            font-size: 14px;
+        }
+
+
+
+
+
+/* 
+        БЛОК НАШИ СПЕЦИАЛИСТЫ */
+        .specialists-section {
+            padding: 30px 20px;
+        }
+
+        .specialist-title {
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .specialist-subtitle {
+            font-size: 14px;
+        }
+
+        .specialist-tabs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+
+            margin-bottom: 40px;
+            width: 100%;
+        }
+        
+        .specialist-tab {
+            font-size: 14px;
+            padding: 12px 8px;
+            flex: 1;
+            min-width: calc(50% - 5px); /* 2 колонки с учетом gap */
+            box-sizing: border-box;
+        }
+          
+          /* bottom-row занимает всю ширину grid и центрирует свои дети */
+          .tabs-bottom-row {
+            grid-column: 1 / -1;        /* занимает все 3 колонки */
+            display: flex;
+            justify-content: center;   /* выравниваем d и e по центру */
+            gap: 8px;                 /* расстояние между D и E */
+        }
+
+        .specialist-select-button:hover {
+            background-color: #BEF574;
+        }
+
+        .specialist-slider {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* кнопки по краям */
+            gap: 16px;
+        }
+    
+          .specialist-cards {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            max-width: 520px; /* подгони под дизайн; можно 680/720 */
+            margin: 0 12px; /* отступы между кнопками и картинками */
+            overflow: hidden;                /* критично: скрываем лишние карточки */
+            scroll-snap-type: x mandatory;   /* снэп по карточкам */
+            -webkit-overflow-scrolling: touch;
+            position: relative;
+        }
+    
+    
+          .specialist-card {
+            flex: 0 0 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            padding: 18px; /* подгони под дизайн */
+            scroll-snap-align: start;
+            transition: transform .28s ease; /* небольшая анимация при hover/active если нужно */
+        }
+
+
+        .specialist-nav-btn {
+            display: none;
+        }
+
+
+        .blog-section {
+            padding: 30px 20px;
+        }
+
+        .blog-slider {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+
+
+        .blog-list {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            -webkit-overflow-scrolling: touch;
+            width: 100%;
+            /* Добавьте это: */
+            scroll-snap-type: x mandatory;
+        }
+
+        .blog-list::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .blog-list-item {
+            flex: 0 0 100%; /* КАЖДАЯ КАРТОЧКА ЗАНИМАЕТ 100% ШИРИНЫ */
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            box-sizing: border-box;
+        }
+        
+        /* Убедитесь, что карточка занимает всю ширину */
+        .blog-card {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .blog-title {
+            font-size: 20px;
+        }
+
+        .blog-subtitle {
+            font-size: 14px;
+        }
+
+
+        /* БЛОК С ЧАСТО ЗАДАВАЕМЫМИ ВОПРОСАМИ  */ 
+         
+
+        .faq-section {
+            padding: 30px 20px;
+        }
+
+        .faq-title {
+            font-size: 24px;
+        }
+
+
+        .faq-top {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .faq-topic-label {
+            font-size: 16px;
+        }
+
+        .faq-topic-icon {
+            width: 80px;
+            height: 8px;
+        }
+
+        .faq-topic {
+            width: 500px;
+            height: auto;
+            padding: 40px;
+        }
+
+
+        .faq-accordion {
+            margin: 0;
+        }
+
+        .faq-question {
+            font-size: 18px;
+        }
+
+        .faq-top {
+            height: 220px;
+            margin-bottom: 40px;
+        }
+
+
+        /* БЛОК С ПОМОЩЬЮ */
+
+        .help-section {
+            padding: 30px 20px;
+        }
+
+        .help-title {
+            font-size: 24px;
+        }
+
+        .help-text {
+            font-size: 16px;
+        }
+
+
+        .help-numbers-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .help-number-card {
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .bottom-row {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .help-number {
+            font-size: 20px;
+        }
+
+        .help-number-discription {
+            font-size: 16px;
+        }
+
+
+        
 }
