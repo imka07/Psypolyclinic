@@ -1,0 +1,3267 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+
+:root {
+    /* Colors */
+    --color-primary: #9AC355;
+    --color-primary-hover: #BEF574;
+    --color-secondary: #F1F2F5;
+    --color-text: #000000;
+    --color-text-muted: rgba(0, 0, 0, 0.5);
+    --color-bg: #ffffff;
+    --color-bg-alt: #F1F2F5;
+    --color-border: #F1F2F5;
+    
+    /* Typography */
+    --font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-base: 1rem;
+    --font-size-small: 0.875rem;
+    --font-size-large: 1.25rem;
+    --line-height-base: 1.6;
+    
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    --spacing-2xl: 64px;
+    
+    /* Border Radius */
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 20px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    
+    /* Container */
+    --container-max-width: 1300px;
+    --container-padding: 20px;
+
+
+    --block-width: 500px;
+    --block-height: 64px;
+    
+    /* Переменные для кнопки */
+    --button-max-width: 340px;
+    --button-min-width: 98px;
+    --button-height: 56px; /* Теперь как min-height */
+    --button-padding: 8px 16px;
+    --button-border-radius: 10px;
+}
+
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: var(--line-height-base);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    letter-spacing: 0.5px;
+    overflow-x: hidden;
+}
+
+img, 
+svg, 
+video, 
+canvas {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-fast);
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: all var(--transition-fast);
+}
+
+
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    min-width: 0;
+}
+
+section,
+header,
+footer {
+    min-width: 0;
+}
+
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+   .header {
+    background-color: var(--color-bg);
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+}
+
+.nav-link {
+    color: var(--color-text);
+    font-weight: 400;
+    font-size: var(--font-size-base);
+    transition: color var(--transition-base);
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: var(--color-primary);
+    outline: none;
+}
+
+
+.header-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 92px;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    transition: all var(--transition-base);
+}
+
+.icon-link:hover,
+.icon-link:focus {
+    background-color: var(--color-secondary);
+    transform: translateY(-1px);
+    outline: none;
+}
+
+.icon-link svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Buttons */
+.login-btn {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    padding: 0.5rem 1.5rem;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.login-btn:hover,
+.login-btn:focus {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-1px);
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+
+
+/* ============================================
+   MODAL
+   ============================================ */
+
+.login-modal,
+.registration-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+/* Когда модалка открыта */
+.login-modal[style*="display: block"],
+.registration-modal[style*="display: block"] {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-modal-content {
+    background-color: var(--color-bg);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    margin: 0;
+}
+
+.login-top-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: var(--spacing-md);
+}
+
+.login-close {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    transition: transform var(--transition-fast);
+}
+
+.login-close:hover {
+    transform: scale(1.1);
+}
+
+.login-title {
+    font-weight: 600;
+    font-size: 30px;
+    margin: 0;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-xl);
+}
+
+.login-form input {
+    width: 100%;
+    height: 70px;
+    border: 2px solid var(--color-border);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    font-weight: 400;
+    font-size: 20px;
+    transition: border-color var(--transition-fast);
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.login-form input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.login-form-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.login-form-buttons button {
+    width: 300px;
+    height: 50px;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.login-form-buttons button:hover,
+.login-form-buttons button:focus {
+    background-color: var(--color-primary-hover);
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.registration-button {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.registration-button:hover {
+    color: var(--color-primary-hover);
+}
+
+.forget-email-text {
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.forget-email-text:hover {
+    color: var(--color-text);
+}
+
+/* ===================== */
+/* БАЗА offcanvas меню   */
+/* ===================== */
+.mobile-nav {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2000;
+  }
+  .mobile-nav__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .mobile-nav__panel {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: min(380px, 82vw);
+    background: #fff;
+    border-radius: 0 24px 24px 0;
+    padding: 24px 20px;
+    transform: translateX(-110%);
+    transition: transform .3s;
+  }
+  .mobile-nav.open { pointer-events: auto; }
+  .mobile-nav.open .mobile-nav__backdrop { opacity: 1; }
+  .mobile-nav.open .mobile-nav__panel { transform: translateX(0); }
+  
+  .mobile-nav__close {
+    background: #9AC355;
+    color: #fff;
+    border: 0;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    margin-left: auto;
+    cursor: pointer;
+  }
+  .mobile-nav__list { list-style: none; margin: 32px 0; padding: 0; }
+  .mobile-nav__list li { margin: 18px 0; }
+  .mobile-nav__list a { font-size: 20px; color: #111; text-decoration: none; }
+  .mobile-nav__socials { display: flex; gap: 14px; margin-top: auto; }
+  
+  .mobile-menu-toggle {
+    display: none; /* По умолчанию скрываем на десктопе */
+}
+
+  .logo-tablet-mobile {
+    display: none;
+}
+
+.logo-desktop {
+    display: block;
+}
+
+.main {
+    min-height: calc(100vh - 140px);
+}
+
+/* Hero */
+.hero {
+    background: #fff;
+    color: #2c3e50;
+    padding: 4rem 0;
+}
+
+.hero-grid {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap; 
+    padding-top: 100px;
+}
+
+.hero-left {
+    flex: 1 1 520px;  
+    min-width: 280px;
+    max-width: 720px;
+    
+}
+
+.eyebrow {
+    color: #7b8694;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(16px, 2.2vw, 26px);
+    line-height: 100%;
+    letter-spacing: 0;
+    margin-bottom: -5px;
+    padding-bottom: 10px;
+}
+
+.hero-title {
+    font-weight: 500;
+    font-size: clamp(28px, 4.6vw, 50px);
+    letter-spacing: 0;
+    line-height: 1.15;
+    margin-bottom: 2.25rem;  
+    width: auto;
+    max-width: 100%;
+}
+
+.hero-title-secondary {
+    color: #9AC355;
+    font-weight: 600;
+    font-style: normal;
+    font-size: clamp(26px, 4.2vw, 50px);
+    line-height: 100%;
+    letter-spacing: 0;
+    margin-top: .75rem;
+    padding-top: 10px;
+}
+
+
+
+/* Hero tabs */
+.hero-tabs {
+    display: flex;
+    flex-direction: row;
+    background: #9AC355;
+    border-radius: 0 10px 20px 20px;
+    padding: 0.5rem 0.5rem 0.75rem;
+    max-width: 480px;
+    width: min(480px, 95%);
+    position: relative;
+    z-index: 3;
+    min-height: 200px;
+    height: clamp(180px, 32vw, 270px);
+    /* 270px на десктопе, меньше на мобильных */
+}
+
+.tabs-header {
+    display: flex;
+    gap: 15px;
+    padding: 20px 0 0;
+    justify-content: space-between;
+    width: 76.2%;
+    position: relative;
+    top: 5px;
+  }
+
+.tab-btn {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0;
+    padding: 1rem 1.25rem;
+    border: 0;
+    border-radius: 15px 15px 0 0px; /* применено как в staff.css */
+    background: #F1F2F5;
+    color: black;
+    cursor: pointer;
+    position: relative;
+    z-index: 0; /* Кнопка на самом низком слое */
+    transition: none;
+    width: 100%;
+    height: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+
+
+.tab-btn.active {
+    background: #9ac355;
+    color: #ffffff;
+  }
+  
+
+
+.tabs-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background: transparent;
+    border-radius: 16px;
+    padding: 1.25rem 1rem 1.25rem;
+    margin-top: 0;
+    width: 100%;
+}
+
+.tabs-feature-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tabs-feature {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.tabs-feature-content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 5px;
+
+}
+
+
+.tabs-panel[hidden] {
+    display: none;
+}
+
+.tabs-title {
+    font-weight: 600;
+    font-size: 24px;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+.tabs-sub {
+    font-weight: 400;
+    color: #000000;
+}
+
+.hero-tabs .tabs-cta.btn {
+    background: #ffffff;
+    color: #1f1f1f;
+    border-radius: 12px;
+    font-size: 20px;
+    padding: 0.95rem 1.25rem;
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem 80px 0;
+    border: none;
+}
+
+.hero-tabs .tabs-cta.btn:hover {
+    background: #BEF574;
+    color: white;
+    transform: none;
+}
+
+.hero-tabs .tabs-cta.btn:focus-visible {
+    outline: 3px solid rgba(0, 0, 0, 0.25);
+}
+
+/* ============================================
+   АДАПТИВНЫЕ СТИЛИ ДЛЯ HERO-TABS
+   ============================================ */
+
+/* Планшеты (768px - 1024px) */
+@media (max-width: 1280px) {
+    .hero-tabs {
+        max-width: 500px;
+        width: min(500px, 95%);
+    }
+    
+    .tabs-header {
+        width: 95%;
+    }
+    
+    .tab-btn {
+        font-size: 14px;
+        padding: 0.8rem 0.9rem;
+    }
+}
+
+/* Убираем правый хвостик у последней кнопки при разрешении меньше 900px */
+@media (max-width: 900px) {
+    .tab-btn:last-child::before {
+        display: none;
+    }
+}
+
+/* Мобильные устройства (до 768px) */
+@media (max-width: 768px) {
+    .hero-tabs {
+        max-width: 100%;
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .tabs-header {
+        gap: 8px;
+        padding: 15px 0 0;
+        justify-content: center;
+    }
+    
+    .tab-btn {
+        font-size: 16px;
+        padding: 0.7rem 0.8rem;
+        flex: 1;
+        min-width: 0;
+        text-align: center;
+    }
+    
+    .tabs-panel {
+        padding: 1rem 0.8rem 1rem;
+    }
+    
+    .tabs-title {
+        font-size: 18px;
+    }
+    
+    .tabs-sub {
+        font-size: 14px;
+    }
+    
+    .hero-tabs .tabs-cta.btn {
+        font-size: 18px;
+        padding: 0.8rem 1rem;
+        margin: 0.5rem 0 0;
+        width: 100%;
+    }
+}
+
+/* Очень маленькие экраны (до 480px) */
+@media (max-width: 480px) {
+    .tabs-header {
+        gap: 4px;
+        padding: 12px 0 0;
+    }
+    
+    .tab-btn {
+        font-size: 14px;
+        padding: 0.6rem 0.5rem;
+    }
+    
+    .tabs-panel {
+        padding: 0.8rem 0.6rem 0.8rem;
+    }
+    
+    .tabs-title {
+        font-size: 16px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .tabs-sub {
+        font-size: 13px;
+        margin-bottom: 0.7rem;
+    }
+    
+    .hero-tabs .tabs-cta.btn {
+        font-size: 16px;
+        padding: 0.7rem 0.8rem;
+    }
+}
+
+/* Экстремально маленькие экраны (до 360px) */
+@media (max-width: 360px) {
+    .tabs-header {
+        gap: 2px;
+        padding: 10px 0 0;
+    }
+    
+    .tab-btn {
+        font-size: 12px;
+        padding: 0.5rem 0.3rem;
+        line-height: 1.1;
+    }
+    
+    .tabs-panel {
+        padding: 0.6rem 0.4rem 0.6rem;
+    }
+    
+    .tabs-title {
+        font-size: 14px;
+        margin-bottom: 0.1rem;
+    }
+    
+    .tabs-sub {
+        font-size: 12px;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-tabs .tabs-cta.btn {
+        font-size: 14px;
+        padding: 0.6rem 0.6rem;
+    }
+}
+
+
+
+.hero-img-frame {
+    flex: 0 1 590px; 
+    min-width: 240px;
+    max-width: 590px;
+    align-self: center;
+}
+
+.hero-img-placeholder {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Ensure hero image is fluid */
+.hero-img-frame img { width: 80%; height: auto; display: block; }
+
+.hero-title--tablet { display: none; }
+
+/* ============================================
+   АДАПТИВНЫЕ СТИЛИ ДЛЯ HERO СЕКЦИИ
+   ============================================ */
+
+/* Планшеты */
+@media (max-width: 1024px) {
+    .hero-grid {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .hero-left {
+        flex: none;
+        max-width: 100%;
+    }
+    
+    .hero-img-frame {
+        flex: none;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+    .hero {
+        padding: 2rem 0;
+    }
+    
+    .hero-grid {
+        gap: 20px;
+        padding-top: 20px;
+    }
+    
+    .hero-title {
+        font-size: clamp(24px, 6vw, 40px);
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-title-secondary {
+        font-size: clamp(22px, 5.5vw, 40px);
+    }
+    
+    .eyebrow {
+        font-size: clamp(14px, 3vw, 20px);
+    }
+    
+    .hero-img-frame {
+        max-width: 300px;
+    }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 480px) {
+    .hero {
+        padding: 1.5rem 0;
+    }
+    
+    .hero-grid {
+        gap: 15px;
+        padding-top: 15px;
+    }
+    
+    .hero-title {
+        font-size: clamp(20px, 8vw, 32px);
+        margin-bottom: 1rem;
+    }
+    
+    .hero-title-secondary {
+        font-size: clamp(18px, 7vw, 30px);
+    }
+    
+    .eyebrow {
+        font-size: clamp(12px, 4vw, 16px);
+    }
+    
+    .hero-img-frame {
+        max-width: 250px;
+    }
+}
+
+
+
+.psychologists-helpYou-section {
+    background: #F1F2F5;
+    padding: 40px 0;
+}
+
+.psychologists-helpYou-container {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+.psychologists-helpYou-title {
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 100%;
+}
+
+.psychologists-helpYou-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.psychologists-helpYou-content-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.psychologists-helpYou-content-item-text {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 100%;
+    text-align: center;
+}
+
+.psychologists-helpYou-content-btn {
+    width: 100%;
+    max-width: 340px;
+    min-width: 98px;
+    height: 56px;
+    min-height: 40px;
+    max-height: 64px;
+    border-radius: 10px;
+    background-color: #9AC355;
+    color: white;
+    padding: 8px 16px;
+    font-size: 1.125rem;
+    font-weight: 500;
+    display: block;
+    margin: 0 auto;
+    transition: background 0.2s;
+}
+
+
+.psychologists-helpYou-content-btn:hover {
+    background-color: #BEF574;
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {
+
+    .psychologists-helpYou-title {
+        font-size: 34px;
+    }
+
+    .psychologists-helpYou-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .psychologists-helpYou-content-item-text {
+        font-size: 20px;
+    }
+
+
+}
+
+
+
+@media (max-width: 768px) {
+
+    .psychologists-helpYou-title {
+        font-size: 20px;
+    }
+
+    .psychologists-helpYou-content {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .psychologists-helpYou-content-item-text {
+        font-size: 14px;
+    }
+
+    .psychologists-helpYou-content-item img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+.our-services-section {
+    background: #F1F2F5;
+    padding: 40px 0;
+}
+
+.our-services-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.our-services-title {
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 100%;
+    margin-bottom: 50px;
+}
+
+.our-services-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.our-services-content-btn {
+    width: 100%;
+    max-width: 340px;
+    min-width: 98px;
+    height: 56px;
+    min-height: 40px;
+    max-height: 64px;
+    border-radius: 10px;
+    background-color: #9AC355;
+    color: white;
+    padding: 8px 16px;
+    font-size: 1.125rem;
+    font-weight: 500;
+    display: block;
+    margin: 0 auto;
+    transition: background 0.2s;
+    margin-top: 50px;
+}
+
+
+@media (min-width: 768px) and (max-width: 1280px) {
+
+    .our-services-title {
+        font-size: 34px;
+    }
+
+    .our-services-content {
+        grid-template-columns: repeat(1, 1fr);
+        justify-items: center;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .our-services-title {
+        font-size: 20px;
+    }
+
+    .our-services-content {
+        grid-template-columns: repeat(1, 1fr);
+        justify-items: center;
+    }
+}
+
+
+
+
+
+.promo {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.container.promo-container {
+    background-image: url('../images/discountBack.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    margin: 50px 120px;
+    padding: 50px 40px;
+    gap: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 600px;
+    width: 100%;
+    position: relative;
+}
+
+
+
+.promo-title {
+    font-style: normal;
+    font-size: 48px;
+    text-align: center;
+    font-family: Montserrat;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+}
+
+
+.promo-title.discount {
+    font-weight: 600;
+    /* font-style: Semi Bold;  Semi Bold is not a valid value, so omit or use normal */
+    font-size: 48px;
+    /* leading-trim: NONE;  Not a standard CSS property, so omit */
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+    color: #9AC355;
+}
+
+.promo-desc {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    margin-bottom: 130px;
+}
+
+
+.promo-deadline-text {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    text-align: center; 
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    transform: rotate(15deg);
+}
+
+
+.promo-select-btn {
+    width: 100%;
+    max-width: 340px;
+    min-width: 98px;
+    height: 56px;
+    min-height: 40px;
+    max-height: 64px;
+    border-radius: 10px;
+    border: none;
+    background-color: #9AC355;
+    color: white;
+    font-size: 1.125rem;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+    font-weight: 100;
+    margin-top: 100px;
+}
+
+.promo-select-btn:hover{
+    background-color: #BEF574;
+}
+
+
+
+
+.how-to-choose-section {
+    background-color: #FFFFFF;
+    padding: 50px 120px;
+}
+
+.how-to-choose-title {
+    font-style: SemiBold;
+    font-size: 48px;
+    line-height: 100%;
+    margin-bottom: 50px;
+}
+
+.how-to-choose-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+/* Toggle buttons (Я определился / Помощь менеджера) */
+.choose-toggle{
+    display: flex;
+    background: #F1F2F5;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 6px;
+    gap: 6px;
+    width: 100%;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 5;
+}
+
+.choose-toggle-btn{
+    border: 0;
+    border-radius: 10px;
+    background: #F1F2F5;
+    color: rgba(0,0,0,0.55);
+    width: 100%;
+    font-weight: 500;
+    font-size: 32px;
+    padding: 20px 24px;
+    line-height: 100%;
+    cursor: pointer !important;
+    transition: color .2s ease, background .2s ease, opacity .2s ease;
+    white-space: nowrap;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 10;
+}
+
+.choose-toggle-btn.active{
+    background: #9AC355;
+    color: white;
+}
+
+.choose-toggle-btn:focus-visible{
+    outline: 3px solid rgba(0,0,0,.15);
+    outline-offset: 2px;
+}
+
+
+.choose-psychologist-card {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    gap: 40px;
+    width: 100%;
+    height: 512px;
+    border-radius: 20px;
+    background-color: #9AC355;
+}
+
+.choose-toggle {
+    padding: 0px;
+    width: auto;
+}
+
+
+
+.choose-select-btn {
+    width: 100%;
+    max-width: 340px;
+    min-width: 98px;
+    height: 56px;
+    min-height: 40px;
+    max-height: 64px;
+    border-radius: 10px;
+    border: none;
+    background-color: #9AC355;
+    color: white;
+    padding: 16px 20px;
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.choose-select-btn:hover,
+.choose-select-btn:focus {
+    background-color: #BEF574;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    outline: none;
+}
+
+
+
+.specialists-section {
+    background-color: #f8f9fa;
+    padding: 40px 0;
+}
+
+
+.specialist-title {
+    font-size: 48px;
+    line-height: 100%;
+    margin-bottom: 10px;
+}
+
+.specialist-subtitle {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 100%;
+    margin-bottom: 30px;
+    color: rgb(0, 0, 0, 0.5);
+}
+
+.specialist-tabs {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: start;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+  
+  /* bottom-row занимает всю ширину grid и центрирует свои дети */
+  .tabs-bottom-row {
+    grid-column: 1 / -1;        /* занимает все 3 колонки */
+    display: flex;
+    justify-content: center;   /* выравниваем d и e по центру */
+    gap: 24px;                 /* расстояние между D и E */
+    padding-top: 6px;
+  }
+
+.specialist-tab {
+    background-color: #9AC355;
+    border: none;
+    border-radius: 10px;
+    padding: 16px 16px;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    height: 60px; /* Фиксированная высота */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.2;
+    box-sizing: border-box;
+}
+
+.specialist-tab:hover{
+    background-color: white;
+    border: 2px solid;
+    border-color: #9AC355;
+    color: #9AC355;
+}
+
+
+.specialist-nav-btn.specialist-nav-btn-prev {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+.specialist-nav-btn.specialist-nav-btn-next {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+.specialist-slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+
+
+
+.specialist-cards {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    gap: 20px;
+}
+
+.specialist-card {
+    border-radius: 20px;
+    overflow: hidden;
+    width: 32%;
+    position: relative;
+}
+
+.specialist-card-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.specialist-card-image img {
+    width: 80%;
+    height: auto;
+    display: block;
+    border-radius: 0;
+}
+
+.heart {
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.specialist-card-name {
+    background-color: #9AC355;
+    padding: 20px 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    border-radius: 20px;
+    width: 100%;
+    margin-top: -80px;
+    position: relative;
+    z-index: 1;
+}
+
+.specialist-card-description {
+    background-color: white;
+    border-radius: 10px 10px 0 0px;
+    padding: 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+.specialist-discription {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.specialist-card-description p {
+    margin: 5px 0;
+}
+
+.specialist-card-description ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.specialist-card-description li {
+    position: relative;
+    padding-left: 15px;
+    font-size: 14px;
+}
+
+.specialist-card-description li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.adult::before {
+    background-color: #BEF574; /* green */
+}
+
+.teen::before {
+    background-color: #8E74F5; /* purple */
+}
+
+.family::before {
+    background-color: #F58E74; /* red */
+}
+
+.specialist-select-button {
+    display: block;
+    margin: 0 auto;
+    background-color: #9AC355;
+    border: none;
+    border-radius: 10px;
+    padding: 16px 20px;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    max-width: 340px;
+    min-width: 98px;
+    height: 56px;
+    min-height: 40px;
+    max-height: 64px;
+    font-size: 1.125rem;
+
+}
+
+
+.specialist-select-button:hover {
+    background-color: #BEF574;
+}
+
+
+.reviews-section{
+    background-color: #FFFFFF;
+    padding: 50px 120px;
+}
+
+.reviews-header-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.reviews-navigation {
+    display: flex;
+    gap: 30px;
+}
+
+.reviews-title {
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    margin-bottom: 100px;
+}
+
+.reviews-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+
+
+.review-button-block {
+    display: flex;
+    width: var(--block-width);
+    height: var(--block-height);
+    justify-content: center;
+    align-items: center;
+}
+
+.reviews-choose-psychologist-btn {
+    flex: 1; /* Ключевой фикс: кнопка растягивается на всю ширину блока */
+    max-width: var(--button-max-width);
+    min-width: var(--button-min-width);
+    min-height: var(--button-height); /* Убрали height, чтобы не фиксировать */
+    max-height: var(--block-height); /* Ограничиваем высотой блока */
+    border-radius: var(--button-border-radius);
+    padding: var(--button-padding);
+    background-color: #9AC355;
+    color: white;
+    font-weight: 400;
+    font-size: 1.125rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box; /* Явно, чтобы padding не ломал ширину */
+}
+
+.reviews-choose-psychologist-btn:hover,
+.reviews-choose-psychologist-btn:focus {
+    background-color: #BEF574;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    outline: none;
+}
+
+
+.reviews-list {
+    display: flex;
+    flex-direction: row;
+    gap: 30px
+}
+
+.review-card-header {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.review-author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.review-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 380px;
+    height: 440px;
+    border-radius: 20px;
+    background-color: #F1F2F5;
+    padding: 32px;
+}
+
+.review-author-name {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 100%;
+    
+}
+
+
+.review-author-position {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+}
+
+
+.review-read-more-btn {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 100%;
+    text-align: center;
+    color: #9AC355;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-top: 40px; /* Добавлено для смещения кнопки вниз */
+}
+
+.reviews-nav-btn.reviews-nav-btn-prev {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.reviews-nav-btn.reviews-nav-btn-next {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.review-rating-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.review-avatar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+
+
+/* FAQ */
+.faq-section {
+    background-color: #F1F2F5;
+}
+
+
+.faq-title {
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 100%;    
+    color: white;
+    margin: 0;
+}
+
+.faq-top {
+    background: #9AC355;
+    height: 200px;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.faq-topics {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Выравниваем кнопки по нижнему краю */
+    width: 100%;
+    gap: 20px;
+}
+
+.container.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.faq-topic {
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 200px; /* Фиксированная высота для равномерного выравнивания */
+    gap: 15px;
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease;
+    background-color: white;
+    padding: 50px;
+    position: relative; /* Для позиционирования псевдоэлемента треугольника */
+    border: none; /* Убираем стандартные границы кнопки */
+    box-sizing: border-box; /* Учитываем padding в высоте */
+}
+
+.faq-topic.active::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; /* Расстояние от низа кнопки до вершины треугольника */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #ffffff; /* Цвет треугольника совпадает с фоном faq-top */
+    z-index: 1; /* Чтобы треугольник был поверх других элементов */
+}
+
+.faq-topic:hover {
+    transform: translateY(-2px);
+}
+
+/* Дополнительно: если нужно анимировать треугольник при смене активного состояния, добавьте transition для ::after */
+.faq-topic::after {
+    transition: opacity .2s ease;
+}
+
+.faq-topic:not(.active)::after {
+    opacity: 0;
+}
+
+
+
+/* Фоновые изображения для кнопок FAQ */
+
+.faq-topic-icon {
+    margin-top: 14px;
+    width: 96px;
+    height: 72px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+}
+
+.faq-topic-label {
+    
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+}
+
+.faq-accordion {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: grid;
+    gap: 16px;
+}
+.faq-accordion.faq-specialists {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: grid;
+    gap: 16px;
+}
+
+.faq-item { background: #fff; border-radius: 14px; box-shadow: 0 0 0 1px rgba(0,0,0,.06) inset;}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 18px 56px 18px 24px;
+    font-size: 24px;
+    font-weight: 500;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+}
+
+.faq-chevron {
+    width: 36px; height: 36px; border-radius: 50%; background: #9AC355; position: relative; transition: transform .25s ease;
+}
+.faq-chevron::before { content: ''; position: absolute; inset: 0; margin: auto; width: 10px; height: 10px; border: 2px solid #ffffff; border-top: 0; border-left: 0; transform: rotate(45deg); }
+
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+.faq-answer { overflow: hidden; transition: grid-template-rows .3s ease, height .3s ease; }
+.faq-answer[hidden] { display: block; height: 0; }
+.faq-answer .faq-answer-inner { 
+    padding: 0 24px 18px; 
+    color: #7a7a7a; 
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+}
+
+
+
+.help-section {
+    padding: 40px 120px;
+}
+
+.container.help-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.help-top-head {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.help-title {
+    font-family: Montserrat;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 48px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    margin: 0;
+
+}
+
+.help-text {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+}
+
+.help-numbers-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 0 auto;
+    align-items: start;
+    padding: 40px 20px;
+  }
+  
+  
+  /* bottom-row занимает всю ширину grid и центрирует свои дети */
+  .bottom-row {
+    grid-column: 1 / -1;        /* занимает все 3 колонки */
+    display: flex;
+    justify-content: center;   /* выравниваем d и e по центру */
+    gap: 24px;                 /* расстояние между D и E */
+    padding-top: 6px;
+  }
+  
+  /* при желании можно задать фиксенную ширину карточек, чтобы они не растягивались */
+  .help-number-card {
+    min-width: 260px;
+    max-width: 320px;
+  }
+
+.help-number-card {
+    min-height: 156px;
+    max-width: 400px;
+    gap: 8px;
+    border-radius: 20px;
+    padding: 16px;
+    background-color: #9AC355;
+}
+
+.help-number-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.help-number {
+    font-family: Montserrat;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 28px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: white;
+}
+
+.help-number-discription {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: white;
+}
+
+/* ============================================
+   АДАПТИВНЫЕ СТИЛИ ДЛЯ ПЛАНШЕТОВ (768px - 1280px)
+   ============================================ */
+
+@media (min-width: 768px) and (max-width: 1280px) {
+    /* Header адаптация для планшетов */
+    .logo-desktop {
+        display: none;
+    }
+
+    .header-left {
+        display: none;
+    }
+  
+    .header-content {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+  
+    /* ЛОГО по центру */
+    .header-center {
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+  
+    /* бургер слева */
+    .mobile-menu-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .mobile-nav__panel {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile-menu-toggle span {
+      display: block;
+      height: 2px;
+      background: #9AC355;
+      border-radius: 2px;
+    }
+
+    .mobile-panel-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mobile-nav__socials {
+        margin-bottom: 30px;
+        gap: 5px;
+    }
+  
+    /* справа только «Войти» */
+    .header-right {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .login-form {
+        gap: 0px;
+    }
+
+    .login-btn {
+      background: #9AC355;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 10px;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+    }
+    .header-right .social-icons {
+        display: none;
+    }
+    .hero-title--desktop { display: none; }
+    .hero-title--tablet  { display: inline-block; /* или block — в зависимости от места */ }
+  
+    /* при необходимости подправь отступы/выравнивание */
+    .hero-title-placeholder { text-align: center; margin-top: 15px;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 40px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+    }
+
+    .hero-grid {
+        justify-content: center;
+    }
+
+    .hero-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1 1 520px;  
+        min-width: 280px;
+        max-width: 720px;
+        gap: 200px;
+    }
+
+    .hero-left-text {
+        display: flex;
+        flex-direction: column;
+    }
+    /* Скрываем картинку на планшетах (по id и по обёртке) */
+    #heroImage,
+    .hero-img-frame {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      overflow: hidden !important;
+    }
+
+    .main-tabs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 450px;
+    }
+  
+    /* Центрируем табы по центру экрана */
+    .hero-tabs {
+        display: flex;
+        flex-direction: row;
+        background: #9AC355;
+        border-radius: 0 10px 10px 10px;
+        padding: 0.5rem 0.5rem 0.75rem;
+        max-width: 480px;
+        width: min(480px, 95%);
+    }
+
+    .hero-title {
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 40px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+    }
+
+    .eyebrow {
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+    }
+  
+    /* Заголовок табов/строка кнопок — центрируем их содержимое */
+    .tabs-header {
+        display: flex;
+        gap: 12px;
+        padding: 20px 0 0;
+    }
+
+    .tabs-panel {
+        width: 100%;
+    }
+  
+
+    .tabs-btn-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-tabs .tabs-cta.btn {
+
+        min-width: 280px;
+        max-width: 280px;
+        white-space: nowrap;
+        box-sizing: border-box;
+    }
+  
+  
+    /* Убедимся, что заголовок геро и eyebrow выровнены по центру */
+    .hero-left,
+    .hero-title,
+    .eyebrow,
+    .hero-title-secondary {
+      text-align: center;
+    }
+
+    /* Promo секция */
+    .container.promo-container {
+        margin: 40px 30px;
+        padding: 50px 130px;
+        background-position: center center;
+    }
+
+    .promo-title {
+        font-size: 34px;
+    }
+
+    .promo-desc {
+        font-size: 24px;
+    }
+
+    .promo-select-btn {
+        margin-top: 200px;
+    }
+
+    .promo-deadline-text {
+        font-size: 16px;
+        right: 20px;
+        bottom: 100px;
+    }
+
+    /* How to choose секция */
+    .how-to-choose-section {
+        padding: 60px 20px;
+    }
+
+    .how-to-choose-title {
+        font-size: 34px;
+    }
+
+    .choose-toggle {
+        padding: 0px;
+        width: 100%;
+    }
+
+    .choose-toggle-btn {
+        font-size: 24px;
+        padding: 16px 12px;
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        text-align: center;
+        line-height: 1.2;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .choose-psychologist-card {
+        height: 700px;
+    }
+
+    /* Specialists секция */
+    .specialist-title {
+        font-size: 34px;
+    }
+
+    .specialist-subtitle {
+        margin-top: 25px;
+        font-size:  18px;
+    }
+
+    .specialist-subtitle br {
+        display: none;
+    }
+
+    .specialist-tabs {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+        grid-auto-rows: auto;
+        width: 100%;
+        max-width: 980px; /* по желанию центрировать и ограничить ширину */
+        margin: 0 auto 40px;
+        
+      }
+
+      .specialist-tabs .tabs-bottom-row {
+        display: contents; /* preferred — делает вложенные кнопки прямыми детьми сетки */
+      }
+
+      .specialist-tab {
+        width: 100%;
+        height: 60px; /* Фиксированная высота */
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        box-sizing: border-box;
+        font-size: 16px;
+        padding: 16px 12px; /* Фиксированный padding */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        line-height: 1.2;
+      }
+
+      .specialist-slider {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* кнопки по краям */
+        gap: 16px;
+      }
+
+      .specialist-cards {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        max-width: 420px; /* подгони под дизайн; можно 680/720 */
+        margin: 0 12px; /* отступы между кнопками и картинками */
+        overflow: hidden;                /* критично: скрываем лишние карточки */
+        scroll-snap-type: x mandatory;   /* снэп по карточкам */
+        -webkit-overflow-scrolling: touch;
+        position: relative;
+      }
+
+      .specialist-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 18px; /* подгони под дизайн */
+        scroll-snap-align: start;
+        transition: transform .28s ease; /* небольшая анимация при hover/active если нужно */
+      }
+
+      .specialist-card-name {
+        font-size: 24px;
+      }
+
+      .specialist-card-description {
+        font-size: 18px;
+      }
+
+      .specialist-card-description strong {
+        font-size: 20px;
+      }
+
+      .specialist-card-description li {
+        font-size: 18px;
+      }
+
+      .specialist-nav-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        padding: 0;
+      }
+
+      .specialist-nav-btn:disabled { opacity: 0.35; cursor: default; }
+
+    /* Reviews секция */
+    .reviews-section {
+        padding: 60px 20px;
+    }
+
+    .container.reviews-container {
+        padding: 0px;
+    }
+
+    .reviews-content {
+        overflow: visible !important;
+        align-items: flex-start;
+    }
+
+    .reviews-list {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 20px !important;
+        overflow-x: auto !important;
+        scroll-behavior: smooth !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 10px 0 20px 0 !important;
+    }
+
+    .review-card {
+        flex: 0 0 360px !important;
+        min-width: 360px !important;
+        max-width: 360px !important;
+        height: auto;
+        min-height: 420px;
+        scroll-snap-align: start;
+    }
+
+    .review-author-name {
+        font-size: 24px;
+    }
+
+    .review-author-position {
+        font-size: 13px;
+    }
+
+    .review-text {
+        font-size: 16px;
+        line-height: 140%;
+    }
+
+    .review-read-more-btn {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    .review-avatar-img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .reviews-list::-webkit-scrollbar {
+        height: 10px !important;
+    }
+    
+    .reviews-list::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0.05) !important;
+        border-radius: 10px !important;
+    }
+    
+    .reviews-list::-webkit-scrollbar-thumb {
+        background: rgba(154, 195, 85, 0.6) !important;
+        border-radius: 10px !important;
+    }
+    
+    .reviews-list::-webkit-scrollbar-thumb:hover {
+        background: rgba(154, 195, 85, 0.8) !important;
+    }
+    
+    /* Firefox */
+    @supports (-moz-appearance: none) {
+        .reviews-list { 
+            scrollbar-width: thin !important; 
+            scrollbar-color: rgba(154, 195, 85, 0.6) rgba(0,0,0,0.05) !important; 
+        }
+    }
+
+    .reviews-title {
+        font-size: 34px;
+    }
+
+    .reviews-navigation {
+        display: flex;
+        gap: 30px;
+    }
+
+    .reviews-nav-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .review-button-block {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* FAQ секция */
+    .faq-section {
+        padding: 60px 30px;
+    }
+
+    .faq-top {
+       padding-left: 30px;
+       padding-right: 30px;
+    }
+
+    /* Help секция */
+    .help-section {
+        padding: 60px 20px;
+    }
+
+    .help-title {
+        font-size: 34px;
+    }
+
+    .help-text {
+        font-size: 24px;
+    }
+
+    .help-numbers-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto auto;
+        gap: 20px;
+      }
+    
+      .bottom-row {
+        display: contents;
+      }
+    
+      /* 3 и 4 должны сидеть рядом */
+      .help-numbers-list > .help-number-card:nth-child(3) {
+        grid-column: 1; /* левая колонка */
+        grid-row: 2;
+      }
+    
+      .bottom-row .help-number-card:nth-child(1) {
+        grid-column: 2; /* правая колонка */
+        grid-row: 2;
+      }
+    
+      /* 5-й блок по центру ниже */
+      .bottom-row .help-number-card:nth-child(2) {
+        grid-column: 1 / 3; /* на всю ширину */
+        grid-row: 3;
+        justify-self: center;
+        width: 80%;
+      }
+}
+
+/* ============================================
+   АДАПТИВНЫЕ СТИЛИ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ (до 767px)
+   ============================================ */
+
+@media (max-width: 767px) {
+    .header {
+        padding: 1rem 0;
+    }
+
+    /* Header and Hero компоненты */
+    .header-left {
+        display: none;
+    }
+  
+    .header-content {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+        width: 100%;
+    }
+  
+    /* ЛОГО по центру */
+    .header-center {
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .logo-desktop {
+        display: none;
+    }
+
+    .logo-tablet-mobile {
+        display: block;
+    }
+  
+    /* бургер слева */
+    .mobile-menu-toggle {
+        display: flex !important; /* Добавлено !important для приоритета */
+        flex-direction: column;
+        justify-content: center;
+        gap: 4px;
+        width: 32px;
+        height: 32px;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        position: relative;
+        z-index: 1001;
+    }
+
+    .mobile-nav__panel {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile-panel-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .mobile-nav__socials {
+        margin-bottom: 30px;
+        gap: 5px;
+        padding: 0 20px;
+        justify-content: flex-start;
+    }
+  
+    /* справа только «Войти» */
+    .header-right {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .login-btn {
+      background: #9AC355;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 100%;
+        text-align: center;
+    }
+    .header-right .social-icons {
+        display: none;
+    }
+    .hero-title--desktop { display: none; }
+    .hero-title--tablet  { display: inline-block; /* или block — в зависимости от места */ }
+  
+    /* при необходимости подправь отступы/выравнивание */
+    .hero-title-placeholder { text-align: center; margin-top: 15px;
+        font-weight: 600;
+        font-size: 40px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+    }
+
+    .hero-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1 1 520px;  
+        min-width: 280px;
+        max-width: 720px;
+        gap: 200px;
+        margin-top: 120px;
+        margin-bottom: 120px;
+    }
+
+    .hero-left-text {
+        display: flex;
+        flex-direction: column;
+    }
+    /* Скрываем картинку на планшетах (по id и по обёртке) */
+    #heroImage,
+    .hero-img-frame {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      overflow: hidden !important;
+    }
+
+    .main-tabs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+    }
+  
+    /* Центрируем табы по центру экрана */
+    .hero-tabs {
+        display: flex;
+        flex-direction: row;
+        background: #9AC355;
+        border-radius: 0 10px 10px 10px;
+        max-width: 580px;
+    }
+
+    .hero-title {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 100%;
+        text-align: center;
+    }
+
+    .hero-title-secondary.hero-title--tablet {
+        font-size: 24px;
+    }
+
+    .tabs-title {
+        font-size: 16px;
+    }
+
+    .tabs-sub {
+        font-size: 14px;
+    }
+
+    .eyebrow {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 100%;
+        text-align: center;
+    }
+  
+    /* Заголовок табов/строка кнопок — центрируем их содержимое */
+    .tabs-header {
+        display: flex;
+        gap: 10px;
+        padding: 0;
+        width: 100%;
+    }
+  
+    /* немного уменьшить размер и паддинги кнопок на планшете */
+    .tab-btn {
+        font-size: 14px;
+        width: 100%;
+        height: 50px;
+        white-space: wrap;
+    }
+
+    .tabs-btn-block {
+        display: flex;
+    }
+  
+    /* CTA внутри табов — центрируем и уменьшаем отступ */
+    .hero-tabs .tabs-cta.btn {
+      margin: 1rem auto 0;
+      font-size: 16px;
+      white-space: nowrap; /* Запрещаем перенос текста на мобильных */
+    }
+  
+    /* Убедимся, что заголовок геро и eyebrow выровнены по центру */
+    .hero-left,
+    .hero-title,
+    .eyebrow,
+    .hero-title-secondary {
+      text-align: center;
+    }
+
+
+
+    /* Фиксируем размер панели табов, чтобы не прыгала при смене контента */
+    .tabs-panel {
+        min-height: 180px; /* подбери под максимальный контент */
+        min-width: 100%;
+        box-sizing: border-box;
+        /* Можно добавить max-height если нужно ограничить */
+        /* max-height: 260px; */
+        transition: min-height 0.2s;
+        /* Если нужно, можно добавить overflow-y: auto; */
+    }
+
+    /* Модалки регистрации и входа */
+    .login-modal,
+    .registration-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+    
+    /* Когда модалка открыта на мобильных */
+    .login-modal[style*="display: block"],
+    .registration-modal[style*="display: block"] {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login-modal-content,
+    .registration-modal .login-modal-content {
+        width: 90%;
+        max-width: 340px;
+        background: var(--color-bg);
+        border-radius: var(--radius-md);
+        padding: var(--spacing-md);
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    /* Заголовок */
+    .login-top-header {
+        display: flex;
+        justify-content: center; /* центрируем содержимое */
+        align-items: center;
+    }
+
+    .login-title {
+        font-size: 18px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .login-close {
+        display: flex;
+    }
+
+    .login-close svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .login-form {
+        gap: 0px;
+    }
+
+    /* Поля формы */
+    .login-form input {
+        width: 100%;
+        height: 60px;
+        padding: 5px 12px;
+        margin-bottom: 12px;
+        font-size: 16px;
+        border: 1px solid #F1F2F5;
+        border-radius: 20px;
+        box-sizing: border-box;
+    }
+
+    /* Кнопки */
+    .login-form-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .login-form-buttons button {
+        width: 100%;
+        padding: 12px;
+        background: #7cc202;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+
+    .login-form-buttons{
+        font-size: 16px;
+        color: #7cc400;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .registration-button {
+        display: block;
+        margin-top: 8px;
+        font-size: 16px;
+    }
+
+    .forget-email-text {
+        display: block;
+        font-size: 14px;
+        margin-top: 8px;
+        color: rgb(0, 0, 0, 0.5);
+    }
+
+    /* БЛОК ПРОМО */
+    .container.promo-container {
+        margin: 20px 15px;
+        padding: 30px 20px;
+        min-height: 500px;
+        border-radius: 16px;
+    }
+
+    .promo-title,
+    .promo-title.discount {
+        font-size: 24px;
+    }
+
+    .promo-desc {
+        font-size: 16px;
+        margin-bottom: 160px;
+        /* Убираем <br> на мобильных для естественного переноса */
+    }
+
+    .promo-desc br {
+        display: none;
+    }
+
+    .promo-deadline-wrapper {
+        right: 10px;
+        bottom: 10px;
+        transform: rotate(10deg); /* Меньший угол для лучшей читаемости на маленьком экране */
+    }
+
+    .promo-deadline-text {
+        font-size: 14px;
+        padding: 6px 12px;
+        white-space: normal; /* Разрешаем перенос для мобильных */
+        line-height: 120%;
+        position: absolute;
+        top: 100px;
+        right: 10px;
+    }
+
+    .promo-deadline-text br {
+        display: inline; /* Восстанавливаем <br> для даты */
+    }
+
+    .promo-select-btn {
+        width: 100%;
+        max-width: 340px;
+        height: 56px;
+        margin-top: 120px; /* Добавляем margin-top для отделения от описания */
+    }
+
+    /* БЛОК Как подобрать психолога  */
+    .how-to-choose-section {
+        padding: 30px 20px;
+    }
+
+    .how-to-choose-title {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 100%;
+    }
+
+    .how-to-choose-content {
+        display: flex;
+        width: 100%;;
+    }
+
+    .choose-toggle {
+        padding: 0px;
+        width: 100%; /* На мобильных кнопки занимают всю ширину */
+        max-width: 100%;
+    }
+
+    .choose-toggle-btn {
+        width: 100%;
+        font-weight: 500;
+        font-size: 12px; /* Уменьшаем размер шрифта для лучшего размещения */
+        cursor: pointer;
+        transition: color .2s ease, background .2s ease, opacity .2s ease;
+        /* Возвращаем nowrap для мобильных устройств */
+        white-space: nowrap; /* Запрещаем перенос текста */
+        text-align: center; /* Выравнивание по центру */
+        padding: 12px 6px; /* Еще больше уменьшаем горизонтальные отступы */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px; /* Уменьшаем минимальную высоту */
+        overflow: hidden; /* Скрываем переполнение текста */
+        text-overflow: ellipsis; /* Добавляем многоточие при переполнении */
+    }
+
+    .choose-card-img {
+        width: 90%;
+    }
+
+    /* БЛОК С ОТЗЫВАМИ */
+    .reviews-section {
+        padding: 30px 20px;
+    }
+
+    .reviews-title {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 100%;
+        margin: 0;
+        margin-bottom: 50px;
+    }
+
+    .reviews-navigation {
+        display: none;
+    }
+
+    .reviews-content {
+        overflow: hidden;
+        align-items: flex-start;
+    }    
+
+    .review-button-block {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .reviews-slider {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+    }
+    
+    .reviews-list {
+        display: flex;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 20px;
+        padding: 10px 0 20px 0;
+    }
+    
+    .reviews-list::-webkit-scrollbar {
+        height: 6px;
+    }
+    
+    .reviews-list::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0.05);
+        border-radius: 10px;
+    }
+    
+    .reviews-list::-webkit-scrollbar-thumb {
+        background: rgba(154, 195, 85, 0.6);
+        border-radius: 10px;
+    }
+    
+    .reviews-list::-webkit-scrollbar-thumb:hover {
+        background: rgba(154, 195, 85, 0.8);
+    }
+    
+    /* Firefox */
+    @supports (-moz-appearance: none) {
+        .reviews-list { 
+            scrollbar-width: thin; 
+            scrollbar-color: rgba(154, 195, 85, 0.6) rgba(0,0,0,0.05); 
+        }
+    }
+    
+    .review-card {
+        flex: 0 0 auto;
+        width: 100%;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        box-sizing: border-box;
+    }
+
+    .review-author-name {
+        font-size: 16px;
+    }
+
+    .review-author-position {
+        font-size: 12px;
+    }
+
+    .review-text {
+        font-size: 14px;
+    }
+
+    .review-read-more-btn {
+        font-size: 14px;
+    }
+
+    /* БЛОК НАШИ СПЕЦИАЛИСТЫ */
+    .specialists-section {
+        padding: 30px 20px;
+    }
+
+    .specialist-title {
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .specialist-subtitle {
+        font-size: 14px;
+    }
+
+    .specialist-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        margin-bottom: 40px;
+        width: 100%;
+    }
+    
+    .specialist-tab {
+        font-size: 14px;
+        padding: 12px 8px;
+        flex: 1;
+        min-width: calc(50% - 5px); /* 2 колонки с учетом gap */
+        box-sizing: border-box;
+        height: 50px; /* Фиксированная высота для мобильных */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        line-height: 1.2;
+    }
+      
+      /* bottom-row занимает всю ширину grid и центрирует свои дети */
+      .tabs-bottom-row {
+        grid-column: 1 / -1;        /* занимает все 3 колонки */
+        display: flex;
+        justify-content: center;   /* выравниваем d и e по центру */
+        gap: 8px;                 /* расстояние между D и E */
+    }
+
+    .specialist-select-button:hover {
+        background-color: #BEF574;
+    }
+
+    .specialist-slider {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* кнопки по краям */
+        gap: 16px;
+    }
+
+    .heart {
+        right: 70px;
+        top: 20px;
+    }
+
+      .specialist-cards {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        max-width: 520px; /* подгони под дизайн; можно 680/720 */
+        margin: 0 12px; /* отступы между кнопками и картинками */
+        overflow: hidden;                /* критично: скрываем лишние карточки */
+        scroll-snap-type: x mandatory;   /* снэп по карточкам */
+        -webkit-overflow-scrolling: touch;
+        position: relative;
+    }
+
+      .specialist-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 18px; /* подгони под дизайн */
+        scroll-snap-align: start;
+        transition: transform .28s ease; /* небольшая анимация при hover/active если нужно */
+    }
+
+    .specialist-nav-btn {
+        display: none;
+    }
+
+    /* БЛОК С ЧАСТО ЗАДАВАЕМЫМИ ВОПРОСАМИ  */ 
+    .faq-section {
+        padding: 30px 20px;
+    }
+
+    .faq-title {
+        font-size: 20px;
+    }
+
+    .faq-top {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .faq-topic-label {
+        font-size: 16px;
+    }
+
+    .faq-topic-icon {
+        width: 80px;
+        height: 0px;
+    }
+
+    .faq-topic {
+        width: 100%;
+        max-width: 500px;
+        height: 180px; /* Фиксированная высота для мобильных */
+        padding: 40px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .faq-topic img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .faq-answer-inner p {
+        font-size: 14px;
+    }
+
+    .faq-accordion {
+        margin: 0;
+    }
+
+    .faq-question {
+        font-size: 18px;
+    }
+
+    .faq-top {
+        height: 220px;
+        margin-bottom: 40px;
+    }
+
+    .faq-topics {
+        gap: 10px;
+        padding: 0 10px;
+    }
+
+    .faq-question,
+    .faq-answer a,
+    .faq-topic-label,
+    .help-number
+    {
+        color: black !important;
+    }
+
+    /* БЛОК С ПОМОЩЬЮ */
+    .help-section {
+        padding: 30px 20px;
+    }
+
+    .help-title {
+        font-size: 24px;
+    }
+
+    .help-text {
+        font-size: 16px;
+    }
+
+    .help-numbers-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .help-number-card {
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .bottom-row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .help-number {
+        font-size: 20px;
+    }
+
+    .help-number-discription {
+        font-size: 16px;
+    }
+
+    .help-number {
+        color: white !important;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Для всех номеров телефонов в секции помощи */
+    .help-number-card a {
+        color: white !important;
+        text-decoration: none !important;
+    }
+    
+    /* Убираем синее подчеркивание у кнопок в FAQ */
+    .faq-question:focus,
+    .faq-question:active {
+        color: inherit !important;
+    }
+    
+    /* Дополнительная защита для Safari */
+    @supports (-webkit-touch-callout: none) {
+        .help-number,
+        .faq-question,
+        .review-read-more-btn {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+    }
+}
+
+/* Дополнительные медиа-запросы для очень маленьких экранов */
+@media (max-width: 570px) {
+    /* Адаптация кнопок для очень маленьких экранов */
+    .choose-toggle {
+        width: 100%; /* Кнопки занимают всю доступную ширину */
+        padding: 0;
+    }
+
+    .choose-toggle-btn {
+        font-size: 10px; /* Еще меньше размер шрифта */
+        padding: 10px 10px; /* Минимальные отступы */
+        min-height: 45px; /* Уменьшаем высоту */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 1; /* Кнопки равномерно распределяются */
+        max-width: 50%; /* Максимум 50% ширины для каждой кнопки */
+    }
+
+    .how-to-choose-content {
+        width: 100%;
+        padding: 0 10px; /* Добавляем отступы по бокам */
+    }
+}
+
+@media (max-width: 460px) {
+    /* FAQ topic buttons для экранов 460px и меньше */
+    .faq-topics {
+        gap: 8px;
+        padding: 0 5px;
+    }
+
+    .faq-topic {
+        width: 100%;
+        max-width: none;
+        height: 160px;
+        padding: 30px 20px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .faq-topic-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .faq-topic-label {
+        font-size: 14px;
+    }
+
+    .faq-topic img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .heart {
+        position: absolute;
+        top: 10px;
+        right: 45px;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 390px) {
+    .review-avatar-img {
+        width: 64px;
+        height: 64px;
+    }
+
+   .review-card-header {
+        gap: 10px;
+   }
+
+   .review-avatar-rating {
+    width: 12px;
+    height: 12px;
+   }
+
+   .faq-topic-icon {
+    width: 50px;
+    height: 50px;
+   }
+
+   .faq-topic.active {
+        border-radius: 20px;
+   }
+   .faq-question {
+    font-size: 8px;
+   }
+
+   .faq-answer-inner p{
+        font-size: 12px;
+    }
+
+    /* Дополнительная адаптация для экранов меньше 390px */
+    .choose-toggle-btn {
+        font-size: 10px; /* Еще меньше для очень маленьких экранов */
+        padding: 8px 2px; /* Минимальные отступы */
+        min-height: 40px;
+    }
+
+    /* FAQ topic buttons для экранов меньше 390px */
+    .faq-topics {
+        gap: 5px;
+        padding: 0 2px;
+    }
+
+    .faq-topic {
+        height: 140px;
+        padding: 20px 15px;
+    }
+
+    .faq-topic-label {
+        font-size: 12px;
+    }
+}
+

@@ -17,11 +17,16 @@ function hideModal() {
     document.getElementById('loginModal').style.display = 'none';
 }
 
-// Close modal when clicking outside
+// Close modals when clicking outside
 window.onclick = function(event) {
-    const modal = document.getElementById('loginModal');
-    if (event.target == modal) {
-        modal.style.display = 'none';
+    const loginModal = document.getElementById('loginModal');
+    const registrationModal = document.getElementById('registrationModal');
+    
+    if (event.target == loginModal) {
+        loginModal.style.display = 'none';
+    }
+    if (event.target == registrationModal) {
+        registrationModal.style.display = 'none';
     }
 }
 
@@ -52,13 +57,6 @@ function hideRegistrationModal() {
     document.getElementById('registrationModal').style.display = 'none';
 }
 
-window.onclick = function(event) {
-    const modal = document.getElementById('registrationModal');
-    if (event.target == modal) {
-        modal.style.display = 'none';
-    }
-}
-
 function initChooseStepButtons() {
     const buttons = document.querySelectorAll('.choose-step-btn');
 
@@ -110,59 +108,17 @@ function initChooseStepButtons() {
     });
 }
 
-// Updated initChooseToggle with mobile image support
 function initChooseToggle() {
     const group = document.querySelector('[data-toggle-group]');
     if (!group) return;
 
     const buttons = group.querySelectorAll('.choose-toggle-btn');
-    const picture = document.querySelector('.choose-psychologist-card picture');
-    const img = picture ? picture.querySelector('img') : document.querySelector('.choose-card-img'); // Fallback to img if no picture
+    const image = document.querySelector('.choose-card-img');
     const selectBtn = document.querySelector('.choose-select-btn');
-    if (!buttons.length || !img || !selectBtn) return;
+    if (!buttons.length || !image || !selectBtn) return;
 
-    // Function to update image based on active button and viewport
-    function updateImage() {
-        const activeBtn = group.querySelector('.choose-toggle-btn.active');
-        if (!activeBtn) return;
+    const isTablet = () => window.innerWidth <= 1024;
 
-        const width = window.innerWidth;
-        let imageSrc;
-
-        if (width <= 767) {
-            imageSrc = activeBtn.dataset.imageMobile;
-        } else if (width <= 1023) {
-            imageSrc = activeBtn.dataset.imageTablet;
-        } else {
-            imageSrc = activeBtn.dataset.imageDesktop;
-        }
-
-        if (imageSrc) {
-            // Handle picture element for responsive sources
-            const mobileSource = picture ? picture.querySelector('source[media="(max-width: 767px)"]') : null;
-            const tabletSource = picture ? picture.querySelector('source[media="(min-width: 768px) and (max-width: 1023px)"]') : null;
-
-            if (width <= 767 && mobileSource) {
-                mobileSource.srcset = imageSrc;
-            } else if (width <= 1023 && tabletSource) {
-                tabletSource.srcset = imageSrc;
-            } else {
-                img.src = imageSrc;
-            }
-
-            // Trigger reload for picture
-            img.src = img.src;
-        }
-
-        // Update select button text based on active tab
-        if (activeBtn.textContent.trim() === 'Самостоятельный подбор') {
-            selectBtn.textContent = 'Подобрать психолога';
-        } else if (activeBtn.textContent.trim() === 'Помощь менеджера') {
-            selectBtn.textContent = 'Перейти в Telegram';
-        }
-    }
-
-    // Click handler for buttons
     buttons.forEach(btn => {
         btn.addEventListener('click', function() {
             buttons.forEach(b => {
@@ -171,108 +127,37 @@ function initChooseToggle() {
             });
             this.classList.add('active');
             this.setAttribute('aria-pressed', 'true');
-            updateImage();
-        });
-    });
 
-    // Initial setup
-    const activeBtn = group.querySelector('.active');
-    if (activeBtn) {
-        updateImage();
-    }
+            const imageSrc = isTablet() 
+                ? this.getAttribute('data-image-tablet') 
+                : this.getAttribute('data-image-desktop');
 
-    // Handle resize for viewport changes
-    let resizeTimeout;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(updateImage, 250);
-    });
-}
+            if (imageSrc) {
+                image.src = imageSrc;
+            }
 
-// Step buttons functionality (unchanged)
-function initChooseStepButtons() {
-    const buttons = document.querySelectorAll('.choose-step-btn');
-
-    if (!buttons.length) return;
-
-    function getGroupContainer(button) {
-        return (
-            button.closest('[data-choose-steps]') ||
-            button.closest('.choose-steps') ||
-            button.closest('.choose-step-buttons') ||
-            document
-        );
-    }
-
-    function deactivateGroup(container) {
-        const groupButtons = container.querySelectorAll('.choose-step-btn');
-        groupButtons.forEach(btn => {
-            btn.classList.remove('active');
-            btn.setAttribute('aria-current', 'false');
-        });
-    }
-
-    function activateButton(button) {
-        const container = getGroupContainer(button);
-        deactivateGroup(container);
-        button.classList.add('active');
-        button.setAttribute('aria-current', 'true');
-    }
-
-    buttons.forEach(button => {
-        if (button.classList.contains('active')) {
-            button.setAttribute('aria-current', 'true');
-        } else if (!button.hasAttribute('aria-current')) {
-            button.setAttribute('aria-current', 'false');
-        }
-
-        button.addEventListener('click', function() {
-            activateButton(this);
-        });
-
-        button.addEventListener('keydown', function(e) {
-            const isEnter = e.key === 'Enter' || e.keyCode === 13;
-            const isSpace = e.key === ' ' || e.key === 'Spacebar' || e.keyCode === 32;
-            if (isEnter || isSpace) {
-                e.preventDefault();
-                activateButton(this);
+            if (this.textContent.trim() === 'Самостоятельный подбор') {
+                selectBtn.textContent = 'Подобрать психолога';
+            } else if (this.textContent.trim() === 'Помощь менеджера') {
+                selectBtn.textContent = 'Перейти в Telegram-бот';
             }
         });
     });
-}
 
+    const activeBtn = group.querySelector('.active');
+    if (activeBtn) {
+        const initialImageSrc = isTablet() 
+            ? activeBtn.getAttribute('data-image-tablet') 
+            : activeBtn.getAttribute('data-image-desktop');
+        if (initialImageSrc) {
+            image.src = initialImageSrc;
+        }
+    }
+}
 
 // FAQ: topics highlight and accordion behavior with smooth height animation
 function initFaq() {
     const topics = document.querySelectorAll('.faq-topic');
-    
-    // Initialize default state - show clients FAQ by default
-    function initializeDefaultState() {
-        // Hide all accordions first
-        document.querySelectorAll('.faq-accordion').forEach(acc => {
-            acc.style.display = 'none';
-            acc.setAttribute('hidden', '');
-        });
-        
-        // Show clients accordion by default
-        const clientsAccordion = document.querySelector('.faq-clients');
-        if (clientsAccordion) {
-            clientsAccordion.style.display = 'grid';
-            clientsAccordion.removeAttribute('hidden');
-        }
-        
-        // Set active state for clients topic
-        topics.forEach(topic => {
-            topic.classList.remove('active');
-            if (topic.dataset.topic === 'clients') {
-                topic.classList.add('active');
-            }
-        });
-    }
-    
-    // Initialize default state
-    initializeDefaultState();
-    
     topics.forEach(topic => {
         topic.addEventListener('click', () => {
             topics.forEach(t => t.classList.remove('active'));
@@ -282,7 +167,6 @@ function initFaq() {
             // Hide all faq-accordions
             document.querySelectorAll('.faq-accordion').forEach(acc => {
                 acc.style.display = 'none';
-                acc.setAttribute('hidden', '');
                 // Optionally close all items in the hidden accordion
                 acc.querySelectorAll('.faq-item').forEach(item => {
                     item.classList.remove('open');
@@ -299,7 +183,6 @@ function initFaq() {
             const targetAcc = document.querySelector(`.faq-${topicType}`);
             if (targetAcc) {
                 targetAcc.style.display = 'grid';
-                targetAcc.removeAttribute('hidden');
             }
         });
     });
@@ -354,7 +237,6 @@ function initTabSwitching() {
         button.addEventListener('click', function() {
             const targetTab = this.getAttribute('data-tab');
 
-            // Убираем активное состояние со всех кнопок и панелей
             tabButtons.forEach(btn => {
                 btn.classList.remove('active');
                 btn.setAttribute('aria-selected', 'false');
@@ -364,11 +246,8 @@ function initTabSwitching() {
                 panel.setAttribute('hidden', 'true');
             });
 
-            // Активируем выбранную кнопку
             this.classList.add('active');
             this.setAttribute('aria-selected', 'true');
-            
-            // Показываем соответствующую панель
             const targetPanel = document.getElementById(targetTab);
             if (targetPanel) {
                 targetPanel.classList.add('active');
@@ -512,4 +391,3 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(index - 1); }
     });
   });
-

@@ -1,81 +1,159 @@
-/* Base */
+/* ============================================
+   BASE STYLES & CSS VARIABLES
+   ============================================ */
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
-* {
+/* CSS Variables */
+:root {
+    /* Colors */
+    --color-primary: #9AC355;
+    --color-primary-hover: #BEF574;
+    --color-secondary: #F1F2F5;
+    --color-text: #000000;
+    --color-text-muted: rgba(0, 0, 0, 0.5);
+    --color-bg: #ffffff;
+    --color-bg-alt: #F1F2F5;
+    --color-border: #F1F2F5;
+    
+    /* Typography */
+    --font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-base: 1rem;
+    --font-size-small: 0.875rem;
+    --font-size-large: 1.25rem;
+    --line-height-base: 1.6;
+    
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    --spacing-2xl: 64px;
+    
+    /* Border Radius */
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 20px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    
+    /* Container */
+    --container-max-width: 1300px;
+    --container-padding: 20px;
+}
+
+/* Reset & Base Styles */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #000000;
-    background-color: #ffffff;
-    letter-spacing: 0.5px;
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
-/* Global responsive safeguards */
-html, body { overflow-x: hidden; }
-img, svg, video, canvas { max-width: 100%; height: auto; }
-.container, section, header, footer { min-width: 0; }
+body {
+    font-family: var(--font-family);
+    line-height: var(--line-height-base);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    letter-spacing: 0.5px;
+    overflow-x: hidden;
+}
 
+/* Global Elements */
+img, 
+svg, 
+video, 
+canvas {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+}
 
 h2 {
     margin-bottom: 100px;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-fast);
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: all var(--transition-fast);
+}
+
+/* Container */
 .container {
-    max-width: 1300px;
-    margin:  auto;
-    padding: 0 20px;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    min-width: 0;
+}
+
+section,
+header,
+footer {
+    min-width: 0;
 }
 
 
-/* Header */
+/* ============================================
+   HEADER
+   ============================================ */
+
 .header {
-    background-color: white;
-    color: #333;
+    background-color: var(--color-bg);
     padding: 1rem 0;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
+    width: 100%;
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0;
 }
 
 .header-left {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: var(--spacing-xl);
 }
 
-.header-left .nav-link {
-    color: #000000;
-    text-decoration: none;
+.nav-link {
+    color: var(--color-text);
     font-weight: 400;
-    font-size: 1rem;
-    transition: color 0.3s ease;
+    font-size: var(--font-size-base);
+    transition: color var(--transition-base);
 }
 
-.header-center .nav-link {
-    color: #333;
-    text-decoration: none;
-    font-weight: 400;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-.header-left .nav-link:hover {
-    color: #9AC355;
-}
-
-.header-center .nav-link:hover {
-    color: #9AC355;
+.nav-link:hover,
+.nav-link:focus {
+    color: var(--color-primary);
+    outline: none;
 }
 
 
@@ -84,14 +162,13 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: var(--spacing-md);
 }
 
 .logo h1 {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 700;
     margin: 0;
-    color: #333;
 }
 
 .header-right {
@@ -102,10 +179,11 @@ h2 {
     justify-content: flex-end;
 }
 
+/* Social Icons */
 .social-icons {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: var(--spacing-xs);
 }
 
 .icon-link {
@@ -114,16 +192,15 @@ h2 {
     justify-content: center;
     width: 32px;
     height: 32px;
-    color: #333;
-    text-decoration: none;
     border-radius: 50%;
-    transition: all 0.3s ease;
+    transition: all var(--transition-base);
 }
 
-.icon-link:hover {
-    background-color: #e9ecef;
-    color: #007bff;
+.icon-link:hover,
+.icon-link:focus {
+    background-color: var(--color-secondary);
     transform: translateY(-1px);
+    outline: none;
 }
 
 .icon-link svg {
@@ -131,54 +208,55 @@ h2 {
     height: 20px;
 }
 
+/* Buttons */
 .login-btn {
-    background-color: #9AC355;
-    color: #fff;
-    border: none;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
     padding: 0.5rem 1.5rem;
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
     font-weight: 500;
     font-size: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
 }
 
-.login-btn:hover {
-    background-color: #BEF574;
+.login-btn:hover,
+.login-btn:focus {
+    background-color: var(--color-primary-hover);
     transform: translateY(-1px);
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
 }
 
 
 
-.login-modal {
+/* ============================================
+   MODAL
+   ============================================ */
+
+.login-modal,
+.registration-modal {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
 
-.registration-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
+/* Когда модалка открыта */
+.login-modal[style*="display: block"],
+.registration-modal[style*="display: block"] {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
 }
 
 .login-modal-content {
-    background-color: white;
-    margin: 15% auto;
-    padding: 32px;
-    border-radius: 20px;
-    height: auto;
-    width: 600px;
+    background-color: var(--color-bg);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    width: 90%;
+    max-width: 600px;
     text-align: center;
+    margin: 0;
 }
 
 .login-top-header {
@@ -186,103 +264,101 @@ h2 {
     align-items: center;
     justify-content: center;
     position: relative;
+    margin-bottom: var(--spacing-md);
 }
+
 .login-close {
     position: absolute;
-    font-size: 50px;
-    right: 10px;
+    right: 0;
     cursor: pointer;
+    padding: var(--spacing-xs);
+    transition: transform var(--transition-fast);
+}
+
+.login-close:hover {
+    transform: scale(1.1);
+}
+
+.login-title {
+    font-weight: 600;
+    font-size: 30px;
+    margin: 0;
 }
 
 .login-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-xl);
 }
-
-.login-form-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 30px;
-}
-
-
 
 .login-form input {
     width: 100%;
     height: 70px;
-    border: 2px solid #F1F2F5;
-    padding: 32px;
-    border-radius: 20px;
+    border: 2px solid var(--color-border);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
     font-weight: 400;
-    font-style: Regular;
     font-size: 20px;
-    line-height: 100%;
-    letter-spacing: 0%;
+    transition: border-color var(--transition-fast);
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: var(--color-primary);
 }
 
 .login-form input::placeholder {
-    color: rgb(0, 0, 0, 0.5);
+    color: var(--color-text-muted);
+}
+
+.login-form-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
 }
 
 .login-form-buttons button {
-    color: white;
     width: 300px;
-    height: 50px; 
-    border: none;
-    background-color: #9AC355;
-    border-radius: 10px;
-    padding: 8px 16px;
+    height: 50px;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    border-radius: var(--radius-sm);
     font-weight: 500;
-    font-style: Medium;
     font-size: 20px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    text-align: center;
-    cursor: pointer;
 }
 
-.login-form-buttons button:hover {
-    background-color: #BEF574;
-    transition: 0.3s ease-out;
+.login-form-buttons button:hover,
+.login-form-buttons button:focus {
+    background-color: var(--color-primary-hover);
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
 }
 
 .registration-button {
-    color: #9AC355;
-    font-family: Montserrat;
+    color: var(--color-primary);
     font-weight: 600;
-    font-style: SemiBold;
     font-size: 20px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    text-decoration: none;
     cursor: pointer;
+    transition: color var(--transition-fast);
 }
 
+.registration-button:hover {
+    color: var(--color-primary-hover);
+}
 
 .forget-email-text {
     font-weight: 500;
-    font-style: SemiBold;
     font-size: 18px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    color: rgb(0, 0, 0, 0.5);
+    color: var(--color-text-muted);
     cursor: pointer;
+    transition: color var(--transition-fast);
 }
 
-
-.login-title {
-    font-weight: 600;
-    font-style: SemiBold;
-    font-size: 30px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    text-align: center;
-    vertical-align: middle;
-    margin: 0;
+.forget-email-text:hover {
+    color: var(--color-text);
 }
 
 
@@ -290,6 +366,7 @@ h2 {
 /* Main */
 .main {
     min-height: calc(100vh - 140px);
+    margin-top: 80px; /* Отступ для фиксированного header */
 }
 
 /* Hero */
@@ -352,42 +429,100 @@ h2 {
 .hero-tabs {
     display: flex;
     flex-direction: row;
-    background: #9AC355;
-    border-radius: 0 20px 20px 20px;
+    background: #9ac355;
+    border-radius: 0 10px 20px 20px;
     padding: 0.5rem 0.5rem 0.75rem;
     max-width: 480px;
     width: min(480px, 95%);
-}
+    position: relative;
+    z-index: 3;
+    box-sizing: border-box;
+  }
+  
 
-.tabs-header {
+  .tabs-header {
     display: flex;
-    gap: 12px;
+    gap: 15px;
     padding: 20px 0 0;
-    justify-content: start;
-    
-}
+    justify-content: space-between;
+    width: 76.2%;
+    position: relative;
+    top: 10px;
+    will-change: contents;
+  }
+  
 
-.tab-btn {
-    font-family: 'Montserrat', sans-serif;
+  .tab-btn {
     font-weight: 300;
-    font-style: normal;
     font-size: 20px;
     line-height: 100%;
     letter-spacing: 0;
-    padding: 0.85rem 1.25rem;
+    padding: 1rem 1.25rem;
     border: 0;
-    border-radius: 16px 16px 0 0;
-    background: #F1F2F5;
+    border-radius: 15px 15px 0 0px; /* применено как в staff.css */
+    background: #f1f2f5;
     color: black;
     cursor: pointer;
-}
+    position: relative;
+    z-index: 0; /* Кнопка на самом низком слое */
+    transition: none;
+    width: 50%;
+    height: 60px;
+    box-sizing: border-box;
+    will-change: transform;
+  }
+  
 
-.tab-btn.active {
-    background: #9AC355;
-    font-weight: 300;
+  .tab-btn.active {
+    background: #9ac355;
     color: #ffffff;
     position: relative;
-    z-index: 2;
+  }
+  
+
+  .client.active::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -49px;
+    height: 50px;
+    width: 50px;
+    border-bottom-left-radius: 15px;
+    box-shadow: 0 20px 0 0 #9ac355;
+  }
+
+  
+  .psychologist.active::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -49px;
+    height: 50px;
+    width: 50px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 0 30px 0 0 #9ac355;
+  }
+
+
+  .client.active::after,
+  .psychologist.active::after {
+    z-index: -1;
+    pointer-events: none;
+  }
+
+/* Адаптация для планшетов (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1280px) {
+    .tabs-header {
+        width: 95%;
+    }
+
+    .tabs-panel.active {
+        display: flex;
+        width: 100%;
+    }
+
+
+
 }
 
 .tabs-panel {
@@ -424,7 +559,7 @@ h2 {
     border-radius: 12px;
     font-size: 20px;
     padding: 0.95rem 1.25rem;
-    width: fit-content;
+    width: 280px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -507,6 +642,9 @@ h2 {
   .mobile-nav__list a { font-size: 20px; color: #111; text-decoration: none; }
   .mobile-nav__socials { display: flex; gap: 14px; margin-top: auto; }
   
+  .mobile-menu-toggle {
+    display: none; /* По умолчанию скрываем на десктопе */
+}
 
   .logo-tablet-mobile {
     display: none;
@@ -517,9 +655,11 @@ h2 {
 }
 
 /* === Tablet-only patch: 768px — 1024px === */
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1280px) {
 
-
+    .logo-desktop {
+        display: none;
+    }
 
     .header-left {
         display: none;
@@ -542,7 +682,7 @@ h2 {
   
     /* бургер слева */
     .mobile-menu-toggle {
-      display: inline-flex;
+      display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 4px;
@@ -584,6 +724,11 @@ h2 {
       justify-content: space-between;
       gap: 12px;
     }
+
+    .login-form {
+        gap: 0px;
+    }
+
     .login-btn {
       background: #9AC355;
       color: #fff;
@@ -644,7 +789,7 @@ h2 {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: start;
+        align-items: center;
         width: 450px;
     }
   
@@ -683,17 +828,26 @@ h2 {
         gap: 12px;
         padding: 20px 0 0;
     }
-  
-    /* немного уменьшить размер и паддинги кнопок на планшете */
-    .tab-btn {
-      padding: 0.6rem 0.9rem;
-      font-size: 17px;
+
+    .tabs-panel {
+        width: 100%;
     }
   
-    /* CTA внутри табов — центрируем и уменьшаем отступ */
+
+    .tabs-btn-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .hero-tabs .tabs-cta.btn {
-      margin: 0.7rem auto 0;
+
+        min-width: 280px;
+        max-width: 280px;
+        white-space: nowrap;
+        box-sizing: border-box;
     }
+  
   
     /* Убедимся, что заголовок геро и eyebrow выровнены по центру */
     .hero-left,
@@ -714,16 +868,14 @@ h2 {
 
 .why-choose-us-title{
     font-weight: 500;
-    font-style: SemiBold;
     font-size: 42px;
     line-height: 100%;
     letter-spacing: 0%;    
+    text-align: start;
 }
 
 .why-choose-us-text {
-    font-family: Montserrat, sans-serif;
     font-weight: 400;
-    font-style: normal; /* Regular в CSS это font-style: normal */
     font-size: 28px;
     line-height: 150%; /* или 1 */
     letter-spacing: 0%;
@@ -731,9 +883,7 @@ h2 {
 }
 
 .why-choose-us-text-strong {
-    font-family: Montserrat, sans-serif;
     font-weight: 600;
-    font-style: normal; /* SemiBold в CSS обычно задаётся через font-weight: 600 */
     font-size: 28px;
     line-height: 100%; /* или 1 */
     letter-spacing: 0%;
@@ -777,59 +927,124 @@ h2 {
     grid-row: 3;
 }
 
-
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 650px) and (max-width: 1024px) {
     .why-choose-us {
         margin-top: 40px;
-        padding: 60px 30px;
-      }
-      
-      .container.why-choose-us-container {         /* паддинги со всех сторон */
-        border-radius: 20px;
-        overflow: hidden;            /* обрежет всё, что выходит за радиус */
-      }
-      
-      
+        padding: 40px 20px;
+    }
+
+    .container.why-choose-us-container {
+        border-radius: 25px;
+        overflow: hidden;
+        background-position: center center;
+        background-size: cover;
+        padding: 40px 30px;
+        margin: 0;
+    }
+
     .why-choose-us-title {
         font-weight: 600;
         font-style: SemiBold;
-        font-size: 34px;
+        font-size: 22px;
         line-height: 100%;
-        letter-spacing: 0%;        
+        letter-spacing: 0%;
+        margin: 0;
         margin-bottom: 40px;
-        padding-top: 40px;
+        text-align: start;
     }
-  
+
     .why-choose-us-features {
-      display: grid;
-      grid-template-columns: 1fr; /* только 1 колонка */
-      gap: 80px;
-      justify-items: center;
+        display: grid;
+        grid-template-columns: 1fr; /* только 1 колонка */
+        gap: 50px;
+        justify-items: center;
     }
-  
+
     .why-choose-us-feature {
-      max-width: 500px;
+        max-width: 100%;
+        text-align: center;
     }
-  
+
     .why-choose-us-text {
-      font-size: 22px;
-      line-height: 140%;
+        font-size: 18px;
+        line-height: 140%;
+        text-align: center;
     }
-  
+
     .why-choose-us-text-strong {
-      font-size: 22px;
-      line-height: 120%;
+        font-size: 18px;
+        line-height: 120%;
+        text-align: center;
     }
-  
-    /* сбрасываем твои индивидуальные nth-child, чтобы все шли подряд */
+
+    /* сбрасываем индивидуальные nth-child, чтобы все шли подряд */
     .why-choose-us-feature:nth-child(1),
     .why-choose-us-feature:nth-child(2),
     .why-choose-us-feature:nth-child(3) {
-      grid-column: auto;
-      grid-row: auto;
+        grid-column: auto;
+        grid-row: auto;
     }
-  }
+}
 
+/* Большие планшеты и маленькие десктопы (1025px - 1280px) */
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .why-choose-us {
+        margin-top: 40px;
+        padding: 50px 40px;
+    }
+
+    .container.why-choose-us-container {
+        border-radius: 30px;
+        overflow: hidden;
+        background-position: center center;
+        background-size: cover;
+        padding: 50px 40px;
+        margin: 0;
+    }
+
+    .why-choose-us-title {
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 28px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        margin: 0;
+        margin-bottom: 50px;
+        text-align: start;
+    }
+
+    .why-choose-us-features {
+        display: grid;
+        grid-template-columns: 1fr; /* только 1 колонка */
+        gap: 60px;
+        justify-items: center;
+    }
+
+    .why-choose-us-feature {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .why-choose-us-text {
+        font-size: 20px;
+        line-height: 140%;
+        text-align: center;
+    }
+
+    .why-choose-us-text-strong {
+        font-size: 20px;
+        line-height: 120%;
+        text-align: center;
+    }
+
+    /* сбрасываем индивидуальные nth-child, чтобы все шли подряд */
+    .why-choose-us-feature:nth-child(1),
+    .why-choose-us-feature:nth-child(2),
+    .why-choose-us-feature:nth-child(3) {
+        grid-column: auto;
+        grid-row: auto;
+    }
+}
 
 
 
@@ -928,7 +1143,7 @@ h2 {
 }
 
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1280px) {
     .container.promo-container {
         margin: 40px 30px;
         padding: 50px 130px;
@@ -1094,7 +1309,7 @@ h2 {
 }
 
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1280px) {
 
     .benefits-section {
         margin: 0;
@@ -1110,9 +1325,11 @@ h2 {
 
     .benefits-list {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3 колонки равной ширины */
+        grid-template-columns: repeat(2, 1fr); /* 3 колонки равной ширины */
         grid-template-rows: repeat(3, auto); /* 3 строки с автоматической высотой */
         gap: 20px; /* Отступ между элементами, настройте по необходимости */
+        align-items: center;
+        justify-items: center;
     }
     
     /* Элемент 1: 1-й столбец, 1-я строка */
@@ -1152,7 +1369,7 @@ h2 {
     }
 
     .benefit-item {
-        width: 380px;
+        width: 100%;
         height: 100px;
     }
 
@@ -1184,14 +1401,6 @@ h2 {
     margin-bottom: 50px;
 }
 
-.how-to-choose-content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-
 
 /* Toggle buttons (Я определился / Помощь менеджера) */
 .choose-toggle{
@@ -1200,9 +1409,6 @@ h2 {
     display: flex;
     justify-content: center;
     border-radius: 10px;
-    padding: 6px;
-    gap: 6px;
-    width: 100%;
 }
 
 .choose-toggle-btn{
@@ -1233,24 +1439,46 @@ h2 {
 
 .choose-psychologist-card {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    justify-content: center;
+    align-items: center;
     gap: 40px;
     width: 100%;
     height: 512px;
     border-radius: 20px;
     background-color: #9AC355;
+    position: relative; /* Явно, чтобы z-index работал в контексте */
+    overflow: hidden; /* Ключевой фикс: обрезаем любые переполнения изображения, чтобы оно не "вылазило" за границы карточки */
+    pointer-events: none; /* Делаем всю карточку "прозрачной" для кликов — мышь проходит сквозь, не блокируя кнопки выше */
 }
 
+.choose-card-img {
+    pointer-events: none;
+    position: relative;
+    z-index: 0;
+    width: 100%; /* Ограничиваем ширину */
+    height: auto; /* Адаптируем высоту */
+    max-width: 100%; /* Не выходит за карточку */
+    max-height: 100%; /* Не выходит по высоте */
+    object-fit: contain; /* Масштабирует изображение внутри границ без искажений и обрезки */
+}
+
+/* Дополнительно: поднимаем toggle-кнопки выше в стеке, чтобы они были "над" карточкой */
 .choose-toggle {
-    padding: 0px;
-    width: auto;
+    position: relative;
+    z-index: 10; /* Высокий z-index для кнопок */
 }
 
+/* Если .how-to-choose-content — flex-контейнер (столбец), убедитесь в этом: */
+.how-to-choose-content {
+    display: flex;
+    flex-direction: column; /* Вертикальное размещение: кнопки сверху, карточка снизу, без наложений */
+    gap: 20px; /* Отступ между элементами, чтобы визуально не сливались */
+    align-items: center; /* Центрируем всё по горизонтали */
+}
 
 
 .choose-select-btn {
-    width: auto;
+    width: 340px;
     height: 64px;
     border-radius: 10px;
     border: none;
@@ -1276,7 +1504,7 @@ h2 {
 }
 
 
-@media (min-width: 768px) and (max-width: 1024px)  {
+@media (min-width: 768px) and (max-width: 1280px)  {
     .how-to-choose-section {
         padding: 60px 20px;
     }
@@ -1289,17 +1517,36 @@ h2 {
 
     .choose-toggle {
         padding: 0px;
-        width: auto;
+        width: 100%;
     }
 
     .choose-toggle-btn {
-        font-weight: 400;
+        font-size: 24px;
+        padding: 16px 12px;
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        text-align: center;
+        line-height: 1.2;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .choose-psychologist-card {
         height: 700px;
     }
 
+}
+
+/* Дополнительная адаптация для маленьких планшетов */
+@media (min-width: 768px) and (max-width: 900px) {
+    .choose-toggle-btn {
+        font-size: 20px;
+        padding: 14px 8px;
+        min-height: 55px;
+    }
 }
 
 
@@ -1346,7 +1593,7 @@ h2 {
 }
 
 .reviews-choose-psychologist-btn {
-    width: auto;
+    width: 340px;
     height: 64px;
     border-radius: 10px;
     padding: 8px 16px;
@@ -1404,32 +1651,24 @@ h2 {
 }
 
 .review-author-name {
-    font-family: Montserrat;
     font-weight: 500;
-    font-style: Medium;
     font-size: 32px;
     line-height: 100%;
-    letter-spacing: 0%;
     
 }
 
 
 .review-author-position {
-    font-family: Montserrat;
     font-weight: 400;
-    font-style: Regular;
     font-size: 14px;
     line-height: 140%;
-    letter-spacing: 0%;
 }
 
 
 .review-read-more-btn {
     font-weight: 600;
-    font-style: normal;
     font-size: 20px;
     line-height: 100%;
-    letter-spacing: 0%;
     text-align: center;
     color: #9AC355;
     background: none;
@@ -1451,7 +1690,352 @@ h2 {
     cursor: pointer;
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+.review-rating-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.review-avatar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+
+
+/* Мобильные и маленькие планшеты (до 499px) */
+@media (max-width: 499px) {
+    .reviews-section {
+        padding: 30px 10px;
+    }
+
+    .reviews-title {
+        font-size: 18px;
+        margin-bottom: 20px;
+        text-align: center;
+        word-break: break-word;
+    }
+
+    .reviews-content {
+        overflow: hidden;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .reviews-list {
+        display: flex;
+        flex-direction: row;
+        gap: 14px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 8px 0 16px 0;
+        width: 100%;
+    }
+
+    .review-card {
+        flex: 0 0 95vw;
+        min-width: 220px;
+        max-width: 98vw;
+        scroll-snap-align: center;
+        padding: 18px 8px;
+        gap: 12px;
+        height: auto;
+    }
+
+    .reviews-list::-webkit-scrollbar {
+        height: 5px;
+    }
+    
+    .reviews-list::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0.05);
+        border-radius: 10px;
+    }
+    
+    .reviews-list::-webkit-scrollbar-thumb {
+        background: rgba(154, 195, 85, 0.6);
+        border-radius: 10px;
+    }
+    
+    .reviews-list::-webkit-scrollbar-thumb:hover {
+        background: rgba(154, 195, 85, 0.8);
+    }
+    
+    /* Firefox */
+    @supports (-moz-appearance: none) {
+        .reviews-list { 
+            scrollbar-width: thin; 
+            scrollbar-color: rgba(154, 195, 85, 0.6) rgba(0,0,0,0.05); 
+        }
+    }
+
+    /* why-choose-us mobile styles */
+    .why-choose-us {
+        padding: 20px 16px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .container.why-choose-us-container {
+        border-radius: 24px;
+        overflow: hidden;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding: 24px 16px;
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        min-height: auto;
+    }
+
+    .why-choose-us-title {
+        font-size: 16px;
+        margin: 0 0 20px 0;
+        text-align: center;
+        padding: 0;
+        font-weight: 600;
+        line-height: 120%;
+        word-break: break-word;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .why-choose-us-features {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        justify-items: center;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .why-choose-us-feature {
+        max-width: 100%;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+        word-break: break-word;
+        box-sizing: border-box;
+    }
+
+    .why-choose-us-text {
+        font-size: 13px;
+        line-height: 140%;
+        text-align: center;
+        word-break: break-word;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .why-choose-us-text-strong {
+        font-size: 14px;
+        line-height: 130%;
+        text-align: center;
+        font-weight: 600;
+        word-break: break-word;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+
+}
+
+
+/* Адаптив для разрешений ниже 650px */
+@media (max-width: 649px) {
+    .why-choose-us {
+        padding: 24px 12px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .container.why-choose-us-container {
+        border-radius: 24px;
+        overflow: hidden;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding: 24px 16px;
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        min-height: auto;
+    }
+
+    .why-choose-us-title {
+        font-size: 18px;
+        margin: 0 0 20px 0;
+        text-align: center;
+        padding: 0;
+        font-weight: 600;
+        line-height: 120%;
+        word-break: break-word;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .why-choose-us-features {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        justify-items: center;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .why-choose-us-feature {
+        max-width: 100%;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+        word-break: break-word;
+        box-sizing: border-box;
+    }
+
+    .why-choose-us-text {
+        font-size: 14px;
+        line-height: 140%;
+        text-align: center;
+        word-break: break-word;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .why-choose-us-text-strong {
+        font-size: 15px;
+        line-height: 130%;
+        text-align: center;
+        font-weight: 600;
+        word-break: break-word;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* Планшеты средние (500-767px) */
+@media (min-width: 500px) and (max-width: 767px) {
+    .reviews-section {
+        padding: 40px 20px;
+    }
+
+    .reviews-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .reviews-content {
+        overflow: hidden;
+        align-items: center;
+    }
+
+    .reviews-list {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 10px 0 20px 0;
+        width: 100%;
+    }
+
+    .review-card {
+        flex: 0 0 340px;
+        min-width: 340px;
+        max-width: 340px;
+        height: auto;
+        min-height: 400px;
+        scroll-snap-align: center;
+        padding: 24px;
+    }
+
+    .review-card-header {
+        gap: 20px;
+    }
+
+    .review-avatar-img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .review-author-name {
+        font-size: 20px;
+    }
+
+    .review-author-position {
+        font-size: 12px;
+    }
+
+    .review-text {
+        font-size: 15px;
+        line-height: 140%;
+    }
+
+    .review-read-more-btn {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .reviews-navigation {
+        display: none;
+    }
+
+    .review-button-block {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .reviews-list::-webkit-scrollbar {
+        height: 8px;
+    }
+    
+    .reviews-list::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0.05);
+        border-radius: 10px;
+    }
+    
+    .reviews-list::-webkit-scrollbar-thumb {
+        background: rgba(154, 195, 85, 0.6);
+        border-radius: 10px;
+    }
+    
+    .reviews-list::-webkit-scrollbar-thumb:hover {
+        background: rgba(154, 195, 85, 0.8);
+    }
+    
+    /* Firefox */
+    @supports (-moz-appearance: none) {
+        .reviews-list { 
+            scrollbar-width: thin; 
+            scrollbar-color: rgba(154, 195, 85, 0.6) rgba(0,0,0,0.05); 
+        }
+    }
+
+    .container.why-choose-us-container {
+        border-radius: 30px;
+        overflow: hidden;
+        /* Исправляем обрезание background сверху: */
+        background-position: top center; /* всегда показываем верх фона */
+        background-size: 100% 100%; /* растягиваем фон по всей высоте и ширине контейнера */
+        /* Если скругления всё равно не видно, можно добавить паддинг сверху */
+        padding-top: 40px;
+        background-color: #F7F7F9;
+    }
+}
+
+/* Планшеты большие (768-1024px) */
+@media (min-width: 768px) and (max-width: 1280px) {
     .reviews-section {
         padding: 60px 20px;
     }
@@ -1461,32 +2045,78 @@ h2 {
     }
 
     .reviews-content {
-        overflow: hidden;
+        overflow: visible !important;
         align-items: flex-start;
     }
 
     .reviews-list {
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-      }
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 20px !important;
+        overflow-x: auto !important;
+        scroll-behavior: smooth !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 10px 0 20px 0 !important;
+    }
 
-      
+    .review-card {
+        flex: 0 0 360px !important;
+        min-width: 360px !important;
+        max-width: 360px !important;
+        height: auto;
+        min-height: 420px;
+        scroll-snap-align: start;
+    }
 
+    .review-author-name {
+        font-size: 24px;
+    }
+
+    .review-author-position {
+        font-size: 13px;
+    }
+
+    .review-text {
+        font-size: 16px;
+        line-height: 140%;
+    }
+
+    .review-read-more-btn {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    .review-avatar-img {
+        width: 80px;
+        height: 80px;
+    }
 
     .reviews-list::-webkit-scrollbar {
-        height: 8px;
+        height: 10px !important;
     }
+    
     .reviews-list::-webkit-scrollbar-track {
-        background: transparent;
+        background: rgba(0,0,0,0.05) !important;
+        border-radius: 10px !important;
     }
+    
     .reviews-list::-webkit-scrollbar-thumb {
-        background: rgba(0,0,0,0.15);
-        border-radius: 10px;
+        background: rgba(154, 195, 85, 0.6) !important;
+        border-radius: 10px !important;
     }
+    
+    .reviews-list::-webkit-scrollbar-thumb:hover {
+        background: rgba(154, 195, 85, 0.8) !important;
+    }
+    
+    /* Firefox */
     @supports (-moz-appearance: none) {
-        .reviews-list { scrollbar-width: thin; scrollbar-color: rgba(0,0,0,0.15) transparent; }
-      }
+        .reviews-list { 
+            scrollbar-width: thin !important; 
+            scrollbar-color: rgba(154, 195, 85, 0.6) rgba(0,0,0,0.05) !important; 
+        }
+    }
 
 
     .reviews-title {
@@ -1566,6 +2196,13 @@ h2 {
     font-weight: 500;
     color: white;
     cursor: pointer;
+    height: 60px; /* Фиксированная высота */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.2;
+    box-sizing: border-box;
 }
 
 .specialist-tab:hover{
@@ -1723,13 +2360,16 @@ h2 {
     font-size: 20px;
     color: white;
     cursor: pointer;
-
-    width: auto;
+    width: 340px;
     height: 64px;
 
 }
 
-@media (min-width: 768px) and (max-width: 1024px)  {
+.specialist-select-button:hover {
+    background-color: #BEF574;
+}
+
+@media (min-width: 768px) and (max-width: 1280px)  {
     .specialist-title {
         font-size: 34px;
     }
@@ -1760,11 +2400,18 @@ h2 {
 
       .specialist-tab {
         width: 100%;
+        height: 60px; /* Фиксированная высота */
         border: none;
         border-radius: 10px;
         cursor: pointer;
         box-sizing: border-box;
         font-size: 16px;
+        padding: 16px 12px; /* Фиксированный padding */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        line-height: 1.2;
       }
 
 
@@ -1888,18 +2535,29 @@ h2 {
     display: grid;
     grid-template-columns: 1fr 180px;
     background: #F1F2F5;
+    grid-template-rows: auto 1fr;
     border-radius: 20px;
     overflow: hidden;
-    width: 360px;
+    width: 100%;
     height: 440px;
-    box-shadow: 0 0 0 1px rgba(0,0,0,0.06) inset;
 }
 
 .blog-card-left {
-    padding: 24px 20px 20px 24px;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    grid-column: 1; /* Первая колонка */
+    grid-row: 1;    /* Первая строка */
+}
+
+.blog-card-center {
+    grid-column: 1 / span 2; /* Занимает обе колонки */
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    gap: 30px;
 }
 
 .blog-card-title {
@@ -1913,16 +2571,22 @@ h2 {
 }
 
 .blog-card-excerpt {
-    font-family: Montserrat;
-    font-weight: 400;
-    font-style: Regular;
     font-size: 18px;
     line-height: 100%;
-    letter-spacing: 0%;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     
     margin-top: 20px;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    display: -moz-box;
+    -moz-line-clamp: 3;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
 }
 
 .blog-card-button {
@@ -1938,12 +2602,8 @@ h2 {
 }
 
 .blog-card-media {
-    background: #8a8a8a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0 20px 0 20px;
-    height: 50%;
+    grid-column: 2; /* Вторая колонка */
+    grid-row: 1;    /* Первая строка */
 }
 
 .blog-card-media-icon {
@@ -1974,7 +2634,7 @@ h2 {
     outline: none;
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1280px) {
     .blog-section {
         padding: 60px 30px;
     }
@@ -1997,6 +2657,63 @@ h2 {
         scroll-snap-type: x mandatory;
     }
 
+    .blog-card-left {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        grid-column: 1; /* Первая колонка */
+        grid-row: 1;    /* Первая строка */
+    }
+
+    .blog-card-center {
+        grid-column: 1 / span 2; /* Занимает обе колонки */
+        grid-row: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        gap: 60px;
+    }
+
+    .blog-card-media {
+        grid-column: 2;
+        grid-row: 1;
+        
+        /* Выравниваем контейнер по правому краю ячейки */
+        justify-self: end;
+        
+        /* Если нужно выравнивание по вертикали, например, по центру */
+        align-self: center;
+        
+        /* Задаем максимальные размеры, если нужно */
+        max-width: 180px; /* ширина колонки */
+        max-height: 100%;
+    }
+    
+    .blog-card-media img {
+        /* Сохраняем пропорции изображения */
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+    }
+
+    .blog-card-media img{
+        height: 200px;
+    }
+
+    .blog-card {
+        display: grid;
+        grid-template-columns: 1fr 220px;
+        background: #F1F2F5;
+        grid-template-rows: auto 1fr;
+        border-radius: 20px;
+        overflow: hidden;
+        width: 100%;
+        height: 440px;
+    }
+
 
     .container.blog-container {
         padding: 0;
@@ -2008,11 +2725,6 @@ h2 {
 
     .blog-subtitle {
         font-size: 18px;
-    }
-
-    .blog-content {
-        justify-content: start;
-        align-items: start;
     }
 
     .blog-btn-block {
@@ -2061,60 +2773,65 @@ h2 {
 .faq-topics {
     display: flex;
     justify-content: center;
+    align-items: flex-end; /* Выравниваем кнопки по нижнему краю */
     width: 100%;
     gap: 20px;
 }
+
 .container.faq-container {
     display: flex;
     flex-direction: column;
     gap: 100px;
 }
 
-.faq-top-background {
-    height: 120px;
-    width: 100vw;
-    background-color: #D9D9D9;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-}
-
-/* Avoid horizontal scroll from full-bleed bands */
-.faq-top,
-.faq-top-background {
-    box-sizing: border-box;
-}
-
 .faq-topic {
-    border: none;
-    width: 500px;
-    height: 250px; /* Увеличена высота, чтобы текст и иконка лучше помещались */
     border-radius: 16px;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    gap: 60px;
-    align-items: center; /* Заменено place-items на align-items для лучшего центрирования */
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 200px; /* Фиксированная высота для равномерного выравнивания */
+    gap: 15px;
     cursor: pointer;
     transition: transform .2s ease, box-shadow .2s ease;
-    background-color: #ffffff; /* Белый фон для неактивного состояния */
-    padding: 20px; /* Добавлен отступ, чтобы содержимое не прижималось к краям */
-    box-sizing: border-box; /* Учёт отступов в размерах */
+    background-color: white;
+    padding: 50px;
+    position: relative; /* Для позиционирования псевдоэлемента треугольника */
+    border: none; /* Убираем стандартные границы кнопки */
+    box-sizing: border-box; /* Учитываем padding в высоте */
+}
+
+.faq-topic.active::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; /* Расстояние от низа кнопки до вершины треугольника */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #ffffff; /* Цвет треугольника совпадает с фоном faq-top */
+    z-index: 1; /* Чтобы треугольник был поверх других элементов */
 }
 
 .faq-topic:hover {
     transform: translateY(-2px);
 }
 
-.faq-topic.active { 
-    background-image: url('../images/reviewButton.png'); /* Путь к изображению обводки */
-    background-size: 100% 100%; /* Растягивает изображение на всю кнопку, чтобы адаптировать под размеры */
-    background-repeat: no-repeat; /* Предотвращает повторение */
-    background-position: center; /* Центрирует обводку */
-    background-color: transparent; /* Убираем белый фон для активного состояния */
+/* Дополнительно: если нужно анимировать треугольник при смене активного состояния, добавьте transition для ::after */
+.faq-topic::after {
+    transition: opacity .2s ease;
 }
+
+.faq-topic:not(.active)::after {
+    opacity: 0;
+}
+
+
+
+/* Фоновые изображения для кнопок FAQ */
 
 .faq-topic-icon {
     margin-top: 14px;
@@ -2129,7 +2846,7 @@ h2 {
     
     font-weight: 500;
     font-style: Medium;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 100%;
     letter-spacing: 0%;
 }
@@ -2137,6 +2854,11 @@ h2 {
 .faq-accordion {
     margin-top: 40px;
     margin-bottom: 40px;
+    display: grid;
+    gap: 16px;
+}
+.faq-accordion.faq-specialists {
+
     display: grid;
     gap: 16px;
 }
@@ -2178,7 +2900,7 @@ h2 {
 
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1280px) {
     .faq-section {
         padding: 60px 30px;
     }
@@ -2187,6 +2909,8 @@ h2 {
        padding-left: 30px;
        padding-right: 30px;
     }
+
+    
 
 }
 
@@ -2450,29 +3174,33 @@ h2 {
 .services-footnote {
     display: block;
     font-weight: 600;
+    white-space: normal;
 }
 
+
 .services-btn {
-    display: inline-block;
     width: 240px;
     height: 50px;
-    margin-top: 18px;
+    margin-bottom: 40px;
     background: #9AC355;
     color: #fffdfd;
     border: none;
     border-radius: 10px;
-    padding: 10px 16px;
     font-size: 16px;
     cursor: pointer;
-    font-weight: 100; /* lighter */
+    font-weight: 300; 
+    margin-top: 20px;
 }
 
 .services-btn:hover {
     background: #BEF574;
 }
 
+.services-btn-wrapper {
+    display: none;
+}
 
-@media (min-width: 768px) and (max-width: 1024px){
+@media (min-width: 768px) and (max-width: 1280px){
 
     .services{
         padding: 40px 30px;
@@ -2514,15 +3242,52 @@ h2 {
         gap: 20px;
     }
 
+    .services-btn  {
+        display: none;
+    }
+
+    .services-btnTablet {   
+        width: 340px;
+        height: 64px;
+        margin-bottom: 40px;
+        background: #9AC355;
+        color: #fffdfd;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: 300; 
+        margin-top: 20px;
+    }
+
+
+    .services-btn-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
 
     .services-row--psychologists .services-image {
         order: -1;
     }
 
+    .services-footnote br {
+        display: none;
+    }
+
+    .services-btnTablet:hover {
+        background: #BEF574;
+    }
+
+
+
 }
 
 @media (max-width: 767px) {
 
+    .header {
+        padding: 1rem 0;
+    }
 
     /* Header and Hero компоненты */
     .header-left {
@@ -2533,7 +3298,10 @@ h2 {
         position: relative;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
+        padding: 0 15px;
+        width: 100%;
+
     }
   
     /* ЛОГО по центру */
@@ -2542,43 +3310,53 @@ h2 {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .logo-desktop {
+        display: none;
+    }
+
+    .logo-tablet-mobile {
+        display: block;
     }
   
     /* бургер слева */
     .mobile-menu-toggle {
-      display: inline-flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 4px;
-      width: 32px;
-      height: 32px;
-      background: transparent;
-      border: 0;
-      cursor: pointer;
+        display: flex !important; /* Добавлено !important для приоритета */
+        flex-direction: column;
+        justify-content: center;
+        gap: 4px;
+        width: 32px;
+        height: 32px;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        position: relative;
+        z-index: 1001;
     }
+
 
     .mobile-nav__panel {
         display: flex;
         flex-direction: column;
     }
 
-    .mobile-menu-toggle span {
-      display: block;
-      height: 2px;
-      background: #9AC355;
-      border-radius: 2px;
-    }
 
     .mobile-panel-header {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        padding: 20px;
     }
 
     .mobile-nav__socials {
         margin-bottom: 30px;
         gap: 5px;
+        padding: 0 20px;
+        justify-content: flex-start;
     }
   
     /* справа только «Войти» */
@@ -2588,6 +3366,8 @@ h2 {
       justify-content: space-between;
       gap: 12px;
     }
+
+    
     .login-btn {
       background: #9AC355;
       color: #fff;
@@ -2641,7 +3421,7 @@ h2 {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: start;
+        align-items: center;
         width: auto;
     }
   
@@ -2653,6 +3433,16 @@ h2 {
         border-radius: 0 10px 10px 10px;
         max-width: 580px;
     }
+
+    .tabs-panel {
+        min-width: 300px;
+        box-sizing: border-box;
+        /* Можно добавить max-height если нужно ограничить */
+        max-height: 260px;
+        transition: min-height 0.2s;
+        /* Если нужно, можно добавить overflow-y: auto; */
+    }
+
 
     .hero-title {
         font-weight: 600;
@@ -2666,11 +3456,11 @@ h2 {
     }
 
     .tabs-title {
-        font-size: 16px;
+        font-size: 13px;
     }
 
     .tabs-sub {
-        font-size: 14px;
+        font-size: 10px;
     }
 
     .eyebrow {
@@ -2683,15 +3473,17 @@ h2 {
     /* Заголовок табов/строка кнопок — центрируем их содержимое */
     .tabs-header {
         display: flex;
-        gap: 010px;
+        gap: 15px;
         padding: 0;
+        width: 95%;
     }
   
     /* немного уменьшить размер и паддинги кнопок на планшете */
     .tab-btn {
       padding: 0.6rem 0.9rem;
-      font-size: 17px;
+      font-size: 15px;
     }
+
 
     .tabs-btn-block {
         display: flex;
@@ -2701,6 +3493,7 @@ h2 {
     .hero-tabs .tabs-cta.btn {
       margin: 1rem auto 0;
       font-size: 16px;
+      white-space: nowrap; /* Запрещаем перенос текста на мобильных */
     }
   
     /* Убедимся, что заголовок геро и eyebrow выровнены по центру */
@@ -2711,6 +3504,8 @@ h2 {
       text-align: center;
     }
 
+    /* Фиксируем размер панели табов, чтобы не прыгала при смене контента */
+
 
 
 
@@ -2718,26 +3513,30 @@ h2 {
 
     .login-modal,
     .registration-modal {
-        display: none; /* скрываем по умолчанию */
-        position: fixed; /* поверх всего */
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        justify-content: center; /* центрируем содержимое по горизонтали */
-        align-items: center;     /* центрируем по вертикали */
-        z-index: 1000;           /* чтобы были поверх всего остального */
+        display: none;
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+    
+    /* Когда модалка открыта на мобильных */
+    .login-modal[style*="display: block"],
+    .registration-modal[style*="display: block"] {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
     }
 
     .login-modal-content,
     .registration-modal .login-modal-content {
-        width: 100%;
-        max-width: 340px; /* максимальная ширина окна */
-        background: #fff;
-        border-radius: 16px;
-        padding: 20px;
+        width: 90%;
+        max-width: 340px;
+        background: var(--color-bg);
+        border-radius: var(--radius-md);
+        padding: var(--spacing-md);
         box-sizing: border-box;
-        position: relative;
+        margin: 0;
     }
 
     /* Заголовок */
@@ -2760,6 +3559,10 @@ h2 {
     .login-close svg {
         width: 20px;
         height: 20px;
+    }
+
+    .login-form {
+        gap: 0px;
     }
 
     /* Поля формы */
@@ -2816,6 +3619,10 @@ h2 {
         color: rgb(0, 0, 0, 0.5);
     }
 
+    .forget-email-text:hover {
+        color: var(--color-text);
+    }
+
 
 
 
@@ -2824,28 +3631,73 @@ h2 {
     /* Почему стоит выбрать нас блок */
     .why-choose-us {
         padding: 30px 16px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
+    .container.why-choose-us-container {
+        border-radius: 24px;
+        overflow: hidden;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding: 24px 16px;
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        min-height: auto;
+        background-color: #F7F7F9;
+    }
 
     .why-choose-us-title {
         font-weight: 600;
         font-size: 20px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-
-    .why-choose-us-text-strong {
-        font-size: 14px;
-    }
-
-
-    .why-choose-us-text {
-        font-size: 14px;
+        margin: 0 0 20px 0;
+        text-align: center;
+        padding: 0;
+        line-height: 120%;
+        word-break: break-word;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .why-choose-us-features {
         display: flex;
         flex-direction: column;
+        gap: 20px;
+        justify-items: center;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .why-choose-us-feature {
+        max-width: 100%;
+        width: 100%;
+        text-align: center;
+        padding: 0 8px;
+        word-break: break-word;
+        box-sizing: border-box;
+    }
+
+    .why-choose-us-text {
+        font-size: 15px;
+        line-height: 140%;
+        text-align: center;
+        word-break: break-word;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .why-choose-us-text-strong {
+        font-size: 16px;
+        line-height: 130%;
+        text-align: center;
+        font-weight: 600;
+        word-break: break-word;
+        width: 100%;
+        box-sizing: border-box;
     }
 
 
@@ -2914,9 +3766,31 @@ h2 {
         line-height: 100%;
     }
 
-    .services-btn {
-        font-weight: 500;
+    .services-btn  {
+        display: none;
     }
+
+    .services-btnTablet {   
+        width: 311px;
+        height: 64px;
+        margin-bottom: 40px;
+        background: #9AC355;
+        color: #fffdfd;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: 300; 
+        margin-top: 20px;
+    }
+
+
+    .services-btn-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
 
 
     
@@ -2929,6 +3803,7 @@ h2 {
             min-height: 500px;
             border-radius: 16px;
         }
+
     
         .promo-title,
         .promo-title.discount {
@@ -2967,8 +3842,8 @@ h2 {
     
         .promo-select-btn {
             width: 100%;
-            max-width: 280px;
-            height: 56px;
+            max-width: 311px;
+            height: 64px;
             font-size: 20px;
             margin-top: 120px; /* Добавляем margin-top для отделения от описания */
         }
@@ -3001,25 +3876,30 @@ h2 {
 
         .choose-toggle {
             padding: 0px;
-            width: 60%;
+            width: 100%; /* На мобильных кнопки занимают всю ширину */
+            max-width: 100%;
+            
+        }
+        .choose-select-btn {
+            width: 311px;
         }
 
         .choose-toggle-btn {
             width: 100%;
             font-weight: 500;
-            font-size: 14px;
+            font-size: 12px; /* Уменьшаем размер шрифта для лучшего размещения */
             cursor: pointer;
             transition: color .2s ease, background .2s ease, opacity .2s ease;
-            /* Убираем nowrap и добавляем свойства для переноса */
-            white-space: normal; /* Разрешаем перенос */
-            word-wrap: break-word; /* Перенос длинных слов */
-            overflow-wrap: break-word; /* Современная альтернатива word-wrap */
-            text-align: center; /* Выравнивание по центру (или left/right по вашему выбору) */
-            padding: 12px 10px; /* Добавляем отступы для лучшего внешнего вида */
+            /* Возвращаем nowrap для мобильных устройств */
+            white-space: nowrap; /* Запрещаем перенос текста */
+            text-align: center; /* Выравнивание по центру */
+            padding: 12px 6px; /* Еще больше уменьшаем горизонтальные отступы */
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 60px; /* Минимальная высота для удобства касания */
+            min-height: 50px; /* Уменьшаем минимальную высоту */
+            overflow: hidden; /* Скрываем переполнение текста */
+            text-overflow: ellipsis; /* Добавляем многоточие при переполнении */
         }
 
         .choose-card-img {
@@ -3041,6 +3921,10 @@ h2 {
             margin-bottom: 50px;
         }
 
+        .reviews-choose-psychologist-btn {
+            width: 311px;
+        }
+
         .reviews-navigation {
             display: none;
         }
@@ -3056,6 +3940,7 @@ h2 {
             width: 100%;
         }
 
+  
         
         .reviews-slider {
             position: relative;
@@ -3068,31 +3953,35 @@ h2 {
             overflow-x: auto;
             scroll-behavior: smooth;
             scroll-snap-type: x mandatory;
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE and Edge */
-            -webkit-overflow-scrolling: touch; /* iOS smooth scroll */
-            gap: 20px; /* Расстояние между карточками */
-            padding: 10px 0; /* Небольшие отступы сверху и снизу */
-
-
-            mask: linear-gradient(
-                90deg,
-                transparent 0%,
-                white 20px,
-                white calc(100% - 40px),
-                transparent 100%
-            );
-            -webkit-mask: linear-gradient(
-                90deg,
-                transparent 0%,
-                white 0px,
-                white calc(100% - 30px),
-                transparent 100%
-            );
+            -webkit-overflow-scrolling: touch;
+            gap: 20px;
+            padding: 10px 0 20px 0;
         }
         
         .reviews-list::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
+            height: 6px;
+        }
+        
+        .reviews-list::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+            border-radius: 10px;
+        }
+        
+        .reviews-list::-webkit-scrollbar-thumb {
+            background: rgba(154, 195, 85, 0.6);
+            border-radius: 10px;
+        }
+        
+        .reviews-list::-webkit-scrollbar-thumb:hover {
+            background: rgba(154, 195, 85, 0.8);
+        }
+        
+        /* Firefox */
+        @supports (-moz-appearance: none) {
+            .reviews-list { 
+                scrollbar-width: thin; 
+                scrollbar-color: rgba(154, 195, 85, 0.6) rgba(0,0,0,0.05); 
+            }
         }
         
         .review-card {
@@ -3129,6 +4018,10 @@ h2 {
             padding: 30px 20px;
         }
 
+        .container.specialists-container {
+            padding: 0px;
+        }
+
         .specialist-title {
             font-weight: 600;
             font-size: 20px;
@@ -3145,6 +4038,9 @@ h2 {
             margin-bottom: 40px;
             width: 100%;
         }
+        .specialist-select-button {
+            width: 311px;
+        }
         
         .specialist-tab {
             font-size: 14px;
@@ -3152,6 +4048,12 @@ h2 {
             flex: 1;
             min-width: calc(50% - 5px); /* 2 колонки с учетом gap */
             box-sizing: border-box;
+            height: 50px; /* Фиксированная высота для мобильных */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            line-height: 1.2;
         }
           
           /* bottom-row занимает всю ширину grid и центрирует свои дети */
@@ -3162,15 +4064,16 @@ h2 {
             gap: 8px;                 /* расстояние между D и E */
         }
 
-        .specialist-select-button:hover {
-            background-color: #BEF574;
-        }
-
         .specialist-slider {
             display: flex;
             align-items: center;
-            justify-content: space-between; /* кнопки по краям */
+            justify-content: center; /* кнопки по краям */
             gap: 16px;
+        }
+
+        .heart {
+            right: 70px;
+            top: 20px;
         }
     
           .specialist-cards {
@@ -3202,13 +4105,17 @@ h2 {
 
 
         .blog-section {
-            padding: 30px 20px;
+            padding: 30px 0px;
         }
 
         .blog-slider {
             position: relative;
             overflow: hidden;
             width: 100%;
+        }
+
+        .blog-more-btn {
+            width: 311px;
         }
 
 
@@ -3234,13 +4141,45 @@ h2 {
             scroll-snap-align: start;
             scroll-snap-stop: always;
             box-sizing: border-box;
+
         }
         
         /* Убедитесь, что карточка занимает всю ширину */
         .blog-card {
+            display: grid;
+            grid-template-columns: 1fr 180px; /* Две колонки */
+            grid-template-rows: auto 1fr; /* Две строки */
+            gap: 10px; /* Расстояние между элементами */
             width: 100%;
-            box-sizing: border-box;
+            height: 440px;
         }
+        
+        .blog-card-left {
+            display: flex;
+            justify-content: start;
+            grid-column: 1; /* Первая колонка */
+            grid-row: 1;    /* Первая строка */
+        }
+        
+        .blog-card-media {
+            grid-column: 2; /* Вторая колонка */
+            grid-row: 1;    /* Первая строка */
+        }
+        
+        .blog-card-center {
+            grid-column: 1 / span 2; /* Занимает обе колонки */
+            grid-row: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            gap: 10px;
+        }
+
+
+
+
+
 
         .blog-title {
             font-size: 20px;
@@ -3248,6 +4187,40 @@ h2 {
 
         .blog-subtitle {
             font-size: 14px;
+        }
+
+
+        .blog-card-title {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 100%;
+        }
+
+        .blog-card-excerpt {
+            font-size: 18px;
+            color: #666;
+            margin: 0 0 16px 0;
+            line-height: 1.4;
+            
+            /* Обрезка текста на 3 строки с многоточием */
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            
+            /* Для лучшей совместимости с современными браузерами */
+            display: -moz-box;
+            -moz-line-clamp: 3;
+            -moz-box-orient: vertical;
+            box-orient: vertical;
+            
+            /* Резервный вариант для браузеров, которые не поддерживают line-clamp */
+            max-height: calc(1.4em * 3); /* line-height × количество строк */
+        }
+
+        .blog-card-button {
+            text-align: start;
+            font-size: 18px;
         }
 
 
@@ -3259,7 +4232,7 @@ h2 {
         }
 
         .faq-title {
-            font-size: 24px;
+            font-size: 20px;
         }
 
 
@@ -3274,13 +4247,26 @@ h2 {
 
         .faq-topic-icon {
             width: 80px;
-            height: 8px;
+            height: 0px;
         }
 
         .faq-topic {
-            width: 500px;
-            height: auto;
+            width: 100%;
+            max-width: 500px;
+            height: 180px; /* Фиксированная высота для мобильных */
             padding: 40px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .faq-topic img {
+            width: 60px;
+            height: 60px;
+        }
+
+
+        .faq-answer-inner p {
+            font-size: 14px;
         }
 
 
@@ -3295,6 +4281,19 @@ h2 {
         .faq-top {
             height: 220px;
             margin-bottom: 40px;
+        }
+
+        .faq-topics {
+            gap: 10px;
+            padding: 0 10px;
+        }
+
+        .faq-question,
+        .faq-answer a,
+        .faq-topic-label,
+        .help-number
+        {
+            color: black !important;
         }
 
 
@@ -3336,6 +4335,163 @@ h2 {
             font-size: 16px;
         }
 
-
+        .help-number {
+            color: white !important;
+            -webkit-tap-highlight-color: transparent;
+        }
         
+        /* Для всех номеров телефонов в секции помощи */
+        .help-number-card a {
+            color: white !important;
+            text-decoration: none !important;
+        }
+        
+        /* Убираем синее подчеркивание у кнопок в FAQ */
+        .faq-question:focus,
+        .faq-question:active {
+            color: inherit !important;
+        }
+        
+        /* Дополнительная защита для Safari */
+        @supports (-webkit-touch-callout: none) {
+            .help-number,
+            .faq-question,
+            .review-read-more-btn {
+                -webkit-tap-highlight-color: transparent;
+                -webkit-user-select: none;
+                user-select: none;
+            }
+        
+        
+        }
+
+
+
+
+}
+
+@media (max-width: 570px) {
+    /* Адаптация кнопок для очень маленьких экранов */
+    .choose-toggle {
+        width: 100%; /* Кнопки занимают всю доступную ширину */
+        padding: 0;
+    }
+
+    .choose-toggle-btn {
+        font-size: 10px; /* Еще меньше размер шрифта */
+        padding: 10px 10px; /* Минимальные отступы */
+        min-height: 45px; /* Уменьшаем высоту */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 1; /* Кнопки равномерно распределяются */
+        max-width: 50%; /* Максимум 50% ширины для каждой кнопки */
+    }
+
+    .how-to-choose-content {
+        width: 100%;
+        padding: 0 10px; /* Добавляем отступы по бокам */
+    }
+}
+
+@media (max-width: 460px) {
+    /* FAQ topic buttons для экранов 460px и меньше */
+    .faq-topics {
+        gap: 8px;
+        padding: 0 5px;
+    }
+
+    .faq-topic {
+        width: 100%;
+        max-width: none;
+        height: 160px;
+        padding: 30px 20px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .faq-question {
+        font-size: 16px;
+    }
+
+    .faq-topic-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .faq-topic-label {
+        font-size: 14px;
+    }
+
+    .faq-topic img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .heart {
+        position: absolute;
+        top: 10px;
+        right: 45px;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 390px) {
+    .review-avatar-img {
+        width: 64px;
+        height: 64px;
+    }
+
+   .review-card-header {
+        gap: 10px;
+   }
+
+   .review-avatar-rating {
+    width: 12px;
+    height: 12px;
+   }
+
+   .faq-topic-icon {
+    width: 50px;
+    height: 50px;
+   }
+
+   .faq-topic.active {
+        border-radius: 20px;
+   }
+   .faq-question {
+        font-size: 13px;
+   }
+
+
+   .faq-answer-inner p{
+        font-size: 12px;
+    }
+
+    /* Дополнительная адаптация для экранов меньше 390px */
+    .choose-toggle-btn {
+        font-size: 10px; /* Еще меньше для очень маленьких экранов */
+        padding: 8px 2px; /* Минимальные отступы */
+        min-height: 40px;
+    }
+
+    /* FAQ topic buttons для экранов меньше 390px */
+    .faq-topics {
+        gap: 5px;
+        padding: 0 2px;
+    }
+
+    .faq-topic {
+        height: 140px;
+        padding: 20px 15px;
+    }
+
+    .faq-topic-label {
+        font-size: 12px;
+    }
+
+
+
 }

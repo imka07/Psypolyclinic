@@ -1,11 +1,706 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Psypolyclinic - онлайн платформа для консультаций. Страница клиента.">
+    <meta name="keywords" content="психолог онлайн, психологическая помощь, консультация психолога, психотерапия">
+    <title>Для клиентов</title>
+    <link rel="stylesheet" href="css/client.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 </head>
 <body>
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-content">
+                <nav class="header-left" aria-label="Основная навигация">
+                    <a href="client.html" class="nav-link">Выбор психолога</a>
+                    <a href="staff.html" class="nav-link">Психологам</a>
+                    <a href="#blog" class="nav-link">Блог</a>
+                    <a href="#groups" class="nav-link">Группы</a>       
+                    <div class="header-center logo-desktop">
+                        <div class="logo">
+                            <a href="index.html" class="logo-link" aria-label="Вернуться на главную страницу">
+                                <img src="images/logo.svg" alt="Логотип Psypolyclinic" width="48" height="48">
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#organizations" class="nav-link">Организации</a>
+                </nav>
+
+                <div class="header-center logo-tablet-mobile">
+                    <div class="logo">
+                        <a href="index.html" class="logo-link" aria-label="Вернуться на главную страницу">
+                            <img src="images/logo.svg" alt="Логотип Psypolyclinic" width="48" height="48">
+                        </a>
+                    </div>
+                </div>
+              
+                
+                <div class="header-right">
+                    <nav class="social-icons" aria-label="Социальные сети">
+                        <a href="#favorites" class="icon-link" aria-label="Избранное">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="#9AC355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:info@psypolyclinic.ru" class="icon-link" aria-label="Написать на почту">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="#9AC355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="22,6 12,13 2,6" stroke="#9AC355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="https://t.me/psypolyclinic" class="icon-link" aria-label="Telegram" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M9.78 18.65L10.06 14.42L17.74 7.5C18.08 7.19 17.67 7.04 17.22 7.31L7.74 13.3L3.64 12C2.76 11.75 2.75 11.14 3.84 10.7L19.81 4.54C20.54 4.21 21.24 4.72 20.96 5.84L18.24 18.65C18.05 19.56 17.5 19.78 16.74 19.36L12.6 16.3L10.61 18.23C10.38 18.46 10.19 18.65 9.78 18.65Z" fill="#9AC355"/>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/79000000000" class="icon-link" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" fill="#9AC355"/>
+                            </svg>
+                        </a>
+                        <a href="https://youtube.com/@psypolyclinic" class="icon-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M11.8906 9.66699L21.224 15.5003L11.8906 21.3337V9.66699Z" fill="#9AC355"/>
+                                <path d="M15 3.8335C29 3.8335 29 3.8335 29 15.5002C29 27.1668 29 27.1668 15 27.1668C1 27.1668 1 27.1668 1 15.5002C1 3.8335 1 3.8335 15 3.8335Z" stroke="#9AC355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </nav>
+                    <button class="mobile-menu-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileNav">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M29 12H1M29 6H1M29 18H1M29 24H1" stroke="#9AC355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                         </svg>
+                    </button>
+                    <button class="login-btn" onclick="showModal()" type="button">Войти</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav__backdrop" id="mobileBackdrop"></div>
+        <div class="mobile-nav__panel">
+
+            <div class="mobile-panel-header">
+                <img src="/images/logo.svg" alt="Лого" style="height:48px;">
+                <button class="mobile-nav__close" id="mobileClose" aria-label="Закрыть панель">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="30" fill="#9AC355"></circle>
+                        <path d="M35 40L24 29.5L35 19" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+            </div>
+      
+          <ul class="mobile-nav__list">
+            <li><a href="client.html">Выбор психолога</a></li>
+            <li><a href="staff.html">Психологам</a></li>
+            <li><a href="#">Блог</a></li>
+            <li><a href="#">Группы</a></li>
+            <li><a href="#">Организации</a></li>
+            <li><a href="#">Избранное</a></li>
+          </ul>
+      
+          <div class="mobile-nav__socials">
+            <a href="mailto:info@example.com" class="icon-link" aria-label="Почта">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="#9AC355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <polyline points="22,6 12,13 2,6" stroke="#9AC355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <a href="#" class="icon-link" aria-label="Телеграм">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.78 18.65L10.06 14.42L17.74 7.5C18.08 7.19 17.67 7.04 17.22 7.31L7.74 13.3L3.64 12C2.76 11.75 2.75 11.14 3.84 10.7L19.81 4.54C20.54 4.21 21.24 4.72 20.96 5.84L18.24 18.65C18.05 19.56 17.5 19.78 16.74 19.36L12.6 16.3L10.61 18.23C10.38 18.46 10.19 18.65 9.78 18.65Z" fill="#9AC355"/>
+                </svg>
+            </a>
+            <a href="#" class="icon-link" aria-label="WhatsApp">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" fill="#9AC355"/>
+                </svg>
+            </a>
+            <a href="#" class="icon-link" aria-label="YouTube">
+                <svg width="20" height="20" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.8906 9.66699L21.224 15.5003L11.8906 21.3337V9.66699Z" fill="#9AC355"/>
+                    <path d="M15 3.8335C29 3.8335 29 3.8335 29 15.5002C29 27.1668 29 27.1668 15 27.1668C1 27.1668 1 27.1668 1 15.5002C1 3.8335 1 3.8335 15 3.8335Z" stroke="#9AC355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <section class="hero">
+        <div class="container">
+
+            
+            <div id="loginModal" class="login-modal">
+                <div class="login-modal-content">
+                    <div class="login-top-header">
+                        <h2 class="login-title">Войти как клиент</h2>
+                        <a class="login-close" onclick="hideModal()">
+                            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M32 2L2 32M2 2L32 32" stroke="#9AC355" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <form class="login-form">
+                        <input type="email" placeholder="Эл.почта"><br>
+                        <input type="password" placeholder="Пароль"><br>
+                    </form>
+                    <div class="login-form-buttons">
+                        <button type="submit">Войти</button>
+                        <a class="forget-email-text">Не помню почту</a>
+                        <a class="registration-button" onclick="showRegistrationModal()">Зарегистрироваться</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="registrationModal" class="registration-modal">
+                <div class="login-modal-content">
+                    <div class="login-top-header">
+                        <h2 class="login-title">Регистрация</h2>
+                        <a class="login-close" onclick="hideRegistrationModal()">
+                            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M32 2L2 32M2 2L32 32" stroke="#9AC355" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <form class="login-form">
+                        <input type="text" placeholder="Логин"><br>
+                        <input type="email" placeholder="Эл.почта"><br>
+                        <input type="password" placeholder="Пароль"><br>
+                        <input type="password" placeholder="Повторите пароль"><br>
+                    </form>
+                    <div class="login-form-buttons">
+                        <button type="submit">Зарегистрироваться</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="hero-grid">
+                <div class="hero-left">
+                    <div class="hero-left-text"">
+                        <div>
+                            <span class="eyebrow">Сервис психотерапии</span>
+                            <h1 class="hero-title">
+                                Консультации
+                                <br> с психологом онлайн:
+                                <br />
+                                <span class="hero-title-secondary hero-title--desktop">обрети счастье</span>
+                            </h1>
+                        </div>
+                        <div class="hero-title-placeholder">
+                            <span class="hero-title-secondary hero-title--tablet">обрети счастье</span>
+                        </div>
+                    </div>
+                    <div class="main-tabs">
+                        <div class="tabs-header">
+                            <button class="tab-btn active" data-tab="client">Для себя</button>
+                            <button class="tab-btn" data-tab="couple">Для пары</button>
+                            <button class="tab-btn" data-tab="teenager">Для подростка</button>
+                        </div>
+                        <div class="hero-tabs">
+                            <div class="tabs-panel active" id="client">
+                                <div class="tabs-feature-wrapper">
+                                    <div class="tabs-feature">
+                                        <img src="images/Icons/coins.svg" alt="Иконка денег">
+                                        <div class="tabs-feature-content">
+                                            <h3 class="tabs-title">1 000 ₽</h3>
+                                            <p class="tabs-sub">за сессию</p>
+                                        </div>
+                                    </div>
+                                    <div class="tabs-feature">
+                                        <img src="images/Icons/timer.svg" alt="Иконка времени">
+                                        <div class="tabs-feature-content">
+                                            <h3 class="tabs-title">60 минут</h3>
+                                            <p class="tabs-sub">Сессия</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tabs-btn-block">
+                                    <button class="tabs-cta btn">Зарегистрироваться</button>
+                                </div>
+                            </div>
+                            <div class="tabs-panel" id="couple" hidden>
+                                <div class="tabs-feature-wrapper">
+                                    <div class="tabs-feature">
+                                        <img src="images/Icons/coins.svg" alt="Иконка денег">
+                                        <div class="tabs-feature-content">
+                                            <h3 class="tabs-title">800 ₽</h3>
+                                            <p class="tabs-sub">за сессию</p>
+                                        </div>
+                                    </div>
+                                    <div class="tabs-feature">
+                                        <img src="images/Icons/timer.svg" alt="Иконка времени">
+                                        <div class="tabs-feature-content">
+                                            <h3 class="tabs-title">60 минут</h3>
+                                            <p class="tabs-sub">Сессия</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tabs-btn-block">
+                                    <button class="tabs-cta btn">Зарегистрироваться</button>
+                                </div>
+                            </div>
+                            <div class="tabs-panel" id="teenager" hidden>
+                                <div class="tabs-feature-wrapper">
+                                    <div class="tabs-feature">
+                                        <img src="images/Icons/coins.svg" alt="Иконка денег">
+                                        <div class="tabs-feature-content">
+                                            <h3 class="tabs-title">500 ₽</h3>
+                                            <p class="tabs-sub">за сессию</p>
+                                        </div>
+                                    </div>
+                                    <div class="tabs-feature">
+                                        <img src="images/Icons/timer.svg" alt="Иконка времени">
+                                        <div class="tabs-feature-content">
+                                            <h3 class="tabs-title">60 минут</h3>
+                                            <p class="tabs-sub">Сессия</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tabs-btn-block">
+                                    <button class="tabs-cta btn">Зарегистрироваться</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-img-frame">
+                    <img id="heroImage" src="images/heroImg2.png" alt="Изображение сервиса" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="psychologists-helpYou-section">
+        <div class="psychologists-helpYou-container container">
+            <h2 class="psychologists-helpYou-title">Наши психологи помогут Вам</h2>
+            <div class="psychologists-helpYou-content">
+                <div class="psychologists-helpYou-content-item">
+                    <img src="images/OurPsycoHelpYouSection/img1.png" alt="Психолог">
+                    <p class="psychologists-helpYou-content-item-text">Слабость, нет энергии, ничего <br> не радует, жизнь кажется <br> пустой</p>
+                </div>
+                <div class="psychologists-helpYou-content-item">
+                    <img src="images/OurPsycoHelpYouSection/img2.png" alt="Психолог">
+                    <p class="psychologists-helpYou-content-item-text">Тревожные мысли, беспокойство, трудно успокоиться</p>
+                </div>
+                <div class="psychologists-helpYou-content-item">
+                    <img src="images/OurPsycoHelpYouSection/img3.png" alt="Психолог">
+                    <p class="psychologists-helpYou-content-item-text">Всё раздражает, сложно отвлечься, не могу расслабиться</p>
+                </div>
+                <div class="psychologists-helpYou-content-item">
+                    <img src="images/OurPsycoHelpYouSection/img4.png" alt="Психолог">
+                    <p class="psychologists-helpYou-content-item-text">Сомнения в себе, страх ошибиться, низкая самооценка</p>
+                </div>
+                <div class="psychologists-helpYou-content-item">
+                    <img src="images/OurPsycoHelpYouSection/img5.png" alt="Психолог">
+                    <p class="psychologists-helpYou-content-item-text">Наладить органичные отношения с близкими людьми</p>
+                </div>
+                <div class="psychologists-helpYou-content-item">
+                    <img src="images/OurPsycoHelpYouSection/img6.png" alt="Психолог">
+                    <p class="psychologists-helpYou-content-item-text">Хочу победить зависимость, но постоянно срываюсь</p>
+                </div>
+            </div>      
+            <button class="psychologists-helpYou-content-btn">Подобрать психолога</button>               
+        </div>
+        
+    </section>
+
+
+
+    <section class="our-services-section">
+        <div class="our-services-container container">
+            <h2 class="our-services-title">Наши услуги</h2>
+            <div class="our-services-content">
+                <div class="our-services-content-item">
+                    <img src="images/OurServices/img1.png" alt="Услуга">
+                </div>
+                <div class="our-services-content-item">
+                    <img src="images/OurServices/img2.png" alt="Услуга">
+                </div>
+                <div class="our-services-content-item">
+                    <img src="images/OurServices/img3.png" alt="Услуга">
+                </div>
+            </div>
+            <button class="our-services-content-btn">Посмотреть все</button>
+        </div>
+    </section>
+
+
+    <section class="promo">
+        <div class="container promo-container">
+            <span class="promo-title"><span class="promo-title discount">50% скидки </span>на первую консультацию</span>
+            <p class="promo-desc">
+                Вы можете получить скидку на первую <br> консультацию у некоторых психологов
+            </p>
+            
+            <div class="promo-deadline-wrapper">
+                <span class="promo-deadline-text">Акция действительна <br> до 21.05.2025</span>
+            </div>
+            <button class="promo-select-btn">Выбрать специалиста</button>
+        </div>
+     </section>
+
+
+     <section class="how-to-choose-section">
+        <div class="container how-to-choose">
+            <h2 class="how-to-choose-title">Как подобрать психолога?</h2>
+            <div class="how-to-choose-content">
+                <div class="choose-toggle" data-toggle-group>
+                    <button class="choose-toggle-btn active" type="button" aria-pressed="true" 
+                            data-image-desktop="/images/choosePsycoImg.png" 
+                            data-image-tablet="/images/choosePsycoTablet.png">Самостоятельный подбор</button>
+                    <button class="choose-toggle-btn" type="button" aria-pressed="false" 
+                            data-image-desktop="/images/chooseManager.png" 
+                            data-image-tablet="/images/chooseManagerTablet.png">Помощь менеджера</button>
+                </div>
+                <div class="choose-psychologist-card">
+                    <img class="choose-card-img" src="/images/choosePsycoImg.png" alt="Варианты выбора психолога">
+                </div>
+                <button class="choose-select-btn">Подобрать психолога</button>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="specialists-section">
+        <div class="container specialists-container">
+            <h1 class="specialist-title">Наши специалисты</h1>
+            <p class="specialist-subtitle">163 проверенных психолога работают <br> с актуальными темами</p>
+            <div class="specialist-tabs">
+                <button class="specialist-tab">Депрессия</button>
+                <button class="specialist-tab">Тревога</button>
+                <button class="specialist-tab">Выгорание</button>
+                <button class="specialist-tab">Отношения</button>
+                <button class="specialist-tab">Курение</button>
+                <button class="specialist-tab">Панические атаки</button>
+                
+                <div class="tabs-bottom-row">
+                    <button class="specialist-tab">Беременность, роды</button>
+                    <button class="specialist-tab">Потеря, горе</button>
+                </div>
+            </div>
+             <div class="specialist-slider">
+                <button class="specialist-nav-btn specialist-nav-btn-prev" aria-label="Предыдущий отзыв">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="30" fill="#FFFFFF"/>
+                        <path d="M35 40L24 29.5L35 19" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="specialist-cards">
+                    <div class="specialist-card">
+                        <div class="specialist-card-image">
+                            <img src="/images/Specialist.png" alt="Специалист психолог">
+                            <div class="heart">
+                                <svg width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M24.0723 2.94496C23.4614 2.32835 22.7361 1.83921 21.9378 1.50549C21.1396 1.17177 20.2839 1 19.4199 1C18.5558 1 17.7001 1.17177 16.9019 1.50549C16.1036 1.83921 15.3783 2.32835 14.7674 2.94496L13.4997 4.22404L12.2319 2.94496C10.998 1.70004 9.3245 1.00065 7.57951 1.00065C5.83452 1.00065 4.16099 1.70004 2.92709 2.94496C1.6932 4.18988 1 5.87836 1 7.63895C1 9.39954 1.6932 11.088 2.92709 12.3329L13.4997 23L24.0723 12.3329C24.6834 11.7166 25.1682 10.9849 25.499 10.1794C25.8298 9.37403 26 8.51076 26 7.63895C26 6.76714 25.8298 5.90387 25.499 5.09846C25.1682 4.29305 24.6834 3.56128 24.0723 2.94496Z" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>    
+                            </div>
+                        </div>
+                        <div class="specialist-card-name">
+                            <span>Анастасия Иванова</span>
+                            <br>
+                            <span class="specialist-discription">Семейный психолог</span>
+                        </div>
+                        
+                        <div class="specialist-card-description">
+                            <p>Молодой специалист от 2 000 Р</p>
+                            <strong>С кем работает:</strong>
+                            <ul>
+                                <li class="adult">Взрослый</li>
+                                <li class="teen">Подросток</li>
+                                <li class="family">Семья/пара</li>
+                            </ul>
+                        </div> 
+                    </div>
+                    <div class="specialist-card">
+                        <div class="specialist-card-image">
+                            <img src="/images/Specialist.png" alt="Специалист психолог">
+                            <div class="heart">
+                                <svg width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M24.0723 2.94496C23.4614 2.32835 22.7361 1.83921 21.9378 1.50549C21.1396 1.17177 20.2839 1 19.4199 1C18.5558 1 17.7001 1.17177 16.9019 1.50549C16.1036 1.83921 15.3783 2.32835 14.7674 2.94496L13.4997 4.22404L12.2319 2.94496C10.998 1.70004 9.3245 1.00065 7.57951 1.00065C5.83452 1.00065 4.16099 1.70004 2.92709 2.94496C1.6932 4.18988 1 5.87836 1 7.63895C1 9.39954 1.6932 11.088 2.92709 12.3329L13.4997 23L24.0723 12.3329C24.6834 11.7166 25.1682 10.9849 25.499 10.1794C25.8298 9.37403 26 8.51076 26 7.63895C26 6.76714 25.8298 5.90387 25.499 5.09846C25.1682 4.29305 24.6834 3.56128 24.0723 2.94496Z" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>    
+                            </div>
+                        </div>
+                        <div class="specialist-card-name">
+                            <span>Анастасия Иванова</span>
+                            <br>
+                            <span class="specialist-discription">Семейный психолог</span>
+                        </div>
+                        
+                        <div class="specialist-card-description">
+                            <p>Молодой специалист от 2 000 Р</p>
+                            <strong>С кем работает:</strong>
+                            <ul>
+                                <li class="adult">Взрослый</li>
+                                <li class="teen">Подросток</li>
+                                <li class="family">Семья/пара</li>
+                            </ul>
+                        </div> 
+                    </div>
+                    <div class="specialist-card">
+                        <div class="specialist-card-image">
+                            <img src="/images/Specialist.png" alt="Специалист психолог">
+                            <div class="heart">
+                                <svg width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M24.0723 2.94496C23.4614 2.32835 22.7361 1.83921 21.9378 1.50549C21.1396 1.17177 20.2839 1 19.4199 1C18.5558 1 17.7001 1.17177 16.9019 1.50549C16.1036 1.83921 15.3783 2.32835 14.7674 2.94496L13.4997 4.22404L12.2319 2.94496C10.998 1.70004 9.3245 1.00065 7.57951 1.00065C5.83452 1.00065 4.16099 1.70004 2.92709 2.94496C1.6932 4.18988 1 5.87836 1 7.63895C1 9.39954 1.6932 11.088 2.92709 12.3329L13.4997 23L24.0723 12.3329C24.6834 11.7166 25.1682 10.9849 25.499 10.1794C25.8298 9.37403 26 8.51076 26 7.63895C26 6.76714 25.8298 5.90387 25.499 5.09846C25.1682 4.29305 24.6834 3.56128 24.0723 2.94496Z" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>    
+                            </div>
+                        </div>
+                        <div class="specialist-card-name">
+                            <span>Анастасия Иванова</span>
+                            <br>
+                            <span class="specialist-discription">Семейный психолог</span>
+                        </div>
+                        
+                        <div class="specialist-card-description">
+                            <p>Молодой специалист от 2 000 Р</p>
+                            <strong>С кем работает:</strong>
+                            <ul>
+                                <li class="adult">Взрослый</li>
+                                <li class="teen">Подросток</li>
+                                <li class="family">Семья/пара</li>
+                            </ul>
+                        </div> 
+                    </div>
+                </div> 
+                <button class="specialist-nav-btn specialist-nav-btn-next" aria-label="Следующий отзыв">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="30" transform="matrix(-1 0 0 1 60 0)" fill="#FFFFFF"/>
+                        <path d="M25 40L36 29.5L25 19" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <button class="specialist-select-button">Подобрать психолога</button>
+        </div>
+    </section>
+
+
+    <section class="reviews-section">
+        <div class="container reviews-container">
+            <div class="reviews-header">
+                <div class="reviews-header-top">
+                    <h2 class="reviews-title">Отзывы от наших клиентов</h2>
+                    <div class="reviews-navigation">
+                        <button class="reviews-nav-btn reviews-nav-btn-prev" aria-label="Предыдущий отзыв">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="30" cy="30" r="30" fill="#9AC355"/>
+                                <path d="M35 40L24 29.5L35 19" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="reviews-nav-btn reviews-nav-btn-next" aria-label="Следующий отзыв">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="30" cy="30" r="30" transform="matrix(-1 0 0 1 60 0)" fill="#9AC355"/>
+                                <path d="M25 40L36 29.5L25 19" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="reviews-content">
+                    <div class="reviews-slider">
+                        <div class="reviews-list">
+                            <!-- // плашки с отзывами -->
+                            <div class="review-card">
+                                <div class="review-card-header">
+                                    <div class="review-avatar">
+                                        <img class="review-avatar-img" src="/images/avatarImg.png" alt="Аватар клиента">
+                                        <div class="review-rating-list">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                        </div>
+                                    </div>
+                                    <div class="review-author-info">
+                                        <span class="review-author-name">Елена</span>
+                                        <span class="review-author-position">Специалист по связям <br>
+                                            с общественностью</span>
+                                    </div>
+                                </div>
+                                <!-- Описание -->
+                                <p class="review-text">
+                                    Я хочу поделиться своим опытом прохождения
+                                    психологической терапии, который стал для меня
+                                    настоящим открытием. Мой терапевт создал очень 
+                                    комфортную и безопасную атмо
+                                </p>
+                                <button class="review-read-more-btn">Читать полностью</button>
+                            </div>
     
+                            <div class="review-card">
+                                <div class="review-card-header">
+                                    <div class="review-avatar">
+                                        <img class="review-avatar-img" src="/images/avatarImg.png" alt="Аватар клиента">
+                                        <div class="review-rating-list">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                        </div>
+                                    </div>
+                                    <div class="review-author-info">
+                                        <span class="review-author-name">Елена</span>
+                                        <span class="review-author-position">Специалист по связям <br>
+                                            с общественностью</span>
+                                    </div>
+                                </div>
+                                <!-- Описание -->
+                                <p class="review-text">
+                                    Я хочу поделиться своим опытом прохождения
+                                    психологической терапии, который стал для меня
+                                    настоящим открытием. Мой терапевт создал очень 
+                                    комфортную и безопасную атмо
+                                </p>
+                                <button class="review-read-more-btn">Читать полностью</button>
+                            </div>
+
+
+                            <div class="review-card">
+                                <div class="review-card-header">
+                                    <div class="review-avatar">
+                                        <img class="review-avatar-img" src="/images/avatarImg.png" alt="Аватар клиента">
+                                        <div class="review-rating-list">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                            <img class="review-avatar-rating" src="/images/star.svg" alt="Рейтинг психолога">
+                                        </div>
+                                    </div>
+                                    <div class="review-author-info">
+                                        <span class="review-author-name">Елена</span>
+                                        <span class="review-author-position">Специалист по связям <br>
+                                            с общественностью</span>
+                                    </div>
+                                </div>
+                                <!-- Описание -->
+                                <p class="review-text">
+                                    Я хочу поделиться своим опытом прохождения
+                                    психологической терапии, который стал для меня
+                                    настоящим открытием. Мой терапевт создал очень 
+                                    комфортную и безопасную атмо
+                                </p>
+                                <button class="review-read-more-btn">Читать полностью</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                    <div class="review-button-block">
+                        <button class="reviews-choose-psychologist-btn">Подобрать психолога</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
+
+
+
+     <section class="faq-section">
+        <div class="container faq-container">
+            <div class="faq-top">
+                <h2 class="faq-title">Ответы на частые вопросы</h2>
+            </div>
+            <div class="faq-accordion faq-clients" data-faq-accordion>
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Как понять, что мне нужна помощь психолога?</span>
+                        <span class="faq-chevron" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer" hidden>
+                        <div class="faq-answer-inner">
+                            <p>Потребность в поддержке может проявляться как длительное чувство тревоги, выгорания, нарушения сна или сложности в отношениях.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Как выбрать “своего” психолога?</span>
+                        <span class="faq-chevron" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer" hidden>
+                        <div class="faq-answer-inner">
+                            <p>Ориентируйтесь на запрос, опыт специалиста и ваше ощущение комфорта на первой встрече. Мы поможем подобрать подходящего.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item open">
+                    <button class="faq-question" type="button" aria-expanded="true">
+                        <span>Сколько времени обычно требуется на терапию и как часто нужно встречаться?</span>
+                        <span class="faq-chevron" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Длительность курса зависит от целей и индивидуальных особенностей. Часто встречи проходят 1–2 раза в неделю.</p>
+                            <p>Обсуждайте ожидания и прогресс с терапевтом, чтобы подобрать оптимальный график.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Как можно подготовиться к встрече с психологом?</span>
+                        <span class="faq-chevron" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer" hidden>
+                        <div class="faq-answer-inner">
+                            <p>Сформулируйте основные вопросы и темы, о которых хотите поговорить, и выберите спокойное место для онлайн-встречи.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="help-section">
+        <div class="container help-container">
+            <div class="help-top-head">
+                <h2 class="help-title">Экстренная помощь</h2>
+                <p class="help-text">
+                    <strong>Psypolyclinic</strong> — это не скорая психологическая помощь. <br>
+                    Если у Вас серьезные, угрожающие Вашей жизни проблемы, которые требуют немедленного решения - Вам лучше обратиться <br>
+                    в какую-нибудь из этих организаций
+                </p>
+            </div>
+
+            <div class="help-numbers-list">
+                <div class="help-number-card">
+                    <span class="help-number">+7 (495) 989-50-50</span>
+                    <p class="help-number-discription">Экстренная психологическая поддержка МЧС России</p>
+                </div>
+                <div class="help-number-card">
+                    <span class="help-number">+7 (495) 989-50-50</span>
+                    <p class="help-number-discription">Экстренная психологическая поддержка МЧС России</p>
+                </div>
+                <div class="help-number-card">
+                    <span class="help-number">+7 (495) 989-50-50</span>
+                    <p class="help-number-discription">Экстренная психологическая поддержка МЧС России</p>
+                </div>
+
+                <div class="bottom-row">
+                    <div class="help-number-card">
+                        <span class="help-number">+7 (495) 989-50-50</span>
+                        <p class="help-number-discription">Экстренная психологическая поддержка МЧС России</p>
+                    </div>
+                    <div class="help-number-card">
+                        <span class="help-number">+7 (495) 989-50-50</span>
+                        <p class="help-number-discription">Экстренная психологическая поддержка МЧС России</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
+
+
+    
+
+    <script src="js/client.js"></script>
 </body>
 </html>
