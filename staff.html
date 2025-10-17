@@ -1,16 +1,410 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Psypolyclinic - онлайн платформа для консультаций. Страница клиента.">
     <meta name="keywords" content="психолог онлайн, психологическая помощь, консультация психолога, психотерапия">
     <title>Психологам</title>
-    <link rel="stylesheet" href="css/client.css">
+    <link rel="stylesheet" href="css/staff.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 </head>
 <body>
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-content">
+                <nav class="header-left" aria-label="Основная навигация">
+                    <a href="client.html" class="nav-link">Выбор психолога</a>
+                    <a href="staff.html" class="nav-link">Психологам</a>
+                    <a href="#blog" class="nav-link">Блог</a>
+                    <a href="#groups" class="nav-link">Группы</a>       
+                    <div class="header-center logo-desktop">
+                        <div class="logo">
+                            <a href="index.html" class="logo-link" aria-label="Вернуться на главную страницу">
+                                <img src="images/logo.svg" alt="Логотип Psypolyclinic" width="48" height="48">
+                            </a>
+                        </div>
+                    </div>
+                    <a href="aboutUs.html" class="nav-link">Организации</a>
+                </nav>
+
+                <div class="header-center logo-tablet-mobile">
+                    <div class="logo">
+                        <a href="index.html" class="logo-link" aria-label="Вернуться на главную страницу">
+                            <img src="images/logo.svg" alt="Логотип Psypolyclinic" width="48" height="48">
+                        </a>
+                    </div>
+                </div>
+              
+                
+                <div class="header-right">
+                    <nav class="social-icons" aria-label="Социальные сети">
+                        <a href="#favorites" class="icon-link" aria-label="Избранное">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" stroke="#9AC355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:info@psypolyclinic.ru" class="icon-link" aria-label="Написать на почту">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="#9AC355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="22,6 12,13 2,6" stroke="#9AC355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="https://t.me/psypolyclinic" class="icon-link" aria-label="Telegram" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M9.78 18.65L10.06 14.42L17.74 7.5C18.08 7.19 17.67 7.04 17.22 7.31L7.74 13.3L3.64 12C2.76 11.75 2.75 11.14 3.84 10.7L19.81 4.54C20.54 4.21 21.24 4.72 20.96 5.84L18.24 18.65C18.05 19.56 17.5 19.78 16.74 19.36L12.6 16.3L10.61 18.23C10.38 18.46 10.19 18.65 9.78 18.65Z" fill="#9AC355"/>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/79000000000" class="icon-link" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" fill="#9AC355"/>
+                            </svg>
+                        </a>
+                        <a href="https://youtube.com/@psypolyclinic" class="icon-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M11.8906 9.66699L21.224 15.5003L11.8906 21.3337V9.66699Z" fill="#9AC355"/>
+                                <path d="M15 3.8335C29 3.8335 29 3.8335 29 15.5002C29 27.1668 29 27.1668 15 27.1668C1 27.1668 1 27.1668 1 15.5002C1 3.8335 1 3.8335 15 3.8335Z" stroke="#9AC355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </nav>
+                    <button class="mobile-menu-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileNav">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M29 12H1M29 6H1M29 18H1M29 24H1" stroke="#9AC355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                         </svg>
+                    </button>
+                    <button class="login-btn" onclick="showModal()" type="button">Войти</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav__backdrop" id="mobileBackdrop"></div>
+        <div class="mobile-nav__panel">
+
+            <div class="mobile-panel-header">
+                <img src="/images/logo.svg" alt="Лого" style="height:48px;">
+                <button class="mobile-nav__close" id="mobileClose" aria-label="Закрыть панель">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="30" fill="#9AC355"></circle>
+                        <path d="M35 40L24 29.5L35 19" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+            </div>
       
+          <ul class="mobile-nav__list">
+            <li><a href="client.html">Выбор психолога</a></li>
+            <li><a href="staff.html">Психологам</a></li>
+            <li><a href="#">Блог</a></li>
+            <li><a href="#">Группы</a></li>
+            <li><a href="aboutUs.html">Организации</a></li>
+            <li><a href="#">Избранное</a></li>
+          </ul>
+      
+          <div class="mobile-nav__socials">
+            <a href="mailto:info@example.com" class="icon-link" aria-label="Почта">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="#9AC355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <polyline points="22,6 12,13 2,6" stroke="#9AC355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <a href="#" class="icon-link" aria-label="Телеграм">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.78 18.65L10.06 14.42L17.74 7.5C18.08 7.19 17.67 7.04 17.22 7.31L7.74 13.3L3.64 12C2.76 11.75 2.75 11.14 3.84 10.7L19.81 4.54C20.54 4.21 21.24 4.72 20.96 5.84L18.24 18.65C18.05 19.56 17.5 19.78 16.74 19.36L12.6 16.3L10.61 18.23C10.38 18.46 10.19 18.65 9.78 18.65Z" fill="#9AC355"/>
+                </svg>
+            </a>
+            <a href="#" class="icon-link" aria-label="WhatsApp">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" fill="#9AC355"/>
+                </svg>
+            </a>
+            <a href="#" class="icon-link" aria-label="YouTube">
+                <svg width="20" height="20" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.8906 9.66699L21.224 15.5003L11.8906 21.3337V9.66699Z" fill="#9AC355"/>
+                    <path d="M15 3.8335C29 3.8335 29 3.8335 29 15.5002C29 27.1668 29 27.1668 15 27.1668C1 27.1668 1 27.1668 1 15.5002C1 3.8335 1 3.8335 15 3.8335Z" stroke="#9AC355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+
+
+
+    <main class="main">
+        <section class="hero">
+            <div class="container">
+
+                
+                <div id="loginModal" class="login-modal">
+                    <div class="login-modal-content">
+                        <div class="login-top-header">
+                            <h2 class="login-title">Войти как клиент</h2>
+                            <a class="login-close" onclick="hideModal()">
+                                <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M32 2L2 32M2 2L32 32" stroke="#9AC355" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <form class="login-form">
+                            <input type="email" placeholder="Эл.почта"><br>
+                            <input type="password" placeholder="Пароль"><br>
+                        </form>
+                        <div class="login-form-buttons">
+                            <button type="submit">Войти</button>
+                            <a class="forget-email-text">Не помню почту</a>
+                            <a class="registration-button" onclick="showRegistrationModal()">Зарегистрироваться</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="registrationModal" class="registration-modal">
+                    <div class="login-modal-content">
+                        <div class="login-top-header">
+                            <h2 class="login-title">Регистрация</h2>
+                            <a class="login-close" onclick="hideRegistrationModal()">
+                                <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M32 2L2 32M2 2L32 32" stroke="#9AC355" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <form class="login-form">
+                            <input type="text" placeholder="Логин"><br>
+                            <input type="email" placeholder="Эл.почта"><br>
+                            <input type="password" placeholder="Пароль"><br>
+                            <input type="password" placeholder="Повторите пароль"><br>
+                        </form>
+                        <div class="login-form-buttons">
+                            <button type="submit">Зарегистрироваться</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="hero-grid">
+                    <div class="hero-left-text">
+                        <div>
+                            <span class="eyebrow">Сервис психотерапии</span>
+                            <h1 class="hero-title animated-section">
+                                Обеспечиваем
+                                <br> психологов клиентами
+                                <br />
+                                <span class="hero-title-secondary hero-title--desktop">бесплатно</span>
+                            </h1>
+                        </div>
+                        <div class="hero-title-placeholder animated-section">
+                            <span class="hero-title-secondary hero-title--tablet">бесплатно</span>
+                        </div>
+                    </div>
+                    <div class="hero-img-frame">
+                        <img id="heroImage" src="images/forClients.svg" alt="Изображение сервиса" />
+                    </div>
+                    <button type="button" class="hero-btn">Зарегистрироваться</button>
+            </div>
+        </section>
+    </main>
+
+
+    <section class="searchClients">
+        <div class="container searchClients-container">
+            <h2 class="searchClients-title">Агрегатор для поиска клиентов</h2>
+            <div class="searchClients-content">
+                <div class="searchClients-item">
+                    <div>
+                        <img src="images/icons/disc.svg " alt="Изображение сервиса" />
+                        <h3 class="searchClients-item-title">0% комиссия сервиса</h3>
+                    </div>
+                    <span class="searchClients-item-text">Получайте 100% прибыли за свои услуги</span>
+                </div>
+                <div class="searchClients-item">
+                    <div>
+                        <img src="images/coins.svg " alt="Изображение сервиса" />
+                        <h3 class="searchClients-item-title">Цену назначаете Вы</h3>
+                    </div>
+                    <span class="searchClients-item-text">Зарабатывайте столько, сколько хотите</span>
+                </div>
+                <div class="searchClients-item">
+                    <div>
+                        <img src="images/icons/change.svg " alt="Изображение сервиса" />
+                        <h3 class="searchClients-item-title">Для онлайн и оффлайн консультаций</h3>
+                    </div>
+                    <span class="searchClients-item-text">Проводите консультации с клиентами онлайн или у себя в кабинете.</span>
+                </div>
+                <div class="searchClients-item">
+                    <div>
+                        <img src="images/icons/bag.svg " alt="Изображение сервиса" />
+                        <h3 class="searchClients-item-title">Идеальное решение для старта карьеры</h3>
+                    </div>
+                    <span class="searchClients-item-text">Принимаем заявки от студентов и начинающих специалистов</span>
+                </div>
+                <div class="searchClients-item">
+                    <div>
+                        <img src="images/icons/msg.svg" alt="Изображение сервиса" />
+                        <h3 class="searchClients-item-title">Общайтесь с клиентами без посредников</h3>
+                    </div>
+                    <span class="searchClients-item-text">Мы не выступаем третьим лицом в вашей работе с клиентом</span>
+                </div>
+                <div class="searchClients-item">
+                    <div>
+                        <img src="images/icons/inf.svg" alt="Изображение сервиса" />
+                        <h3 class="searchClients-item-title">Количество консультаций определяете Вы</h3>
+                    </div>
+                    <span class="searchClients-item-text">Мы не навязываем Вам пакетные продажи</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="benefits-section">
+        <div class="container benefits-container">
+            <h2 class="benefits-title">Как работает наш сервис</h2>
+            <img class="benefits-hints-image1" src="/images/servicesArrowRight.svg" alt="Подсказка 1">
+            <img class="benefits-hints-image2" src="/images/servicesArrowLeft.svg" alt="Подсказка 2">
+            <img class="benefits-hints-image3" src="/images/servicesArrowRight.svg" alt="Подсказка 3">
+            <img class="benefits-hints-image4" src="/images/servicesArrowLeft.svg" alt="Подсказка 4">
+            <img class="benefits-hints-image5" src="/images/servicesArrowRight.svg" alt="Подсказка 5">
+
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <span class="benefit-item-text">1</span>
+                    <p class="benefit-text">Вы <a href="">регистрируетесь</a> <br> на сайте</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-item-text">2</span>
+                    <p class="benefit-text">Нажимаете на кнопку <br> “Я психолог”</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-item-text">3</span> 
+                    <p class="benefit-text">Заполняете <br>
+                        анкету психолога</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-item-text">4</span> 
+                    <p class="benefit-text">Ваша анкета <br>
+                        проходит модерацию </p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-item-text">5</span> 
+                    <p class="benefit-text">Вы получаете на почту 
+                        подтверждение</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-item-text">6</span> 
+                    <p class="benefit-text">Ваш личный кабинет
+                        активирован</p>
+                </div>
+            </div>
+        </div>
+     </section>
+
+
+    <section class="accountSection"> 
+        <div class="container accountSection-container">
+
+            <div class="accountSection-header">
+                <h2 class="accountSection-title">Ваш личный кабинет</h2>
+                <div class="account-navigation">
+                    <button class="account-nav-btn account-nav-btn-prev" aria-label="Предыдущий блок">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle class="nav-circle" cx="30" cy="30" r="30" fill="#9AC355"/>
+                            <path class="account-arrow" d="M35 40L24 29.5L35 19" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="account-nav-btn account-nav-btn-next" aria-label="Следующий блок">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle class="nav-circle" cx="30" cy="30" r="30" transform="matrix(-1 0 0 1 60 0)" fill="#9AC355"/>
+                            <path class="account-arrow" d="M25 40L36 29.5L25 19" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <span class="accountSection-desc">Вы получаете личный кабинет, который <br> закроет весь базовый функционал</span>
+
+            <div class="accountSection-content" id="account-carousel">
+                <div class="accountSection-item"> 
+                  <img src="images/accountSection/img1.svg" alt="Изображение сервиса" />
+                  <h3 class="accountSection-item-title">Вы видите все свои брони</h3>
+                  <p class="accountSection-item-text">В личном кабинете у Вас будет свой календарь, в котором будут отмечены только Ваши сессии</p>
+                </div>
+                <div class="accountSection-item"> 
+                  <img src="images/accountSection/img2.svg" alt="Изображение сервиса" />
+                  <h3 class="accountSection-item-title">Удобная запись</h3>
+                  <p class="accountSection-item-text">В разделе “Запись” Вы будете видеть всех своих клиентов и необходимую информацию</p>
+                </div>
+                <div class="accountSection-item"> 
+                  <img src="images/accountSection/img3.svg" alt="Изображение сервиса" />
+                  <h3 class="accountSection-item-title">Настройка своих услуг</h3>
+                  <p class="accountSection-item-text">Вы сможете добавлять или удалять свои услуги, указывать стоимость и любую другую важную информацию</p>
+                </div>
+            </div>
+              
+
+            <div class="accountSection-btn-wrapper">
+                <button type="button" class="accountSection-btn">Зарегистрироваться</button>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="faq-section">
+        <div class="container faq-container">
+            <div class="faq-top">
+                <h2 class="faq-title">Ответы на частые вопросы</h2>
+            </div>
+            <div class="faq-accordion faq-clients" data-faq-accordion>
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Как понять, что мне нужна помощь психолога?</span>
+                        <span class="faq-chevron" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer" hidden>
+                        <div class="faq-answer-inner">
+                            <p>Потребность в поддержке может проявляться как длительное чувство тревоги, выгорания, нарушения сна или сложности в отношениях.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Как выбрать “своего” психолога?</span>
+                        <span class="faq-chevron" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer" hidden>
+                        <div class="faq-answer-inner">
+                            <p>Ориентируйтесь на запрос, опыт специалиста и ваше ощущение комфорта на первой встрече. Мы поможем подобрать подходящего.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item open">
+                    <button class="faq-question" type="button" aria-expanded="true">
+                        <span>Сколько времени обычно требуется на терапию и как часто нужно встречаться?</span>
+                        <span class="faq-chevron" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Длительность курса зависит от целей и индивидуальных особенностей. Часто встречи проходят 1–2 раза в неделю.</p>
+                            <p>Обсуждайте ожидания и прогресс с терапевтом, чтобы подобрать оптимальный график.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Как можно подготовиться к встрече с психологом?</span>
+                        <span class="faq-chevron" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer" hidden>
+                        <div class="faq-answer-inner">
+                            <p>Сформулируйте основные вопросы и темы, о которых хотите поговорить, и выберите спокойное место для онлайн-встречи.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/staff.js"></script>
     
 </body>
 </html>

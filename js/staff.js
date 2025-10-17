@@ -1,9 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    initTabSwitching();
-    initChooseStepButtons();
-    initChooseToggle();
     initFaq();
-    initScrollReveal();
 });
 
 
@@ -13,33 +9,61 @@ function showModal() {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Для всех сердечек
-    const heartButtons = document.querySelectorAll('.heart');
-    heartButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            this.classList.toggle('active');
-        });
-    });
-});
-
 
 function hideModal() {
     document.getElementById('loginModal').style.display = 'none';
 }
 
-// Close modals when clicking outside
+// Close modal when clicking outside
 window.onclick = function(event) {
-    const loginModal = document.getElementById('loginModal');
-    const registrationModal = document.getElementById('registrationModal');
-    
-    if (event.target == loginModal) {
-        loginModal.style.display = 'none';
-    }
-    if (event.target == registrationModal) {
-        registrationModal.style.display = 'none';
+    const modal = document.getElementById('loginModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sectionsData = [
+        {
+            title: 'Создан психологами<br> для <span class="hero-title-secondary hero-title--desktop">психологов</span>',
+            placeholder: 'психологов'
+
+        },
+        {
+            title: 'Обеспечиваем<br> психологов клиентами<br /><span class="hero-title-secondary hero-title--desktop">бесплатно</span>',
+            placeholder: 'бесплатно'
+            // Добавьте больше: , { title: 'Другой текст<br> с <br /><span class="...">словом</span>', placeholder: 'слово' }
+        }
+    ];
+    
+    const heroTitle = document.querySelector('.hero-title'); // h1
+    const heroPlaceholderSpan = document.querySelector('.hero-title-placeholder span'); // Span в placeholder
+    
+    let currentIndex = 0;
+    
+    function changeSection() {
+        // Fade out
+        heroTitle.classList.add('fade-out');
+        heroPlaceholderSpan.parentElement.classList.add('fade-out');
+        
+        setTimeout(function() {
+            // Меняем с сохранением структуры/классов
+            heroTitle.innerHTML = sectionsData[currentIndex].title; // Полный HTML с классами span
+            heroPlaceholderSpan.textContent = sectionsData[currentIndex].placeholder; // Только текст в span
+            
+            // Fade in (стили применятся сразу к новым элементам)
+            heroTitle.classList.remove('fade-out');
+            heroPlaceholderSpan.parentElement.classList.remove('fade-out');
+        }, 600); // 0.5s + буфер для плавности
+        
+        // Цикл
+        currentIndex = (currentIndex + 1) % sectionsData.length;
+    }
+    
+    // Запуск
+    setTimeout(changeSection, 3000);
+    setInterval(changeSection, 3000); // 3s интервал
+});
 
 
 // бургер
@@ -66,6 +90,13 @@ function showRegistrationModal() {
 
 function hideRegistrationModal() {
     document.getElementById('registrationModal').style.display = 'none';
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById('registrationModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
 }
 
 function initChooseStepButtons() {
@@ -119,6 +150,7 @@ function initChooseStepButtons() {
     });
 }
 
+// Updated initChooseToggle with mobile image support
 function initChooseToggle() {
     const group = document.querySelector('[data-toggle-group]');
     if (!group) return;
@@ -197,9 +229,90 @@ function initChooseToggle() {
     });
 }
 
+// Step buttons functionality (unchanged)
+function initChooseStepButtons() {
+    const buttons = document.querySelectorAll('.choose-step-btn');
+
+    if (!buttons.length) return;
+
+    function getGroupContainer(button) {
+        return (
+            button.closest('[data-choose-steps]') ||
+            button.closest('.choose-steps') ||
+            button.closest('.choose-step-buttons') ||
+            document
+        );
+    }
+
+    function deactivateGroup(container) {
+        const groupButtons = container.querySelectorAll('.choose-step-btn');
+        groupButtons.forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-current', 'false');
+        });
+    }
+
+    function activateButton(button) {
+        const container = getGroupContainer(button);
+        deactivateGroup(container);
+        button.classList.add('active');
+        button.setAttribute('aria-current', 'true');
+    }
+
+    buttons.forEach(button => {
+        if (button.classList.contains('active')) {
+            button.setAttribute('aria-current', 'true');
+        } else if (!button.hasAttribute('aria-current')) {
+            button.setAttribute('aria-current', 'false');
+        }
+
+        button.addEventListener('click', function() {
+            activateButton(this);
+        });
+
+        button.addEventListener('keydown', function(e) {
+            const isEnter = e.key === 'Enter' || e.keyCode === 13;
+            const isSpace = e.key === ' ' || e.key === 'Spacebar' || e.keyCode === 32;
+            if (isEnter || isSpace) {
+                e.preventDefault();
+                activateButton(this);
+            }
+        });
+    });
+}
+
+
 // FAQ: topics highlight and accordion behavior with smooth height animation
 function initFaq() {
     const topics = document.querySelectorAll('.faq-topic');
+    
+    // Initialize default state - show clients FAQ by default
+    function initializeDefaultState() {
+        // Hide all accordions first
+        document.querySelectorAll('.faq-accordion').forEach(acc => {
+            acc.style.display = 'none';
+            acc.setAttribute('hidden', '');
+        });
+        
+        // Show clients accordion by default
+        const clientsAccordion = document.querySelector('.faq-clients');
+        if (clientsAccordion) {
+            clientsAccordion.style.display = 'grid';
+            clientsAccordion.removeAttribute('hidden');
+        }
+        
+        // Set active state for clients topic
+        topics.forEach(topic => {
+            topic.classList.remove('active');
+            if (topic.dataset.topic === 'clients') {
+                topic.classList.add('active');
+            }
+        });
+    }
+    
+    // Initialize default state
+    initializeDefaultState();
+    
     topics.forEach(topic => {
         topic.addEventListener('click', () => {
             topics.forEach(t => t.classList.remove('active'));
@@ -209,6 +322,7 @@ function initFaq() {
             // Hide all faq-accordions
             document.querySelectorAll('.faq-accordion').forEach(acc => {
                 acc.style.display = 'none';
+                acc.setAttribute('hidden', '');
                 // Optionally close all items in the hidden accordion
                 acc.querySelectorAll('.faq-item').forEach(item => {
                     item.classList.remove('open');
@@ -225,6 +339,7 @@ function initFaq() {
             const targetAcc = document.querySelector(`.faq-${topicType}`);
             if (targetAcc) {
                 targetAcc.style.display = 'grid';
+                targetAcc.removeAttribute('hidden');
             }
         });
     });
@@ -439,136 +554,211 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-(function () {
-  const modal = document.getElementById('review-modal');
-  if (!modal) return;
 
-  const modalPanel = modal.querySelector('.review-modal-panel');
-  const backdrop = modal.querySelector('.review-modal-backdrop');
-  const closeBtns = modal.querySelectorAll('[data-modal-close]');
-  const avatarEl = modal.querySelector('.review-modal-avatar');
-  const ratingEl = modal.querySelector('.review-modal-rating');
-  const nameEl = modal.querySelector('.review-modal-name');
-  const positionEl = modal.querySelector('.review-modal-position');
-  const textEl = modal.querySelector('.review-modal-text');
 
-  // Функция открытия модалки с данными
-  function openModalFromCard(cardEl) {
-    if (!cardEl) return;
-    // извлечение данных из карточки
-    const avatar = cardEl.querySelector('.review-avatar-img')?.getAttribute('src') || '';
-    const name = cardEl.querySelector('.review-author-name')?.textContent || '';
-    // сохраняем innerHTML для позиции, чтобы сохранять <br>
-    const positionHTML = cardEl.querySelector('.review-author-position')?.innerHTML || '';
-    // рейтинг: клонируем все элементы рейтинга (если есть)
-    const ratingNodes = cardEl.querySelectorAll('.review-avatar-rating');
+(function(){
+  const container = document.getElementById('account-carousel');
+  if (!container) return;
 
-    // полный текст (берём текстContent или innerHTML - как нужно)
-    const fullText = cardEl.querySelector('.review-text')?.textContent || '';
+  // Два набора по 3 (как обсуждали) — объект: src, title, text
+  const sets = [
+    [
+      { src: 'images/accountSection/img1.svg', title: 'Вы видите все свои брони', text: 'В личном кабинете у Вас будет свой календарь, в котором будут отмечены только Ваши сессии' },
+      { src: 'images/accountSection/img2.svg', title: 'Удобная запись', text: 'В разделе “Запись” Вы будете видеть всех своих клиентов и необходимую информацию' },
+      { src: 'images/accountSection/img3.svg', title: 'Настройка своих услуг', text: 'Вы сможете добавлять или удалять свои услуги, указывать стоимость и любую другую важную информацию' }
+    ],
+    [
+      { src: 'images/accountSection/img4.svg', title: 'Все Ваши брони в удобной таблице' },
+      { src: 'images/accountSection/img5.svg', title: 'В любой момент Вы можете отредактировать ваши услуги' },
+      { src: 'images/accountSection/img6.svg', title: 'В календаре Вы сможете отслеживать свои консультации' }
+    ]
+  ];
 
-    // заполняем модалку
-    avatarEl.setAttribute('src', avatar);
-    avatarEl.setAttribute('alt', name ? 'Аватар ' + name : 'Аватар');
+  // объединённый список всех 6 для mobile
+  const allItems = sets[0].concat(sets[1]);
 
-    // заполняем рейтинг (клонируем)
-    ratingEl.innerHTML = '';
-    if (ratingNodes && ratingNodes.length) {
-      ratingNodes.forEach(node => {
-        const clone = node.cloneNode(true);
-        clone.removeAttribute('class'); // опционально
-        ratingEl.appendChild(clone);
+  const btnPrev = document.querySelector('.account-nav-btn-prev');
+  const btnNext = document.querySelector('.account-nav-btn-next');
+
+  let mode = null; // 'desktop' | 'mobile'
+  let showingFirst = true; // состояние для desktop
+  let animLock = false;
+  const ANIM = 320;
+
+  // Preload
+  function preload(list) {
+    list.forEach(it => {
+      const i = new Image();
+      i.src = it.src;
+    });
+  }
+  preload(allItems);
+
+  // Рендер карточки HTML
+  function cardHTML(obj) {
+    return `
+      <div class="accountSection-item">
+        <img src="${obj.src}" alt="${escapeHtml(obj.title || '')}" />
+        <h3 class="accountSection-item-title">${escapeHtml(obj.title || '')}</h3>
+        <p class="accountSection-item-text">${escapeHtml(obj.text || '')}</p>
+      </div>
+    `.trim();
+  }
+
+  // Хелпер экранирования простого текста в HTML (защита от апстрим-данных)
+  function escapeHtml(str) {
+    return (str+'').replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; });
+  }
+
+  // Установить desktop — 3 карточки + nav
+  function renderDesktop() {
+    // наполняем контейнер 3 карточками из текущего набора
+    const current = showingFirst ? sets[0] : sets[1];
+    container.innerHTML = current.map(cardHTML).join('');
+    // обеспечить, что навигация видна (CSS уже это делает) и кнопки активны
+    btnPrev && (btnPrev.style.display = '');
+    btnNext && (btnNext.style.display = '');
+    // задаём стартовые классы
+    const items = container.querySelectorAll('.accountSection-item');
+    items.forEach(it => {
+      const img = it.querySelector('img');
+      const t = it.querySelector('.accountSection-item-title');
+      const p = it.querySelector('.accountSection-item-text');
+      img.classList.add('anim-in');
+      t.classList.add('anim-in');
+      p.classList.add('anim-in');
+    });
+    // повесим обработчики
+    attachDesktopHandlers();
+  }
+
+  // Установить mobile — вывести ВСЕ 6 карточек и скрыть nav
+  function renderMobile() {
+    container.innerHTML = allItems.map(cardHTML).join('');
+    // скрываем кнопки
+    btnPrev && (btnPrev.style.display = 'none');
+    btnNext && (btnNext.style.display = 'none');
+    // mobile: убедимся, что элементы имеют anim-in (необязательно)
+    const items = container.querySelectorAll('.accountSection-item');
+    items.forEach(it => {
+      const img = it.querySelector('img');
+      const t = it.querySelector('.accountSection-item-title');
+      const p = it.querySelector('.accountSection-item-text');
+      img.classList.add('anim-in');
+      t.classList.add('anim-in');
+      p.classList.add('anim-in');
+    });
+    detachDesktopHandlers();
+  }
+
+  // Переключение (анимация) — для desktop
+  function swapDesktop(direction) {
+    if (animLock) return;
+    animLock = true;
+    // get current items
+    const items = Array.from(container.querySelectorAll('.accountSection-item'));
+    const outClass = direction === 'next' ? 'anim-out-left' : 'anim-out-right';
+    const enterClass = direction === 'next' ? 'anim-enter-left' : 'anim-enter-right';
+
+    // применяем out
+    items.forEach(it => {
+      const img = it.querySelector('img');
+      const t = it.querySelector('.accountSection-item-title');
+      const p = it.querySelector('.accountSection-item-text');
+      img.classList.remove('anim-in','anim-enter-left','anim-enter-right','anim-out-left','anim-out-right');
+      t.classList.remove('anim-in','anim-enter-left','anim-enter-right','anim-out-left','anim-out-right');
+      p.classList.remove('anim-in','anim-enter-left','anim-enter-right','anim-out-left','anim-out-right');
+      img.classList.add(outClass);
+      t.classList.add(outClass);
+      p.classList.add(outClass);
+    });
+
+    // через ANIM задаём новый контент и play enter
+    setTimeout(() => {
+      showingFirst = !showingFirst;
+      const nextSet = showingFirst ? sets[0] : sets[1];
+      // заменяем src и тексты
+      items.forEach((it, idx) => {
+        const img = it.querySelector('img');
+        const t = it.querySelector('.accountSection-item-title');
+        const p = it.querySelector('.accountSection-item-text');
+
+        const obj = nextSet[idx] || {src:'',title:'',text:''};
+        img.src = obj.src;
+        t.textContent = obj.title;
+        p.textContent = obj.text;
+
+        // очистка out и установка enter
+        img.classList.remove('anim-out-left','anim-out-right');
+        t.classList.remove('anim-out-left','anim-out-right');
+        p.classList.remove('anim-out-left','anim-out-right');
+
+        img.classList.add(enterClass);
+        t.classList.add(enterClass);
+        p.classList.add(enterClass);
+
+        // форсируем рефлоу для корректного запуска transition
+        // eslint-disable-next-line no-unused-expressions
+        img.offsetWidth;
+
+        setTimeout(() => {
+          img.classList.remove(enterClass);
+          t.classList.remove(enterClass);
+          p.classList.remove(enterClass);
+          img.classList.add('anim-in');
+          t.classList.add('anim-in');
+          p.classList.add('anim-in');
+        }, 10);
       });
+
+      setTimeout(() => {
+        animLock = false;
+      }, ANIM + 20);
+    }, ANIM);
+  }
+
+  // привязка событий кнопок
+  function attachDesktopHandlers(){
+    if (btnNext) { btnNext.onclick = () => swapDesktop('next'); }
+    if (btnPrev) { btnPrev.onclick = () => swapDesktop('prev'); }
+  }
+  function detachDesktopHandlers(){
+    if (btnNext) { btnNext.onclick = null; }
+    if (btnPrev) { btnPrev.onclick = null; }
+  }
+
+  // Выбор режима и рендер
+  function decideAndRender() {
+    const w = window.innerWidth;
+    const nextMode = w >= 768 ? 'desktop' : 'mobile';
+    if (nextMode === mode) return;
+    mode = nextMode;
+    // сброс lock и handlers
+    animLock = false;
+    if (mode === 'mobile') {
+      renderMobile();
+    } else {
+      // в переходе на desktop лучше показать первый набор
+      showingFirst = true;
+      renderDesktop();
     }
-
-    nameEl.textContent = name;
-    positionEl.innerHTML = positionHTML;
-    textEl.textContent = fullText;
-
-    // показать modal
-    showModal();
   }
 
-  // открыть визуально
-  function showModal() {
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden', 'false');
-    // блокируем скролл фонового контента
-    document.body.classList.add('modal-open');
+  // initial
+  decideAndRender();
 
-    // запомнить последний фокус и перевести фокус в модалку
-    lastFocused = document.activeElement;
-    // ставим фокус на кнопку закрытия (или первый фокусируемый эл)
-    const focusElem = modal.querySelector('.review-modal-close') || modalPanel;
-    focusElem && focusElem.focus();
-
-    // включаем ловец клавиш
-    document.addEventListener('keydown', onKeyDown);
-  }
-
-  function hideModal() {
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('modal-open');
-    document.removeEventListener('keydown', onKeyDown);
-
-    // вернуть фокус на элемент, который открыл модалку
-    try {
-      lastFocused && lastFocused.focus();
-    } catch (e) {}
-  }
-
-  // закрытие когда клик по backdrop или по кресту (data-modal-close)
-  modal.addEventListener('click', function (e) {
-    if (e.target.hasAttribute('data-modal-close')) {
-      hideModal();
-    }
+  // ресайз с дебаунсом
+  let rezT;
+  window.addEventListener('resize', () => {
+    clearTimeout(rezT);
+    rezT = setTimeout(decideAndRender, 180);
   });
 
-  // локальный keydown: Esc и Tab trapping
-  let lastFocused = null;
-  function onKeyDown(e) {
-    if (e.key === 'Escape') {
-      e.preventDefault();
-      hideModal();
-      return;
-    }
-    // Focus trap: Tab / Shift+Tab
-    if (e.key === 'Tab') {
-      const focusable = modal.querySelectorAll('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])');
-      const focusableArr = Array.prototype.slice.call(focusable).filter(el => el.offsetParent !== null);
-      if (focusableArr.length === 0) return;
-      const first = focusableArr[0];
-      const last = focusableArr[focusableArr.length - 1];
-      if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      } else if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      }
-    }
-  }
-
-  // Делегируем клики по кнопкам "Читать полностью"
-  document.addEventListener('click', function (e) {
-    const btn = e.target.closest('.review-read-more-btn');
-    if (!btn) return;
-    // предотвратить двойное поведение, если у вас ранее стоял другой обработчик
-    e.preventDefault();
-    // найти ближайшую карточку
-    const card = btn.closest('.review-card');
-    if (!card) return;
-    openModalFromCard(card);
+  // поддержка клавиш (только в desktop)
+  window.addEventListener('keydown', (e) => {
+    if (mode !== 'desktop') return;
+    if (e.key === 'ArrowLeft') btnPrev && btnPrev.click();
+    if (e.key === 'ArrowRight') btnNext && btnNext.click();
   });
 
-  // также кнопки закрытия (если нужны дополнительные действия)
-  closeBtns.forEach(b => b.addEventListener('click', hideModal));
-
-  // Prevent scroll on touchmove behind modal (extra safety)
-  modal.addEventListener('touchmove', function (e) {
-    // allow scroll inside panel only
-    if (!modalPanel.contains(e.target)) {
-      e.preventDefault();
-    }
-  }, { passive: false });
 })();

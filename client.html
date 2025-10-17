@@ -14,7 +14,7 @@
         <div class="container">
             <div class="header-content">
                 <nav class="header-left" aria-label="Основная навигация">
-                    <a href="client.html" class="nav-link">Выбор психолога</a>
+                    <a href="catalog.html" class="nav-link">Каталог</a>
                     <a href="staff.html" class="nav-link">Психологам</a>
                     <a href="#blog" class="nav-link">Блог</a>
                     <a href="#groups" class="nav-link">Группы</a>       
@@ -25,7 +25,7 @@
                             </a>
                         </div>
                     </div>
-                    <a href="#organizations" class="nav-link">Организации</a>
+                    <a href="aboutUs.html" class="nav-link">Организации</a>
                 </nav>
 
                 <div class="header-center logo-tablet-mobile">
@@ -93,11 +93,11 @@
             </div>
       
           <ul class="mobile-nav__list">
-            <li><a href="client.html">Выбор психолога</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
             <li><a href="staff.html">Психологам</a></li>
             <li><a href="#">Блог</a></li>
             <li><a href="#">Группы</a></li>
-            <li><a href="#">Организации</a></li>
+            <li><a href="aboutUs.html">Организации</a></li>
             <li><a href="#">Избранное</a></li>
           </ul>
       
@@ -197,9 +197,9 @@
                     </div>
                     <div class="main-tabs">
                         <div class="tabs-header">
-                            <button class="tab-btn active" data-tab="client">Для себя</button>
-                            <button class="tab-btn" data-tab="couple">Для пары</button>
-                            <button class="tab-btn" data-tab="teenager">Для подростка</button>
+                            <button class="tab-btn client active" data-tab="client">Для себя</button>
+                            <button class="tab-btn couple" data-tab="couple">Для пары</button>
+                            <button class="tab-btn teenager" data-tab="teenager">Для подростка</button>
                         </div>
                         <div class="hero-tabs">
                             <div class="tabs-panel active" id="client">
@@ -220,7 +220,7 @@
                                     </div>
                                 </div>
                                 <div class="tabs-btn-block">
-                                    <button class="tabs-cta btn">Зарегистрироваться</button>
+                                    <button class="tabs-cta btn">Подобрать психолога</button>
                                 </div>
                             </div>
                             <div class="tabs-panel" id="couple" hidden>
@@ -241,7 +241,7 @@
                                     </div>
                                 </div>
                                 <div class="tabs-btn-block">
-                                    <button class="tabs-cta btn">Зарегистрироваться</button>
+                                    <button class="tabs-cta btn">Подобрать психолога</button>
                                 </div>
                             </div>
                             <div class="tabs-panel" id="teenager" hidden>
@@ -262,7 +262,7 @@
                                     </div>
                                 </div>
                                 <div class="tabs-btn-block">
-                                    <button class="tabs-cta btn">Зарегистрироваться</button>
+                                    <button class="tabs-cta btn">Подобрать психолога</button>
                                 </div>
                             </div>
                         </div>
@@ -317,13 +317,19 @@
             <h2 class="our-services-title">Наши услуги</h2>
             <div class="our-services-content">
                 <div class="our-services-content-item">
-                    <img src="images/OurServices/img1.png" alt="Услуга">
+                    <a href="catalog.html">
+                        <img src="images/OurServices/img1.png" alt="Услуга">
+                    </a>
                 </div>
                 <div class="our-services-content-item">
-                    <img src="images/OurServices/img2.png" alt="Услуга">
+                    <a href="catalog.html">
+                        <img src="images/OurServices/img2.png" alt="Услуга">
+                    </a>
                 </div>
                 <div class="our-services-content-item">
-                    <img src="images/OurServices/img3.png" alt="Услуга">
+                    <a href="catalog.html">
+                        <img src="images/OurServices/img3.png" alt="Услуга">
+                    </a>
                 </div>
             </div>
             <button class="our-services-content-btn">Посмотреть все</button>
@@ -346,20 +352,27 @@
      </section>
 
 
+
      <section class="how-to-choose-section">
         <div class="container how-to-choose">
             <h2 class="how-to-choose-title">Как подобрать психолога?</h2>
             <div class="how-to-choose-content">
                 <div class="choose-toggle" data-toggle-group>
                     <button class="choose-toggle-btn active" type="button" aria-pressed="true" 
-                            data-image-desktop="/images/choosePsycoImg.png" 
-                            data-image-tablet="/images/choosePsycoTablet.png">Самостоятельный подбор</button>
+                            data-image-desktop="/images/chooseSection/choosePsycoImg.png" 
+                            data-image-tablet="/images/chooseSection/choosePsycoTablet.png"
+                            data-image-mobile="/images/chooseSection/choosePsyMobile1.png">Самостоятельный подбор</button>
                     <button class="choose-toggle-btn" type="button" aria-pressed="false" 
-                            data-image-desktop="/images/chooseManager.png" 
-                            data-image-tablet="/images/chooseManagerTablet.png">Помощь менеджера</button>
+                            data-image-desktop="/images/chooseSection/chooseManager.png" 
+                            data-image-tablet="/images/chooseSection/chooseManagerTablet.png"
+                            data-image-mobile="/images/chooseSection/choosePsyMobile2.png">Помощь менеджера</button>
                 </div>
                 <div class="choose-psychologist-card">
-                    <img class="choose-card-img" src="/images/choosePsycoImg.png" alt="Варианты выбора психолога">
+                    <picture>
+                        <source media="(max-width: 767px)" srcset="/images/chooseSection/choosePsyMobile1.png" type="image/png">
+                        <source media="(min-width: 768px) and (max-width: 1023px)" srcset="/images/chooseSection/choosePsycoTablet.png" type="image/png">
+                        <img class="choose-card-img" src="/images/chooseSection/choosePsycoImg.png" alt="Варианты выбора психолога">
+                    </picture>
                 </div>
                 <button class="choose-select-btn">Подобрать психолога</button>
             </div>
@@ -385,27 +398,29 @@
                 </div>
             </div>
              <div class="specialist-slider">
-                <button class="specialist-nav-btn specialist-nav-btn-prev" aria-label="Предыдущий отзыв">
+                <button class="specialist-nav-btn specialist-nav-btn-prev" aria-label="Предыдущий специалист">
                     <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="30" cy="30" r="30" fill="#FFFFFF"/>
-                        <path d="M35 40L24 29.5L35 19" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle class="nav-circle" cx="30" cy="30" r="30" fill="#FFFFFF"/> <!-- Или .specialist-nav-circle, если конфликт -->
+                        <path class="specialist-arrow" d="M35 40L24 29.5L35 19" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
                 <div class="specialist-cards">
                     <div class="specialist-card">
                         <div class="specialist-card-image">
                             <img src="/images/Specialist.png" alt="Специалист психолог">
-                            <div class="heart">
-                                <svg width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M24.0723 2.94496C23.4614 2.32835 22.7361 1.83921 21.9378 1.50549C21.1396 1.17177 20.2839 1 19.4199 1C18.5558 1 17.7001 1.17177 16.9019 1.50549C16.1036 1.83921 15.3783 2.32835 14.7674 2.94496L13.4997 4.22404L12.2319 2.94496C10.998 1.70004 9.3245 1.00065 7.57951 1.00065C5.83452 1.00065 4.16099 1.70004 2.92709 2.94496C1.6932 4.18988 1 5.87836 1 7.63895C1 9.39954 1.6932 11.088 2.92709 12.3329L13.4997 23L24.0723 12.3329C24.6834 11.7166 25.1682 10.9849 25.499 10.1794C25.8298 9.37403 26 8.51076 26 7.63895C26 6.76714 25.8298 5.90387 25.499 5.09846C25.1682 4.29305 24.6834 3.56128 24.0723 2.94496Z" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <button id="heartBtn" type="heart-btn" class="heart">
+                                <svg class="heart-svg" width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path class="heart-path" d="M24.0723 2.94496C23.4614 2.32835 22.7361 1.83921 21.9378 1.50549C21.1396 1.17177 20.2839 1 19.4199 1C18.5558 1 17.7001 1.17177 16.9019 1.50549C16.1036 1.83921 15.3783 2.32835 14.7674 2.94496L13.4997 4.22404L12.2319 2.94496C10.998 1.70004 9.3245 1.00065 7.57951 1.00065C5.83452 1.00065 4.16099 1.70004 2.92709 2.94496C1.6932 4.18988 1 5.87836 1 7.63895C1 9.39954 1.6932 11.088 2.92709 12.3329L13.4997 23L24.0723 12.3329C24.6834 11.7166 25.1682 10.9849 25.499 10.1794C25.8298 9.37403 26 8.51076 26 7.63895C26 6.76714 25.8298 5.90387 25.499 5.09846C25.1682 4.29305 24.6834 3.56128 24.0723 2.94496Z" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>    
+                            </button>
+                        </div>
+                        <a href="anketa.html">
+                            <div class="specialist-card-name">
+                                <span>Анастасия Иванова</span>
+                                <br>
+                                <span class="specialist-discription">Семейный психолог</span>
                             </div>
-                        </div>
-                        <div class="specialist-card-name">
-                            <span>Анастасия Иванова</span>
-                            <br>
-                            <span class="specialist-discription">Семейный психолог</span>
-                        </div>
+                        </a>
                         
                         <div class="specialist-card-description">
                             <p>Молодой специалист от 2 000 Р</p>
@@ -420,17 +435,19 @@
                     <div class="specialist-card">
                         <div class="specialist-card-image">
                             <img src="/images/Specialist.png" alt="Специалист психолог">
-                            <div class="heart">
-                                <svg width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M24.0723 2.94496C23.4614 2.32835 22.7361 1.83921 21.9378 1.50549C21.1396 1.17177 20.2839 1 19.4199 1C18.5558 1 17.7001 1.17177 16.9019 1.50549C16.1036 1.83921 15.3783 2.32835 14.7674 2.94496L13.4997 4.22404L12.2319 2.94496C10.998 1.70004 9.3245 1.00065 7.57951 1.00065C5.83452 1.00065 4.16099 1.70004 2.92709 2.94496C1.6932 4.18988 1 5.87836 1 7.63895C1 9.39954 1.6932 11.088 2.92709 12.3329L13.4997 23L24.0723 12.3329C24.6834 11.7166 25.1682 10.9849 25.499 10.1794C25.8298 9.37403 26 8.51076 26 7.63895C26 6.76714 25.8298 5.90387 25.499 5.09846C25.1682 4.29305 24.6834 3.56128 24.0723 2.94496Z" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <button id="heartBtn" type="heart-btn" class="heart">
+                                <svg class="heart-svg" width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path class="heart-path" d="M24.0723 2.94496C23.4614 2.32835 22.7361 1.83921 21.9378 1.50549C21.1396 1.17177 20.2839 1 19.4199 1C18.5558 1 17.7001 1.17177 16.9019 1.50549C16.1036 1.83921 15.3783 2.32835 14.7674 2.94496L13.4997 4.22404L12.2319 2.94496C10.998 1.70004 9.3245 1.00065 7.57951 1.00065C5.83452 1.00065 4.16099 1.70004 2.92709 2.94496C1.6932 4.18988 1 5.87836 1 7.63895C1 9.39954 1.6932 11.088 2.92709 12.3329L13.4997 23L24.0723 12.3329C24.6834 11.7166 25.1682 10.9849 25.499 10.1794C25.8298 9.37403 26 8.51076 26 7.63895C26 6.76714 25.8298 5.90387 25.499 5.09846C25.1682 4.29305 24.6834 3.56128 24.0723 2.94496Z" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>    
+                            </button>
+                        </div>
+                        <a href="anketa.html">
+                            <div class="specialist-card-name">
+                                <span>Анастасия Иванова</span>
+                                <br>
+                                <span class="specialist-discription">Семейный психолог</span>
                             </div>
-                        </div>
-                        <div class="specialist-card-name">
-                            <span>Анастасия Иванова</span>
-                            <br>
-                            <span class="specialist-discription">Семейный психолог</span>
-                        </div>
+                        </a>
                         
                         <div class="specialist-card-description">
                             <p>Молодой специалист от 2 000 Р</p>
@@ -445,17 +462,19 @@
                     <div class="specialist-card">
                         <div class="specialist-card-image">
                             <img src="/images/Specialist.png" alt="Специалист психолог">
-                            <div class="heart">
-                                <svg width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M24.0723 2.94496C23.4614 2.32835 22.7361 1.83921 21.9378 1.50549C21.1396 1.17177 20.2839 1 19.4199 1C18.5558 1 17.7001 1.17177 16.9019 1.50549C16.1036 1.83921 15.3783 2.32835 14.7674 2.94496L13.4997 4.22404L12.2319 2.94496C10.998 1.70004 9.3245 1.00065 7.57951 1.00065C5.83452 1.00065 4.16099 1.70004 2.92709 2.94496C1.6932 4.18988 1 5.87836 1 7.63895C1 9.39954 1.6932 11.088 2.92709 12.3329L13.4997 23L24.0723 12.3329C24.6834 11.7166 25.1682 10.9849 25.499 10.1794C25.8298 9.37403 26 8.51076 26 7.63895C26 6.76714 25.8298 5.90387 25.499 5.09846C25.1682 4.29305 24.6834 3.56128 24.0723 2.94496Z" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <button id="heartBtn" type="heart-btn" class="heart">
+                                <svg class="heart-svg" width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path class="heart-path" d="M24.0723 2.94496C23.4614 2.32835 22.7361 1.83921 21.9378 1.50549C21.1396 1.17177 20.2839 1 19.4199 1C18.5558 1 17.7001 1.17177 16.9019 1.50549C16.1036 1.83921 15.3783 2.32835 14.7674 2.94496L13.4997 4.22404L12.2319 2.94496C10.998 1.70004 9.3245 1.00065 7.57951 1.00065C5.83452 1.00065 4.16099 1.70004 2.92709 2.94496C1.6932 4.18988 1 5.87836 1 7.63895C1 9.39954 1.6932 11.088 2.92709 12.3329L13.4997 23L24.0723 12.3329C24.6834 11.7166 25.1682 10.9849 25.499 10.1794C25.8298 9.37403 26 8.51076 26 7.63895C26 6.76714 25.8298 5.90387 25.499 5.09846C25.1682 4.29305 24.6834 3.56128 24.0723 2.94496Z" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>    
+                            </button>
+                        </div>
+                        <a href="anketa.html">
+                            <div class="specialist-card-name">
+                                <span>Анастасия Иванова</span>
+                                <br>
+                                <span class="specialist-discription">Семейный психолог</span>
                             </div>
-                        </div>
-                        <div class="specialist-card-name">
-                            <span>Анастасия Иванова</span>
-                            <br>
-                            <span class="specialist-discription">Семейный психолог</span>
-                        </div>
+                        </a>
                         
                         <div class="specialist-card-description">
                             <p>Молодой специалист от 2 000 Р</p>
@@ -468,10 +487,10 @@
                         </div> 
                     </div>
                 </div> 
-                <button class="specialist-nav-btn specialist-nav-btn-next" aria-label="Следующий отзыв">
+                <button class="specialist-nav-btn specialist-nav-btn-next" aria-label="Следующий специалист">
                     <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="30" cy="30" r="30" transform="matrix(-1 0 0 1 60 0)" fill="#FFFFFF"/>
-                        <path d="M25 40L36 29.5L25 19" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle class="nav-circle" cx="30" cy="30" r="30" transform="matrix(-1 0 0 1 60 0)" fill="#FFFFFF"/>
+                        <path class="specialist-arrow" d="M25 40L36 29.5L25 19" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
             </div>
@@ -488,14 +507,14 @@
                     <div class="reviews-navigation">
                         <button class="reviews-nav-btn reviews-nav-btn-prev" aria-label="Предыдущий отзыв">
                             <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="30" cy="30" r="30" fill="#9AC355"/>
-                                <path d="M35 40L24 29.5L35 19" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle class="nav-circle" cx="30" cy="30" r="30" fill="#9AC355"/>
+                                <path class="reviews-arrow" d="M35 40L24 29.5L35 19" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </button>
                         <button class="reviews-nav-btn reviews-nav-btn-next" aria-label="Следующий отзыв">
                             <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="30" cy="30" r="30" transform="matrix(-1 0 0 1 60 0)" fill="#9AC355"/>
-                                <path d="M25 40L36 29.5L25 19" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle class="nav-circle" cx="30" cy="30" r="30" fill="#9AC355" transform="matrix(-1 0 0 1 60 0)"/>
+                                <path class="reviews-arrow" d="M25 40L36 29.5L25 19" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </button>
                     </div>
@@ -527,7 +546,7 @@
                                     Я хочу поделиться своим опытом прохождения
                                     психологической терапии, который стал для меня
                                     настоящим открытием. Мой терапевт создал очень 
-                                    комфортную и безопасную атмо
+                                    комфортную и безопасную атмоcферой и обстановкой.
                                 </p>
                                 <button class="review-read-more-btn">Читать полностью</button>
                             </div>
@@ -555,7 +574,7 @@
                                     Я хочу поделиться своим опытом прохождения
                                     психологической терапии, который стал для меня
                                     настоящим открытием. Мой терапевт создал очень 
-                                    комфортную и безопасную атмо
+                                    комфортную и безопасную атмоcферой и обстановкой.
                                 </p>
                                 <button class="review-read-more-btn">Читать полностью</button>
                             </div>
@@ -584,7 +603,7 @@
                                     Я хочу поделиться своим опытом прохождения
                                     психологической терапии, который стал для меня
                                     настоящим открытием. Мой терапевт создал очень 
-                                    комфортную и безопасную атмо
+                                    комфортную и безопасную атмоcферой и обстановкой.
                                 </p>
                                 <button class="review-read-more-btn">Читать полностью</button>
                             </div>
@@ -600,6 +619,27 @@
             </div>
         </div>
      </section>
+
+     <div id="review-modal" class="review-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="review-modal-title">
+        <div class="review-modal-backdrop" data-modal-close></div>
+    
+        <div class="review-modal-panel" role="document">
+        <button class="review-modal-close" aria-label="Закрыть модалку" data-modal-close>&times;</button>
+    
+        <div class="review-modal-body">
+            <div class="review-modal-left">
+            <img class="review-modal-avatar" src="" alt="" />
+            <div class="review-modal-rating" aria-hidden="true"></div>
+            </div>
+    
+            <div class="review-modal-right">
+            <h3 id="review-modal-title" class="review-modal-name"></h3>
+            <div class="review-modal-position"></div>
+            <div class="review-modal-text"></div>
+            </div>
+        </div>
+        </div>
+    </div>
 
 
 
@@ -669,29 +709,30 @@
                     в какую-нибудь из этих организаций
                 </p>
             </div>
-
             <div class="help-numbers-list">
                 <div class="help-number-card">
                     <span class="help-number">+7 (495) 989-50-50</span>
                     <p class="help-number-discription">Экстренная психологическая поддержка МЧС России</p>
                 </div>
                 <div class="help-number-card">
-                    <span class="help-number">+7 (495) 989-50-50</span>
-                    <p class="help-number-discription">Экстренная психологическая поддержка МЧС России</p>
+                    <span class="help-number">+7 (800) 200-01-22</span>
+                    <p class="help-number-discription">Психолог бесплатно, круглосуточно, для детей 
+                        и подростков от 6 до 18 лет</p>
                 </div>
                 <div class="help-number-card">
-                    <span class="help-number">+7 (495) 989-50-50</span>
-                    <p class="help-number-discription">Экстренная психологическая поддержка МЧС России</p>
+                    <span class="help-number">+7 (499) 977-20-10</span>
+                    <p class="help-number-discription">Кризисная линия помощи женщинам и детям</p>
                 </div>
 
                 <div class="bottom-row">
                     <div class="help-number-card">
-                        <span class="help-number">+7 (495) 989-50-50</span>
-                        <p class="help-number-discription">Экстренная психологическая поддержка МЧС России</p>
+                        <span class="help-number">+7 (495) 421-55-55</span>
+                        <p class="help-number-discription">“Телефон доверия” 
+                            для людей с зависимостью от ПАВ и ВИЧ-положительным статусом</p>
                     </div>
                     <div class="help-number-card">
-                        <span class="help-number">+7 (495) 989-50-50</span>
-                        <p class="help-number-discription">Экстренная психологическая поддержка МЧС России</p>
+                        <span class="help-number">+7 (499) 901-02-01</span>
+                        <p class="help-number-discription">Независимый благотворительный центр для тех, кто пережил насилие</p>
                     </div>
                 </div>
             </div>

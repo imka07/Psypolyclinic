@@ -493,17 +493,20 @@ footer {
     z-index: 3;
     min-height: 200px;
     height: clamp(180px, 32vw, 270px);
-    /* 270px на десктопе, меньше на мобильных */
+
+
 }
 
 .tabs-header {
     display: flex;
     gap: 15px;
     padding: 20px 0 0;
-    justify-content: space-between;
-    width: 76.2%;
+    justify-content: flex-start; /* Изменено: теперь flex-start для равномерного заполнения */
+    max-width: 480px;
+    width: min(480px, 95%);
     position: relative;
-    top: 5px;
+    top: 8px;
+    will-change: contents;
   }
 
 .tab-btn {
@@ -520,10 +523,9 @@ footer {
     position: relative;
     z-index: 0; /* Кнопка на самом низком слое */
     transition: none;
-    width: 100%;
+    flex: 1;
     height: 50px;
     white-space: nowrap;
-    overflow: hidden;
 }
 
 
@@ -532,7 +534,60 @@ footer {
 .tab-btn.active {
     background: #9ac355;
     color: #ffffff;
-  }
+    position: relative;
+}
+
+.client.active::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -19px; /* Тянет вправо от первой кнопки */
+    height: 46px;
+    width: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: 0 15px 0 0 var(--color-primary);
+    z-index: -1;
+    pointer-events: none; /* Добавил, как на стр. 1 */
+}
+
+.couple.active::after {
+    content: "";
+    position: absolute;
+    top: 0%; /* Тянем СНИЗУ от кнопки, а не сбоку */
+    left: -19px; /* Центрируем по горизонтали */
+    height: 45px; /* Короткий выступ вниз — меньше артефактов */
+    width: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 17px 0 0 var(--color-primary);
+    z-index: -1;    
+    pointer-events: none;
+}
+.couple.active::before {
+    content: "";
+    position: absolute;
+    top: 0%; /* Тянем СНИЗУ от кнопки, а не сбоку */
+    right: -20px; /* Центрируем по горизонтали */
+    height: 45px; /* Короткий выступ вниз — меньше артефактов */
+    width: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: 0 17px 0 0 var(--color-primary);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.teenager.active::after { /* ДОБАВИЛ: Для третьей кнопки */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -19px; /* Тянет влево от третьей кнопки, симметрично client */
+    height: 45px;
+    width: 20px;
+    border-bottom-right-radius: 40px;
+    box-shadow: 0 20px 0 0 var(--color-primary); /* Симметрично client */
+    pointer-events: none;
+}
+
+
   
 
 
@@ -647,7 +702,20 @@ footer {
         width: 100%;
         margin: 0 auto;
     }
-    
+
+    .tabs-feature {
+        gap: 10px;
+    }
+
+    .tabs-feature-content {
+        gap: 0px;
+    }
+
+    .tabs-feature img {
+        width: 40px;
+        height: 40px;
+    }
+
     .tabs-header {
         gap: 8px;
         padding: 15px 0 0;
@@ -1166,7 +1234,7 @@ footer {
     width: 100%;
     font-weight: 500;
     font-size: 32px;
-    padding: 20px 24px;
+    padding: 30px 20px;
     line-height: 100%;
     cursor: pointer !important;
     transition: color .2s ease, background .2s ease, opacity .2s ease;
@@ -1200,7 +1268,7 @@ footer {
 
 .choose-toggle {
     padding: 0px;
-    width: auto;
+    width: 100%;
 }
 
 
@@ -1303,18 +1371,44 @@ footer {
 }
 
 
-.specialist-nav-btn.specialist-nav-btn-prev {
-    background: none;
-    border: none;
+/* Базовые стили для кнопок специалистов (если нет) */
+.specialist-nav-btn {
+    position: relative; /* Для transform */
+    display: inline-block;
     cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1); /* Плавный bounce для всей кнопки */
 }
 
-
-.specialist-nav-btn.specialist-nav-btn-next {
-    background: none;
-    border: none;
-    cursor: pointer;
+/* Базовые переходы для SVG-элементов */
+.specialist-nav-btn .nav-circle {
+    fill: #FFFFFF; /* Исходный белый */
+    transition: fill 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1); /* Плавность + scale */
 }
+
+.specialist-nav-btn .specialist-arrow {
+    stroke: black; /* Исходный чёрный */
+    transition: stroke 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1); /* Плавность + смещение */
+}
+
+/* Анимация при нажатии: сжатие + цвет для круга */
+.specialist-nav-btn:active .nav-circle {
+    fill: var(--color-primary, #f8f9fa); /* Цвет на active (фон для "вдавливания") */
+}
+
+/* Анимация при нажатии: погружение + цвет для стрелки */
+.specialist-nav-btn:active .specialist-arrow {
+    stroke: var(--color-bg, #333333); /* Цвет на active */
+    transform: translateY(2px); /* "Погружение" вниз — стрелка "давит" */
+}
+
+/* Общий эффект для кнопки: лёгкое сжатие с bounce */
+.specialist-nav-btn:active {
+    transform: scale(0.97); /* Вся кнопка "давит" */
+}
+
 
 
 .specialist-slider {
@@ -1325,6 +1419,27 @@ footer {
     margin-bottom: 40px;
 }
 
+
+
+.heart {
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.heart-path {
+    stroke: #A6A6A6; /* Исходный серый контур */
+    fill: none; /* Без заливки изначально */
+    transition: fill 0.3s ease, stroke 0.3s ease; /* Плавный переход */
+}
+
+.heart.active .heart-path {
+    fill: #FF3F7F; /* Заливка цветом при активном состоянии */
+    stroke: none; /* Контур тоже в цвет (опционально, для жирности) */
+}
 
 
 
@@ -1377,6 +1492,12 @@ footer {
     margin-top: -80px;
     position: relative;
     z-index: 1;
+}
+
+.specialist-card-name:hover {
+    background-color: var(--color-primary-hover);
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .specialist-card-description {
@@ -1489,6 +1610,18 @@ footer {
     margin-bottom: 100px;
 }
 
+
+.review-text {
+    display: -webkit-box;            /* обязательное */
+    -webkit-box-orient: vertical;    /* обязательное */
+    -webkit-line-clamp: 6;           /* сколько строк показывать */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-wrap: break-word;
+    /* для плавности при разворачивании */
+    transition: max-height 220ms ease;
+  }
 .reviews-content {
     display: flex;
     flex-direction: column;
@@ -1593,16 +1726,42 @@ footer {
     margin-top: 40px; /* Добавлено для смещения кнопки вниз */
 }
 
-.reviews-nav-btn.reviews-nav-btn-prev {
-    background: none;
-    border: none;
+/* Базовые стили для кнопок (если нет) */
+.reviews-nav-btn {
+    position: relative; /* Для transform */
+    display: inline-block;
     cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1); /* Плавный bounce для всей кнопки */
 }
 
-.reviews-nav-btn.reviews-nav-btn-next {
-    background: none;
-    border: none;
-    cursor: pointer;
+/* Базовые переходы для SVG-элементов */
+.reviews-nav-btn .nav-circle {
+    fill: #9AC355; /* Исходный зелёный */
+    transition: fill 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1); /* Плавность + scale */
+}
+
+.reviews-nav-btn .reviews-arrow {
+    stroke: white; /* Исходный белый */
+    transition: stroke 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1); /* Плавность + смещение */
+}
+
+/* Анимация при нажатии: сжатие + цвет для круга */
+.reviews-nav-btn:active .nav-circle {
+    fill: var(--color-bg, #f8f9fa); /* Цвет на active (фон для "вдавливания") */
+
+}
+
+/* Анимация при нажатии: погружение + цвет для стрелки */
+.reviews-nav-btn:active .reviews-arrow {
+    stroke: var(--color-primary, #ff6b6b); /* Цвет на active */
+}
+
+/* Общий эффект для кнопки: лёгкое сжатие с bounce */
+.reviews-nav-btn:active {
+    transform: scale(0.97); /* Вся кнопка "давит" */
 }
 
 .review-rating-list {
@@ -1617,6 +1776,160 @@ footer {
     justify-content: flex-start;
     gap: 10px;
 }
+
+
+
+/* --- Modal base --- */
+.review-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: none; /* hidden by default */
+    align-items: center;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  /* затемнённый фон */
+  .review-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    transition: opacity 240ms ease;
+  }
+  
+
+  
+  /* Панель модалки */
+  .review-modal-panel {
+    position: relative;
+    width: 100%;
+    max-width: 920px;
+    margin: 24px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    transform: translateY(10px) scale(0.995);
+    opacity: 0;
+    transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 260ms ease;
+    z-index: 2;
+    overflow: hidden;
+  }
+  
+  /* открытое состояние (JS добавляет .open) */
+  .review-modal.open {
+    display: flex;
+  }
+  .review-modal.open .review-modal-backdrop { opacity: 1; }
+  .review-modal.open .review-modal-panel {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  
+  /* close button (top-right) */
+  .review-modal-close {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    z-index: 3;
+    border: none;
+    background: transparent;
+    font-size: 28px;
+    line-height: 28px;
+    cursor: pointer;
+    padding: 8px;
+    color: #333;
+    border-radius: 6px;
+  }
+
+  
+  /* body content layout */
+  .review-modal-body {
+    display: flex;
+    gap: 24px;
+    padding: 28px;
+    align-items: flex-start;
+  }
+  
+  /* left column: avatar + rating */
+  .review-modal-left {
+    flex: 0 0 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .review-modal-avatar {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    background: #f0f0f0;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  }
+
+  .review-modal-rating {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+  }
+  
+  /* rating: we clone star icons inside */
+  .review-modal-rating img {
+    width: 22px;
+    height: 22px;
+    margin-right: 6px;
+  }
+  
+  /* right column */
+  .review-modal-right {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .review-modal-name {
+    margin: 0 0 6px 0;
+    font-size: 22px;
+  }
+  .review-modal-position {
+    color: rgba(0,0,0,0.6);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+  .review-modal-text {
+    color: rgba(0,0,0,0.85);
+    line-height: 1.5;
+  }
+  
+  /* small screens: full screen modal */
+  @media (max-width: 767px) {
+    .review-modal-panel {
+      height: 100%;
+      max-width: none;
+      margin: 0;
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .review-modal-body {
+      flex-direction: column;
+      padding: 18px;
+      gap: 12px;
+      overflow: auto;
+    }
+    .review-modal-left { flex-direction: row; align-items: center; gap: 12px; }
+    .review-modal-avatar { width: 84px; height: 84px; }
+    .review-modal-name { font-size: 20px; }
+  }
+  
+  /* block body scroll when modal open */
+  body.modal-open {
+    overflow: hidden;
+    padding-right: 0 !important; /* можно добавить компенсатор scrollbar при желании */
+  }
+  
+
 
 
 
@@ -2601,6 +2914,8 @@ footer {
         white-space: wrap;
     }
 
+
+
     .tabs-btn-block {
         display: flex;
     }
@@ -2711,7 +3026,7 @@ footer {
     .login-form-buttons button {
         width: 100%;
         padding: 12px;
-        background: #7cc202;
+        background: var(--color-primary);
         color: #fff;
         font-size: 16px;
         font-weight: 600;
@@ -3020,7 +3335,7 @@ footer {
     }
 
     .faq-title {
-        font-size: 20px;
+        font-size: 25px;
     }
 
     .faq-top {
@@ -3235,8 +3550,10 @@ footer {
         border-radius: 20px;
    }
    .faq-question {
-    font-size: 8px;
+    font-size: 14px;
    }
+
+
 
    .faq-answer-inner p{
         font-size: 12px;

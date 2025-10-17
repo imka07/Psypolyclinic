@@ -6,6 +6,55 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollReveal();
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Для всех сердечек
+    const heartButtons = document.querySelectorAll('.heart');
+    heartButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
+    });
+});
+
+
+// Анимация текста
+
+document.addEventListener('DOMContentLoaded', function() {
+    const texts = [
+        'обрети счастье',
+        'победи страх',
+        'справься со стрессом',
+        'обрети спокойствие'
+    ];
+    
+    const animatedElements = document.querySelectorAll('.animated-text'); // Находит все span (desktop + tablet)
+    
+    let currentIndex = 0; // Индекс текущего текста
+    
+    function changeText() {
+        animatedElements.forEach(function(el) {
+            // Fade out
+            el.classList.add('fade-out');
+            
+            // Ждём окончания fade out (0.5s + 0.1s буфер)
+            setTimeout(function() {
+                // Меняем текст
+                el.textContent = texts[currentIndex];
+                
+                // Убираем класс, чтобы fade in
+                el.classList.remove('fade-out');
+            }, 600); // 0.5s transition + 0.1s пауза
+        });
+        
+        // Переходим к следующему тексту (цикл)
+        currentIndex = (currentIndex + 1) % texts.length;
+    }
+    
+    // Запуск первой смены через 3 секунды (интервал), потом каждые 3s
+    setTimeout(changeText, 2000);
+    setInterval(changeText, 2000); // Интервал: 3s между сменами (настройте под себя)
+});
+
 
 // Логин форма
 function showModal() {
@@ -513,3 +562,139 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+
+
+  
+(function () {
+  const modal = document.getElementById('review-modal');
+  if (!modal) return;
+
+  const modalPanel = modal.querySelector('.review-modal-panel');
+  const backdrop = modal.querySelector('.review-modal-backdrop');
+  const closeBtns = modal.querySelectorAll('[data-modal-close]');
+  const avatarEl = modal.querySelector('.review-modal-avatar');
+  const ratingEl = modal.querySelector('.review-modal-rating');
+  const nameEl = modal.querySelector('.review-modal-name');
+  const positionEl = modal.querySelector('.review-modal-position');
+  const textEl = modal.querySelector('.review-modal-text');
+
+  // Функция открытия модалки с данными
+  function openModalFromCard(cardEl) {
+    if (!cardEl) return;
+    // извлечение данных из карточки
+    const avatar = cardEl.querySelector('.review-avatar-img')?.getAttribute('src') || '';
+    const name = cardEl.querySelector('.review-author-name')?.textContent || '';
+    // сохраняем innerHTML для позиции, чтобы сохранять <br>
+    const positionHTML = cardEl.querySelector('.review-author-position')?.innerHTML || '';
+    // рейтинг: клонируем все элементы рейтинга (если есть)
+    const ratingNodes = cardEl.querySelectorAll('.review-avatar-rating');
+
+    // полный текст (берём текстContent или innerHTML - как нужно)
+    const fullText = cardEl.querySelector('.review-text')?.textContent || '';
+
+    // заполняем модалку
+    avatarEl.setAttribute('src', avatar);
+    avatarEl.setAttribute('alt', name ? 'Аватар ' + name : 'Аватар');
+
+    // заполняем рейтинг (клонируем)
+    ratingEl.innerHTML = '';
+    if (ratingNodes && ratingNodes.length) {
+      ratingNodes.forEach(node => {
+        const clone = node.cloneNode(true);
+        clone.removeAttribute('class'); // опционально
+        ratingEl.appendChild(clone);
+      });
+    }
+
+    nameEl.textContent = name;
+    positionEl.innerHTML = positionHTML;
+    textEl.textContent = fullText;
+
+    // показать modal
+    showModal();
+  }
+
+  // открыть визуально
+  function showModal() {
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    // блокируем скролл фонового контента
+    document.body.classList.add('modal-open');
+
+    // запомнить последний фокус и перевести фокус в модалку
+    lastFocused = document.activeElement;
+    // ставим фокус на кнопку закрытия (или первый фокусируемый эл)
+    const focusElem = modal.querySelector('.review-modal-close') || modalPanel;
+    focusElem && focusElem.focus();
+
+    // включаем ловец клавиш
+    document.addEventListener('keydown', onKeyDown);
+  }
+
+  function hideModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    document.removeEventListener('keydown', onKeyDown);
+
+    // вернуть фокус на элемент, который открыл модалку
+    try {
+      lastFocused && lastFocused.focus();
+    } catch (e) {}
+  }
+
+  // закрытие когда клик по backdrop или по кресту (data-modal-close)
+  modal.addEventListener('click', function (e) {
+    if (e.target.hasAttribute('data-modal-close')) {
+      hideModal();
+    }
+  });
+
+  // локальный keydown: Esc и Tab trapping
+  let lastFocused = null;
+  function onKeyDown(e) {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      hideModal();
+      return;
+    }
+    // Focus trap: Tab / Shift+Tab
+    if (e.key === 'Tab') {
+      const focusable = modal.querySelectorAll('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])');
+      const focusableArr = Array.prototype.slice.call(focusable).filter(el => el.offsetParent !== null);
+      if (focusableArr.length === 0) return;
+      const first = focusableArr[0];
+      const last = focusableArr[focusableArr.length - 1];
+      if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      } else if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    }
+  }
+
+  // Делегируем клики по кнопкам "Читать полностью"
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.review-read-more-btn');
+    if (!btn) return;
+    // предотвратить двойное поведение, если у вас ранее стоял другой обработчик
+    e.preventDefault();
+    // найти ближайшую карточку
+    const card = btn.closest('.review-card');
+    if (!card) return;
+    openModalFromCard(card);
+  });
+
+  // также кнопки закрытия (если нужны дополнительные действия)
+  closeBtns.forEach(b => b.addEventListener('click', hideModal));
+
+  // Prevent scroll on touchmove behind modal (extra safety)
+  modal.addEventListener('touchmove', function (e) {
+    // allow scroll inside panel only
+    if (!modalPanel.contains(e.target)) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+})();

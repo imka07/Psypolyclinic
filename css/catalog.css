@@ -1,0 +1,1657 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* CSS Variables */
+:root {
+    /* Colors */
+    --color-primary: #9AC355;
+    --color-primary-hover: #BEF574;
+    --color-secondary: #F1F2F5;
+    --color-text: #000000;
+    --color-text-muted: rgba(0, 0, 0, 0.5);
+    --color-bg: #ffffff;
+    --color-bg-alt: #F1F2F5;
+    --color-border: #F1F2F5;
+    
+    /* Typography */
+    --font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-base: 1rem;
+    --font-size-small: 0.875rem;
+    --font-size-large: 1.25rem;
+    --line-height-base: 1.6;
+    
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    --spacing-2xl: 64px;
+    
+    /* Border Radius */
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 20px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    
+    /* Container */
+    --container-max-width: 1300px;
+    --container-padding: 20px;
+}
+
+/* Reset & Base Styles */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: var(--line-height-base);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    letter-spacing: 0.5px;
+    overflow-x: hidden;
+}
+
+/* Global Elements */
+img, 
+svg, 
+video, 
+canvas {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+h2 {
+    margin-bottom: 100px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-fast);
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: all var(--transition-fast);
+}
+
+/* Container */
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    min-width: 0;
+}
+
+section,
+header,
+footer {
+    min-width: 0;
+}
+
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.header {
+    background-color: var(--color-bg);
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+}
+
+.nav-link {
+    color: var(--color-text);
+    font-weight: 400;
+    font-size: var(--font-size-base);
+    transition: color var(--transition-base);
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: var(--color-primary);
+    outline: none;
+}
+
+
+.header-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 92px;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    transition: all var(--transition-base);
+}
+
+.icon-link:hover,
+.icon-link:focus {
+    background-color: var(--color-secondary);
+    transform: translateY(-1px);
+    outline: none;
+}
+
+.icon-link svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Buttons */
+.login-btn {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    padding: 0.5rem 1.5rem;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.login-btn:hover,
+.login-btn:focus {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-1px);
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+
+
+/* ============================================
+   MODAL
+   ============================================ */
+
+.login-modal,
+.registration-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+/* Когда модалка открыта */
+.login-modal[style*="display: block"],
+.registration-modal[style*="display: block"] {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-modal-content {
+    background-color: var(--color-bg);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    margin: 0;
+}
+
+.login-top-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: var(--spacing-md);
+}
+
+.login-close {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    transition: transform var(--transition-fast);
+}
+
+.login-close:hover {
+    transform: scale(1.1);
+}
+
+.login-title {
+    font-weight: 600;
+    font-size: 30px;
+    margin: 0;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-xl);
+}
+
+.login-form input {
+    width: 100%;
+    height: 70px;
+    border: 2px solid var(--color-border);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    font-weight: 400;
+    font-size: 20px;
+    transition: border-color var(--transition-fast);
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.login-form input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.login-form-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.login-form-buttons button {
+    width: 300px;
+    height: 50px;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.login-form-buttons button:hover,
+.login-form-buttons button:focus {
+    background-color: var(--color-primary-hover);
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.registration-button {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.registration-button:hover {
+    color: var(--color-primary-hover);
+}
+
+.forget-email-text {
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.forget-email-text:hover {
+    color: var(--color-text);
+}
+
+
+/* ===================== */
+/* БАЗА offcanvas меню   */
+/* ===================== */
+.mobile-nav {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2000;
+  }
+  .mobile-nav__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .mobile-nav__panel {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: min(380px, 82vw);
+    background: #fff;
+    border-radius: 0 24px 24px 0;
+    padding: 24px 20px;
+    transform: translateX(-110%);
+    transition: transform .3s;
+  }
+  .mobile-nav.open { pointer-events: auto; }
+  .mobile-nav.open .mobile-nav__backdrop { opacity: 1; }
+  .mobile-nav.open .mobile-nav__panel { transform: translateX(0); }
+  
+  .mobile-nav__close {
+    background: #9AC355;
+    color: #fff;
+    border: 0;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    margin-left: auto;
+    cursor: pointer;
+  }
+  .mobile-nav__list { list-style: none; margin: 32px 0; padding: 0; }
+  .mobile-nav__list li { margin: 18px 0; }
+  .mobile-nav__list a { font-size: 20px; color: #111; text-decoration: none; }
+  .mobile-nav__socials { display: flex; gap: 14px; margin-top: auto; }
+  
+  .mobile-menu-toggle {
+    display: none; /* По умолчанию скрываем на десктопе */
+}
+
+  .logo-tablet-mobile {
+    display: none;
+}
+
+.logo-desktop {
+    display: block;
+}
+
+/* ============================================
+   TOP HEADER
+   ============================================ */
+
+.top-header {
+    margin-top: 150px;
+    position: relative; 
+}
+
+
+.top-header-title {
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 10px;
+}
+
+.top-header-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.top-header-link {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--color-text);
+}
+
+
+/* ============================================
+   FILTER SECTION
+   ============================================ */
+
+.filter-section {
+    margin-top: 50px;
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.filter-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
+    gap: 10px;
+    background-color: var(--color-bg-alt);
+    border-radius: 20px;
+    height: 100px;
+    width: 100%;
+    
+}
+
+.menu {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    border-radius: 10px;
+    width: fit-content;
+    display: flex;
+    list-style: none;
+  }
+  
+  .menu a {
+    text-decoration: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+  
+  .menu .link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 36px;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .menu .link::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .menu .link svg {
+    width: 14px;
+    height: 14px;
+    fill: #000000;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .menu .item {
+    position: relative;
+  }
+  
+  .menu .item .submenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 100%;
+    border-radius: 0 0 16px 16px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #cccccc;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 1;
+    pointer-events: none;
+    list-style: none;
+  }
+  
+  .menu .item:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    border-color: var(--color-primary);
+  }
+  
+  .menu .item:hover .link {
+    color: var(--color-text);
+    border-radius: 16px 16px 0 0;
+  }
+  
+  .menu .item:hover .link::after {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+  
+  .menu .item:hover .link svg {
+    fill: #ffffff;
+    transform: rotate(-180deg);
+  }
+  
+  .submenu .submenu-item {
+    width: 100%;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+  }
+  
+  .submenu .submenu-link {
+    display: block;
+    padding: 12px 24px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .submenu .submenu-item:last-child .submenu-link {
+    border-bottom: none;
+  }
+  
+  .submenu .submenu-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary);
+    z-index: -1;
+    transform-origin: left;
+    transition: transform 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .submenu .submenu-link:hover:before {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+  
+  .submenu .submenu-link:hover {
+    background-color: var(--color-primary);
+  }
+
+  .filter-button.desktop {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    border-radius: 10px;
+    padding: 20px 20px;
+    font-size: 16px;
+  }
+
+  .filter-button:hover {
+    background-color: var(--color-primary-hover);
+  }
+  
+
+
+
+.specialists-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(250px, 1fr)); /* 3 колонки: минимум 250px на карточку, остальное — равномерно */
+    grid-auto-rows: auto; /* Высота строк по содержимому, без растяжки */
+    width: 100%;
+    gap: 20px;
+}
+
+.specialist-card {
+    border-radius: 20px;
+    overflow: hidden;
+    width: 100%; /* Заполняет всю ячейку грида, без фиксированного % */
+    position: relative;
+    /* Добавьте min-width, если нужно жёстко защитить от сжатия ниже определённого размера */
+    /* min-width: 250px; — раскомментируйте, если контейнер очень узкий */
+}
+
+.specialist-card-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.specialist-card-image img {
+    width: 80%;
+    height: auto;
+    display: block;
+    border-radius: 0;
+}
+
+.heart {
+    position: absolute;
+    top: 10px;
+    right: 60px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.heart-path {
+    stroke: #A6A6A6; /* Исходный серый контур */
+    fill: none; /* Без заливки изначально */
+    transition: fill 0.3s ease, stroke 0.3s ease; /* Плавный переход */
+}
+
+.heart.active .heart-path {
+    fill: #FF3F7F; /* Заливка цветом при активном состоянии */
+    stroke: none; /* Контур тоже в цвет (опционально, для жирности) */
+}
+
+.specialist-card-name {
+    background-color: #9AC355;
+    padding: 20px 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    border-radius: 20px;
+    width: 100%;
+    margin-top: -80px;
+    position: absolute;
+    z-index: 1;
+}
+
+
+.specialist-card-description {
+    background-color: white;
+    border-radius: 0 0 20px 20px;
+    padding: 15px;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid var(--color-primary);
+}
+
+.specialist-discription {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.specialist-card-description p {
+    margin: 5px 0;
+}
+
+.specialist-card-description ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.specialist-card-description li {
+    position: relative;
+    padding-left: 15px;
+    font-size: 14px;
+}
+
+.specialist-card-description li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.adult::before {
+    background-color: #BEF574; /* green */
+}
+
+.teen::before {
+    background-color: #8E74F5; /* purple */
+}
+
+.family::before {
+    background-color: #F58E74; /* red */
+}
+
+    .filter-button.mobile {
+    display: none;
+
+}
+
+
+
+
+/* Add this to your CSS */
+
+/* Modal overlay */
+.filter-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.filter-modal.open {
+    display: block;
+    opacity: 1;
+}
+
+/* Panel */
+.filter-panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-bg-alt, #ffffff);
+    border-radius: 20px;
+    padding: 24px;
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--color-primary);
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.close-btn:hover {
+    background-color: #f0f0f0;
+    color: #666;
+}
+
+/* Body */
+.filter-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 10px;
+}
+
+.filter-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+/* Sections */
+
+
+.filter-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text, #333333);
+    margin: 0 0 12px 0;
+    line-height: 1.2;
+}
+
+.cost-section {
+    grid-column: 1 / -1;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Checkbox labels */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--color-text, #333333);
+    line-height: 1.4;
+    padding: 4px 0;
+}
+
+.checkbox-label input {
+    margin: 10px;
+}
+
+/* Custom checkbox (circle style) */
+.custom-radio {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #d0d0d0;
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.custom-checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    padding-left: 35px;
+    user-select: none;
+}
+
+.checkmark {
+    position: absolute;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    border: 2px solid #d0d0d0;
+    background-color: #fff;
+    transition: all 0.2s ease;
+}
+
+
+.custom-checkbox:checked + .checkmark:after {
+    content: "";
+    position: absolute;
+    display: block;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--color-primary);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+
+.custom-radio:checked {
+    border-color: var(--color-primary, #9AC355);
+    background-color: var(--color-primary, #9AC355);
+}
+
+.custom-radio:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+/* Inputs and selects */
+
+
+
+.filter-input,
+.filter-select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #ffffff;
+    font-size: 14px;
+    color: var(--color-text, #333333);
+    line-height: 1.4;
+    transition: border-color 0.2s ease;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+    outline: none;
+    border-color: var(--color-primary, #9AC355);
+}
+
+.filter-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+/* Footer */
+.filter-footer {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.apply-btn {
+    background-color: var(--color-primary, #9AC355);
+    color: var(--color-bg, #ffffff);
+    border: none;
+    border-radius: 10px;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.apply-btn:hover {
+    background-color: var(--color-primary-hover, #7ea84a);
+}
+
+/* Mobile adaptations (one column, full screen) */
+@media (max-width: 1024px) {
+    /* Tablet: same as desktop */
+}
+
+@media (max-width: 768px) {
+    .filter-modal.open {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .filter-panel {
+        position: static;
+        transform: none;
+        width: 100%;
+        height: 100vh;
+        max-height: none;
+        border-radius: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .close-btn {
+        top: 16px;
+        right: 16px;
+    }
+
+    .filter-body {
+        display: block;
+        gap: 20px;
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    .filter-column {
+        gap: 20px;
+    }
+
+    .cost-section {
+        grid-column: unset;
+        border-top: 1px solid #e0e0e0;
+        padding-top: 20px;
+        margin-top: 0;
+    }
+
+    .filter-section h3 {
+        font-size: 15px;
+    }
+
+    .checkbox-label {
+        font-size: 14px;
+        gap: 10px;
+    }
+
+    .custom-radio {
+        width: 18px;
+        height: 18px;
+    }
+
+    .filter-input,
+    .filter-select {
+        padding: 12px 14px;
+        font-size: 14px;
+    }
+
+    .filter-footer {
+        padding: 20px 0 0;
+    }
+
+    .apply-btn {
+        width: 100%;
+        padding: 16px;
+        font-size: 16px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+    .filter-panel {
+        padding: 16px;
+    }
+
+    .filter-body {
+        gap: 16px;
+    }
+
+    .filter-column {
+        gap: 16px;
+    }
+
+    .filter-section {
+        gap: 10px;
+    }
+
+    .filter-section h3 {
+        font-size: 14px;
+    }
+
+    .checkbox-label {
+        font-size: 13px;
+        gap: 8px;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 1280px) {
+
+    .logo-desktop {
+        display: none;
+    }
+
+    .header-left {
+        display: none;
+    }
+  
+    .header-content {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+  
+    /* ЛОГО по центру */
+    .header-center {
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+  
+    /* бургер слева */
+    .mobile-menu-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .mobile-nav__panel {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile-menu-toggle span {
+      display: block;
+      height: 2px;
+      background: #9AC355;
+      border-radius: 2px;
+    }
+
+    .mobile-panel-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mobile-nav__socials {
+        margin-bottom: 30px;
+        gap: 5px;
+    }
+  
+    /* справа только «Войти» */
+    .header-right {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .login-form {
+        gap: 0px;
+    }
+
+    .login-btn {
+      background: #9AC355;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 10px;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+    }
+    .header-right .social-icons {
+        display: none;
+    }
+    .hero-title--desktop { display: none; }
+    .hero-title--tablet  { display: inline-block; /* или block — в зависимости от места */ }
+
+    .top-header-title {
+        font-size: 34px;
+    }
+    .top-header-link {
+        font-size: 20px;
+    }
+
+
+    .specialists-cards {
+        grid-template-columns: repeat(2, minmax(250px, 1fr));
+    }
+
+    .specialist-card-description {
+        font-size: 12px;
+    }
+
+    .specialist-card-name {
+        font-size: 16px;
+    }
+
+    .surname-menu {
+        display: none;
+    }
+
+    .link span {
+        display: block; /* Или inline-block, если нужно в строке */
+        white-space: nowrap; /* Запрещает перенос строк, текст в одну линию */
+        overflow: hidden; /* Скрывает переполнение */
+        text-overflow: ellipsis; /* Добавляет троеточия в конце при переполнении */
+        max-width: 100%; /* Ограничивает ширину до родительского блока (или укажите фиксированную, напр. 200px) */
+    }
+
+    .heart {
+        right: 70px;
+        top: 20px;
+    }
+
+
+}
+
+
+@media (max-width: 767px) {
+    .header {
+        padding: 1rem 0;
+    }
+
+    /* Header and Hero компоненты */
+    .header-left {
+        display: none;
+    }
+  
+    .header-content {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+        width: 100%;
+
+    }
+  
+    /* ЛОГО по центру */
+    .header-center {
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .logo-desktop {
+        display: none;
+    }
+
+    .logo-tablet-mobile {
+        display: block;
+    }
+  
+    /* бургер слева */
+    .mobile-menu-toggle {
+        display: flex !important; /* Добавлено !important для приоритета */
+        flex-direction: column;
+        justify-content: center;
+        gap: 4px;
+        width: 32px;
+        height: 32px;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        position: relative;
+        z-index: 1001;
+    }
+
+
+    .mobile-nav__panel {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .mobile-panel-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .mobile-nav__socials {
+        margin-bottom: 30px;
+        gap: 5px;
+        padding: 0 20px;
+        justify-content: flex-start;
+    }
+  
+    /* справа только «Войти» */
+    .header-right {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    
+    .login-btn {
+      background: #9AC355;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 100%;
+        text-align: center;
+    }
+
+
+    /* Модалки регистрации и входа */
+
+    .login-modal,
+    .registration-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+    
+    /* Когда модалка открыта на мобильных */
+    .login-modal[style*="display: block"],
+    .registration-modal[style*="display: block"] {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login-modal-content,
+    .registration-modal .login-modal-content {
+        width: 90%;
+        max-width: 340px;
+        background: var(--color-bg);
+        border-radius: var(--radius-md);
+        padding: var(--spacing-md);
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    /* Заголовок */
+    .login-top-header {
+        display: flex;
+        justify-content: center; /* центрируем содержимое */
+        align-items: center;
+    }
+
+    .login-title {
+        font-size: 18px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .login-close {
+        display: flex;
+    }
+
+    .login-close svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .login-form {
+        gap: 0px;
+    }
+
+    /* Поля формы */
+    .login-form input {
+        width: 100%;
+        height: 60px;
+        padding: 5px 12px;
+        margin-bottom: 12px;
+        font-size: 16px;
+        border: 1px solid #F1F2F5;
+        border-radius: 20px;
+        box-sizing: border-box;
+    }
+
+    /* Кнопки */
+    .login-form-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .login-form-buttons button {
+        width: 100%;
+        padding: 12px;
+        background: var(--color-primary);
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+
+    }
+
+    .login-form-buttons{
+        font-size: 16px;
+        color: #7cc400;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .registration-button {
+        display: block;
+        margin-top: 8px;
+        font-size: 16px;
+    }
+
+    .forget-email-text {
+        display: block;
+        font-size: 14px;
+        margin-top: 8px;
+        color: rgb(0, 0, 0, 0.5);
+    }
+
+    .forget-email-text:hover {
+        color: var(--color-text);
+    }
+
+
+
+    .header-right .social-icons {
+        display: none;
+    }
+    .hero-title--desktop { display: none; }
+    .hero-title--tablet  { display: inline-block; /* или block — в зависимости от места */ }
+
+
+    .specialists-cards {
+        grid-template-columns: repeat(1, 1fr);
+        justify-content: center;
+    }
+
+
+
+    .filter-content {
+        flex-direction: row; /* Остаётся в ряд, но сжимается */
+        justify-content: space-around; /* Выравнивание по левому краю для компактности */
+        align-items: center;
+        padding: 20px 10px; /* Меньше padding на мобильных */
+        gap: 8px; /* Меньший gap */
+        height: auto; /* Убираем фиксированную высоту, чтобы подстраивалось */
+        min-height: 50px; /* Минимальная высота для мобильных */
+        flex-wrap: nowrap; /* Не переносим, чтобы всё в одну строку */
+        border-radius: 10px;
+    }
+    
+    .heart {
+        right: 20px;
+        top: 10px;
+    }
+
+
+    .specialist-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .specialist-card-description {
+        width: 75%;
+        font-size: 12px;
+    }
+
+    .specialist-card-name {
+        width: 80%;
+        bottom: 90px;
+        font-size: 16px;
+    }
+
+    .top-header-title {
+        font-size: 20px;
+    }
+
+    .top-header-link {
+        font-size: 16px;
+    }
+    .specialist-card-image img {
+        width: auto;
+    }
+
+    .surname-menu,
+    .who-menu {
+        display: none; /* Или opacity: 0.5; pointer-events: none; если нужно визуально показать как disabled */
+    }
+    .session-menu {
+        flex: 1; /* Занимает доступное пространство */
+        min-width: 150px; /* Минимальная ширина, чтобы не сжимался слишком */
+    }
+
+    .session-menu .link {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding: 15px 20px; /* Меньше padding для компактности */
+        font-size: 14px; /* Меньший шрифт */
+        gap: 8px; /* Меньший gap между текстом и иконкой */
+        width: auto;
+    }
+
+
+
+    .link span {
+        display: block; /* Или inline-block, если нужно в строке */
+        white-space: nowrap; /* Запрещает перенос строк, текст в одну линию */
+        overflow: hidden; /* Скрывает переполнение */
+        text-overflow: ellipsis; /* Добавляет троеточия в конце при переполнении */
+        max-width: 100%; /* Ограничивает ширину до родительского блока (или укажите фиксированную, напр. 200px) */
+    }
+
+    .filter-button.mobile {
+        display: block;
+    }
+
+    .filter-button.desktop {
+        display: none;
+    }
+}
+
+@media (max-width: 399px) {
+    .specialist-card-description {
+        width: 80%;
+    }
+    .specialist-card-image {
+        width: 60%;
+    }
+
+    .filter-button.mobile {
+        display: block;
+    }
+
+    .filter-button.desktop {
+        display: none;
+    }
+
+    .filter-content {
+        padding: 16px 8px;
+        gap: 6px;
+    }
+
+    .surname-menu {
+        min-width: 120px;
+    }
+
+    .surname-menu .link {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+}
+
+
+
+.custom-multiselect {
+    position: relative;
+    width: 200px;
+}
+
+.select-box {
+    border: 1px solid var(--color-primary);
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: var(--color-bg);
+}
+
+.options-container {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 1px solid #ccc;
+    background: white;
+    z-index: 1000;
+}
+
+.option {
+    display: block;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.option input {
+    margin-right: 8px;
+}
+
+.option:hover {
+    background: transparent;
+}
+
+.option input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ccc;
+    background-color: transparent;
+    position: relative;
+}
+
+.option input[type="checkbox"]:checked {
+    border-color: green;
+    background-color: transparent;
+}
+
+.option input[type="checkbox"]:checked::before {
+    content: "✓";
+    position: absolute;
+    top: -2px;
+    left: 2px;
+    color: var(--color-primary);
+    font-size: 14px;
+    font-weight: bold;
+}
